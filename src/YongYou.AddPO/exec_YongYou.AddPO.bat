@@ -1,0 +1,1 @@
+runas /user:Administrator /savecret "C:\Users\wu.cai1\AppData\Local\UiPath\app-21.4.4\UiRobot.exe -file C:/ProgramData/UiPath/Packages/YongYou.AddPO.1.0.7.nupkg"

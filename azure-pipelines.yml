@@ -1,0 +1,38 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: Local RPA
+
+steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo "Start Build UpdateYongyou"
+      tree $(Agent.WorkFolder)\1 /f
+      
+      echo "Build.ArtifactStagingDirectory:" 
+      
+      echo "$(Build.ArtifactStagingDirectory)"
+      
+      echo "Build.BinariesDirectory:" 
+      
+      echo "$(Build.BinariesDirectory)"
+      
+      echo "Build.SourcesDirectory:"
+      
+      echo "$(Build.SourcesDirectory)"
+      echo "$(System.DefaultWorkingDirectory)"
+    workingDirectory: 'src'
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'

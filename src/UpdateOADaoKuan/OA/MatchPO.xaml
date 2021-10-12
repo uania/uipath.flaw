@@ -1,0 +1,1181 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="MatchPO" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cp="clr-namespace:CustomerClass.ProjectApproval;assembly=CustomerClass" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="specificDt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="genericDt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="proformaDt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="messageInfos" Type="InArgument(scg:List(cp:MessageNoticeInfo))" />
+    <x:Property Name="messages" Type="OutArgument(scg:List(cp:MessageNoticeInfo))" />
+    <x:Property Name="companys" Type="InArgument(scg:List(x:String))" />
+    <x:Property Name="recogPath" Type="InArgument(x:String)" />
+    <x:Property Name="recogForCustomer" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1693,2844</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="31">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>CustomerClass.ProjectApproval</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>CustomerClass</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="MatchPO" sap:VirtualizedContainerService.HintSize="1703,2679" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" Name="sGroup" />
+      <Variable x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" Name="gGroup" />
+      <Variable x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" Name="pGroup" />
+      <Variable x:TypeArguments="scg:List(cp:UpdateExcelInfo)" Name="sList" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="根据po分组发票明细表" sap:VirtualizedContainerService.HintSize="1661,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">sGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_156">specificDt.Select().Where(r=&gt;string.IsNullOrWhiteSpace(r["到款日期"].ToString())).GroupBy(r=&gt;r["PO号（或财务编号）"].ToString().Trim('\t').Trim(' '))</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">gGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_157">genericDt.Select().Where(r=&gt;string.IsNullOrWhiteSpace(r["到款日期"].ToString())).GroupBy(r=&gt;r["PO号（或财务编号）"].ToString().Trim('\t').Trim(' '))</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">pGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_158">proformaDt.Select().Where(r=&gt;string.IsNullOrWhiteSpace(r["到款日期"].ToString())).GroupBy(r=&gt;r["PO号（或财务编号）"].ToString().Trim('\t').Trim(' '))</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(cp:MessageNoticeInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:List(cp:MessageNoticeInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">messages</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(cp:MessageNoticeInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:List(cp:MessageNoticeInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">new List&lt;MessageNoticeInfo&gt;()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="//转换&#xA;sList = new List&lt;UpdateExcelInfo&gt;();&#xA;//专票&#xA;foreach(var row in sGroup){&#xA;&#x9;var sum = row.Select(r=&gt;{&#xA;&#x9;&#x9;var wv = 0m;&#xA;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out wv);&#xA;&#x9;&#x9;Math.Round(wv,2);&#xA;&#x9;&#x9;return wv;&#xA;&#x9;}).Sum();&#xA;&#x9;sList.Add(new UpdateExcelInfo{&#xA;&#x9;&#x9;PO = row.Key,&#xA;&#x9;&#x9;ExcelAmount = sum,&#xA;&#x9;&#x9;ExcelCompany = row.Max(r=&gt;r[&quot;公司名称&quot;].ToString()),&#xA;&#x9;&#x9;SheetName = &quot;专票&quot;&#xA;&#x9;});&#xA;}&#xA;//普票&#xA;foreach(var row in gGroup){&#xA;&#x9;var sum = row.Select(r=&gt;{&#xA;&#x9;&#x9;var wv = 0m;&#xA;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out wv);&#xA;&#x9;&#x9;Math.Round(wv,2);&#xA;&#x9;&#x9;return wv;&#xA;&#x9;}).Sum();&#xA;&#x9;sList.Add(new UpdateExcelInfo{&#xA;&#x9;&#x9;PO = row.Key,&#xA;&#x9;&#x9;ExcelAmount = sum,&#xA;&#x9;&#x9;ExcelCompany = row.Max(r=&gt;r[&quot;公司名称&quot;].ToString()),&#xA;&#x9;&#x9;SheetName = &quot;普票&quot;&#xA;&#x9;});&#xA;}&#xA;//形式发票&#xA;foreach(var row in pGroup){&#xA;&#x9;var sum = row.Select(r=&gt;{&#xA;&#x9;&#x9;var wv = 0m;&#xA;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out wv);&#xA;&#x9;&#x9;Math.Round(wv,2);&#xA;&#x9;&#x9;return wv;&#xA;&#x9;}).Sum();&#xA;&#x9;sList.Add(new UpdateExcelInfo{&#xA;&#x9;&#x9;PO = row.Key,&#xA;&#x9;&#x9;ExcelAmount = sum,&#xA;&#x9;&#x9;ExcelCompany = row.Max(r=&gt;r[&quot;公司名称&quot;].ToString()),&#xA;&#x9;&#x9;SheetName = &quot;形式发票&quot;&#xA;&#x9;});&#xA;}" DisplayName="将分组数据转换成列表" sap:VirtualizedContainerService.HintSize="1661,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" x:Key="sGroup">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">sGroup</mca:CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" x:Key="gGroup">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">gGroup</mca:CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" x:Key="pGroup">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">pGroup</mca:CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)" x:Key="sList">
+          <mca:CSharpReference x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">sList</mca:CSharpReference>
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:ForEach x:TypeArguments="cp:MessageNoticeInfo" CurrentIndex="{x:Null}" DisplayName="匹配po号" sap:VirtualizedContainerService.HintSize="1661,2014" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="cp:MessageNoticeInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="cp:MessageNoticeInfo" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1625,1877" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="cp:RecogInfo" Name="recogInfo" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If DisplayName="是否包含邮件明细" sap:VirtualizedContainerService.HintSize="1583,1785" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">companys.Contains(item.CompanyName)</mca:CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <If DisplayName="是否获取到了邮件明细" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Condition>
+                    <InArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">item.HasDetails</mca:CSharpValue>
+                    </InArgument>
+                  </If.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <If DisplayName="是否匹配到多条详情邮件" sap:VirtualizedContainerService.HintSize="557,370" sap2010:WorkflowViewState.IdRef="If_3">
+                      <If.Condition>
+                        <InArgument x:TypeArguments="x:Boolean">
+                          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">item.Details.GroupBy(r=&gt;r.MessageId).Count() &gt; 1</mca:CSharpValue>
+                        </InArgument>
+                      </If.Condition>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If.Then>
+                        <Sequence DisplayName="记录日志" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="cp:RecogInfo">
+                                <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">recogInfo</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="cp:RecogInfo">
+                                <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_133" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount,
+	ExecDate = DateTime.Now
+}</mca:CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:MultipleAssign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_15">
+                            <ui:MultipleAssign.AssignOperations>
+                              <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:String">
+                                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_72">recogInfo.Description</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_134">string.Format("在OA到款更新中 未获取到{0}公司 到款金额{1} 的PO号。匹配到多条邮件详情 未更新OA到款 请核查。messageIds:{2} ",item.CompanyName,item.Amount,item.Details.Select(r=&gt;r.MessageId).Distinct())</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_44">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Int32">
+                                      <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_73">recogInfo.Status</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_45">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Decimal">
+                                      <mca:CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_74">recogInfo.DaoKuanAmount</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Decimal">
+                                      <mca:CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_135">item.Amount</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                                <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_51">
+                                  <ui:AssignOperation.To>
+                                    <OutArgument x:TypeArguments="x:Int32">
+                                      <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_81">recogInfo.Result</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:AssignOperation.To>
+                                  <ui:AssignOperation.Value>
+                                    <InArgument x:TypeArguments="x:Int32">3</InArgument>
+                                  </ui:AssignOperation.Value>
+                                </ui:AssignOperation>
+                              </scg:List>
+                            </ui:MultipleAssign.AssignOperations>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:MultipleAssign>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">recogForCustomer</mca:CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">recogPath</mca:CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                                <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">recogInfo</mca:CSharpValue>
+                              </InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <ui:ForEach x:TypeArguments="cp:MessageDetailInfo" CurrentIndex="{x:Null}" DisplayName="根据invoice匹配PO" sap:VirtualizedContainerService.HintSize="312,207" sap2010:WorkflowViewState.IdRef="ForEach`1_4">
+                          <ui:ForEach.Body>
+                            <ActivityAction x:TypeArguments="cp:MessageDetailInfo">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="cp:MessageDetailInfo" Name="detailItem" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="scg:IEnumerable(sd:DataRow)" Name="tmpPORows" />
+                                  <Variable x:TypeArguments="x:String" Name="tmpSheetName" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="tmpPORows = specificDt.Select()&#xA;.Where(r=&gt;r[&quot;发票号码&quot;].ToString().Trim('\t').Trim() == detailItem.InvoiceNo);&#xA;if(tmpPORows.Any()){&#xA;&#x9;tmpSheetName = specificDt.TableName;&#xA;}&#xA;else{&#xA;&#x9;tmpPORows = genericDt.Select()&#xA;&#x9;.Where(r=&gt;r[&quot;发票号码&quot;].ToString().Trim('\t').Trim() == detailItem.InvoiceNo);&#xA;&#x9;if(tmpPORows.Any()){&#xA;&#x9;&#x9;tmpSheetName = genericDt.TableName;&#xA;&#x9;}&#xA;&#x9;else{&#xA;&#x9;&#x9;&#x9;tmpPORows = proformaDt.Select()&#xA;&#x9;&#x9;.Where(r=&gt;r[&quot;发票号码&quot;].ToString().Trim('\t').Trim() == detailItem.InvoiceNo);&#xA;&#x9;&#x9;if(tmpPORows.Any()){&#xA;&#x9;&#x9;&#x9;tmpSheetName = proformaDt.TableName;&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}" DisplayName="匹配PO" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                                  <ui:InvokeCode.Arguments>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="specificDt">
+                                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">specificDt</mca:CSharpValue>
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="genericDt">
+                                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">genericDt</mca:CSharpValue>
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="sd:DataTable" x:Key="proformaDt">
+                                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">proformaDt</mca:CSharpValue>
+                                    </InArgument>
+                                    <OutArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)" x:Key="tmpPORows">
+                                      <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">tmpPORows</mca:CSharpReference>
+                                    </OutArgument>
+                                    <InArgument x:TypeArguments="cp:MessageDetailInfo" x:Key="detailItem">
+                                      <mca:CSharpValue x:TypeArguments="cp:MessageDetailInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">detailItem</mca:CSharpValue>
+                                    </InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="tmpSheetName">
+                                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">tmpSheetName</mca:CSharpReference>
+                                    </OutArgument>
+                                  </ui:InvokeCode.Arguments>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:InvokeCode>
+                                <If DisplayName="是否匹配到PO" sap:VirtualizedContainerService.HintSize="484,233" sap2010:WorkflowViewState.IdRef="If_5">
+                                  <If.Condition>
+                                    <InArgument x:TypeArguments="x:Boolean">
+                                      <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">tmpPORows.Any()</mca:CSharpValue>
+                                    </InArgument>
+                                  </If.Condition>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_13">
+                                        <ui:MultipleAssign.AssignOperations>
+                                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_63">detailItem.PO</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_119">tmpPORows.First()["PO号（或财务编号）"].ToString()</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_64">detailItem.SheetName</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_120">tmpSheetName</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_48">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="s:DateTime">
+                                                  <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_78">detailItem.DaoKuanDate</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="s:DateTime">
+                                                  <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_146">item.DaoKuanDate</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_50">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_80">detailItem.MessageId</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_149">item.MessageId</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                          </scg:List>
+                                        </ui:MultipleAssign.AssignOperations>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:MultipleAssign>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="记录日志" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="cp:RecogInfo">
+                                            <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_65">recogInfo</mca:CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="cp:RecogInfo">
+                                            <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_121" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount
+}</mca:CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:MultipleAssign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                        <ui:MultipleAssign.AssignOperations>
+                                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">recogInfo.Description</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:String">
+                                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">string.Format("在OA到款更新中 未匹配到{0}公司的项目PO号 总金额：{1} 发票号：{2} 带条发票金额：{3} 未更新发票明细表到款 未更新OA到款 请核查。",item.CompanyName,item.Amount,detailItem.InvoiceNo,detailItem.Amount)</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:Int32">
+                                                  <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">recogInfo.Status</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="s:DateTime">
+                                                  <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">recogInfo.ExecDate</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="s:DateTime">
+                                                  <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">DateTime.Now</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:Decimal">
+                                                  <mca:CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">recogInfo.DaoKuanAmount</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:Decimal">
+                                                  <mca:CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49">item.Amount</mca:CSharpValue>
+                                                </InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_52">
+                                              <ui:AssignOperation.To>
+                                                <OutArgument x:TypeArguments="x:Int32">
+                                                  <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_82">recogInfo.Result</mca:CSharpReference>
+                                                </OutArgument>
+                                              </ui:AssignOperation.To>
+                                              <ui:AssignOperation.Value>
+                                                <InArgument x:TypeArguments="x:Int32">3</InArgument>
+                                              </ui:AssignOperation.Value>
+                                            </ui:AssignOperation>
+                                          </scg:List>
+                                        </ui:MultipleAssign.AssignOperations>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:MultipleAssign>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">recogForCustomer</mca:CSharpValue>
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_51">recogPath</mca:CSharpValue>
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                                            <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_52">recogInfo</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                      </ui:InvokeWorkflowFile>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEach.Body>
+                          <ui:ForEach.Values>
+                            <InArgument x:TypeArguments="sc:IEnumerable">
+                              <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">item.Details</mca:CSharpValue>
+                            </InArgument>
+                          </ui:ForEach.Values>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ForEach>
+                      </If.Else>
+                    </If>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="记录日志-未匹配到邮件明细" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_11">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="cp:RecogInfo">
+                            <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_66">recogInfo</mca:CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="cp:RecogInfo">
+                            <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_129" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount,
+	ExecDate = DateTime.Now
+}</mca:CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:MultipleAssign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_14">
+                        <ui:MultipleAssign.AssignOperations>
+                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">
+                                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_69">recogInfo.Description</mca:CSharpReference>
+                                </OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_136" xml:space="preserve">string.Format("在OA到款更新中 未获取到{0}公司 到款金额{1}  未匹配到邮件明细，等待下次执行 未更新OA到款 请核查。",item.CompanyName,item.Amount)</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:Int32">
+                                  <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_70">recogInfo.Status</mca:CSharpReference>
+                                </OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:Int32">2</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:Decimal">
+                                  <mca:CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_71">recogInfo.DaoKuanAmount</mca:CSharpReference>
+                                </OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:Decimal">
+                                  <mca:CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_131">item.Amount</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_53">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:Int32">
+                                  <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_83">recogInfo.Result</mca:CSharpReference>
+                                </OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:Int32">2</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                          </scg:List>
+                        </ui:MultipleAssign.AssignOperations>
+                      </ui:MultipleAssign>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">recogForCustomer</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">recogPath</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                            <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">recogInfo</mca:CSharpValue>
+                          </InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="没有明细的邮件处理" sap:VirtualizedContainerService.HintSize="1338,1622" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="scg:IEnumerable(cp:UpdateExcelInfo)" Name="tmpList" />
+                    <Variable x:TypeArguments="scg:IEnumerable(sd:DataRow)" Name="singleMailRows" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:MultipleAssign DisplayName="匹配PO-没有邮件详情的记录" sap:VirtualizedContainerService.HintSize="1296,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
+                    <ui:MultipleAssign.AssignOperations>
+                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                        <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="scg:IEnumerable(cp:UpdateExcelInfo)">
+                              <mca:CSharpReference x:TypeArguments="scg:IEnumerable(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">tmpList</mca:CSharpReference>
+                            </OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="scg:IEnumerable(cp:UpdateExcelInfo)">
+                              <mca:CSharpValue x:TypeArguments="scg:IEnumerable(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">sList.Where(r=&gt;r.ExcelCompany == item.CompanyName &amp;&amp; r.ExcelAmount == item.Amount)</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                      </scg:List>
+                    </ui:MultipleAssign.AssignOperations>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:MultipleAssign>
+                  <If DisplayName="是否匹配到PO" sap:VirtualizedContainerService.HintSize="1296,1392" sap2010:WorkflowViewState.IdRef="If_6">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">tmpList.Any()</mca:CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <If sap:VirtualizedContainerService.HintSize="875,1229" sap2010:WorkflowViewState.IdRef="If_8">
+                        <If.Condition>
+                          <InArgument x:TypeArguments="x:Boolean">
+                            <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77">tmpList.Count() &gt; 1</mca:CSharpValue>
+                          </InArgument>
+                        </If.Condition>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence DisplayName="记录日志" sap:VirtualizedContainerService.HintSize="376,510" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_13">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="cp:RecogInfo">
+                                  <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_68">recogInfo</mca:CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="cp:RecogInfo">
+                                  <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_128" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount,
+	ExecDate = DateTime.Now
+}</mca:CSharpValue>
+                                </InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:MultipleAssign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
+                              <ui:MultipleAssign.AssignOperations>
+                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:String">
+                                        <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_41">recogInfo.Description</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:String">
+                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_86">string.Format("在OA到款更新中 获取到{0}公司 到款金额{1} 对应的{2}条邮件明细。PO：{3} 未更新发票明细表到款 未更新OA到款 请核查。",item.CompanyName,item.Amount,tmpList.Count(),string.Join(";",tmpList.Select(r=&gt;r.PO)))</mca:CSharpValue>
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:Int32">
+                                        <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_42">recogInfo.Status</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="s:DateTime">
+                                        <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_43">recogInfo.ExecDate</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="s:DateTime">
+                                        <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">DateTime.Now</mca:CSharpValue>
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:Decimal">
+                                        <mca:CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">recogInfo.DaoKuanAmount</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:Decimal">
+                                        <mca:CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">item.Amount</mca:CSharpValue>
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_54">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="x:Int32">
+                                        <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_84">recogInfo.Result</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="x:Int32">3</InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                </scg:List>
+                              </ui:MultipleAssign.AssignOperations>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:MultipleAssign>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">recogForCustomer</mca:CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_82">recogPath</mca:CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                                  <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">recogInfo</mca:CSharpValue>
+                                </InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="匹配PO" sap:VirtualizedContainerService.HintSize="454,1066" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="cp:MessageDetailInfo" Name="tmpDetailInfo" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" sap:VirtualizedContainerService.HintSize="412,53" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                              <Switch.Expression>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">tmpList.First().SheetName</mca:CSharpValue>
+                                </InArgument>
+                              </Switch.Expression>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign x:Key="专票" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">
+                                    <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_50">singleMailRows</mca:CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">
+                                    <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89">specificDt.Select().Where(r=&gt;r["PO号（或财务编号）"].ToString() == tmpList.First().PO)</mca:CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="普票" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">
+                                    <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">singleMailRows</mca:CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">
+                                    <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">genericDt.Select().Where(r=&gt;r["PO号（或财务编号）"].ToString() == tmpList.First().PO)</mca:CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="形式发票" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">
+                                    <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">singleMailRows</mca:CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="scg:IEnumerable(sd:DataRow)">
+                                    <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sd:DataRow)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91">proformaDt.Select().Where(r=&gt;r["PO号（或财务编号）"].ToString() == tmpList.First().PO)</mca:CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Switch>
+                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="412,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
+                              <ui:MultipleAssign.AssignOperations>
+                                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="cp:MessageDetailInfo">
+                                        <mca:CSharpReference x:TypeArguments="cp:MessageDetailInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_57">tmpDetailInfo</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="cp:MessageDetailInfo">
+                                        <mca:CSharpValue x:TypeArguments="cp:MessageDetailInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_147" xml:space="preserve">new MessageDetailInfo{
+	InvoiceNo = String.Empty,
+	Amount = item.Amount,
+	DaoKuanDate = item.DaoKuanDate,
+	MessageBody = item.MessageBody,
+	MessageId = item.MessageId,
+	DiscountAmount = 0m,
+	CompanyName = item.CompanyName,
+	PO = tmpList.First().PO,
+	BankName = "浦发银行",
+	SheetName = tmpList.First().SheetName
+}</mca:CSharpValue>
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+                                        <mca:CSharpReference x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_55">item.Details</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+                                        <mca:CSharpValue x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">new List&lt;MessageDetailInfo&gt;()</mca:CSharpValue>
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_49">
+                                    <ui:AssignOperation.To>
+                                      <OutArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                                        <mca:CSharpReference x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_79">tmpDetailInfo.UpdateExcelInfos</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:AssignOperation.To>
+                                    <ui:AssignOperation.Value>
+                                      <InArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                                        <mca:CSharpValue x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_148">new List&lt;UpdateExcelInfo&gt;()</mca:CSharpValue>
+                                      </InArgument>
+                                    </ui:AssignOperation.Value>
+                                  </ui:AssignOperation>
+                                </scg:List>
+                              </ui:MultipleAssign.AssignOperations>
+                            </ui:MultipleAssign>
+                            <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="转换成messageDetail" sap:VirtualizedContainerService.HintSize="412,504" sap2010:WorkflowViewState.IdRef="ForEach`1_5">
+                              <ui:ForEach.Body>
+                                <ActivityAction x:TypeArguments="sd:DataRow">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="singlelItem" />
+                                  </ActivityAction.Argument>
+                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,367" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="cp:UpdateExcelInfo" Name="tmpUpdateExcelInfo" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_12">
+                                      <ui:MultipleAssign.AssignOperations>
+                                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                                            <ui:AssignOperation.To>
+                                              <OutArgument x:TypeArguments="cp:UpdateExcelInfo">
+                                                <mca:CSharpReference x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_60">tmpUpdateExcelInfo</mca:CSharpReference>
+                                              </OutArgument>
+                                            </ui:AssignOperation.To>
+                                            <ui:AssignOperation.Value>
+                                              <InArgument x:TypeArguments="cp:UpdateExcelInfo">
+                                                <mca:CSharpValue x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_152" xml:space="preserve">new UpdateExcelInfo{
+	InvoiceNo = singlelItem["发票号码"].ToString(),
+	ExcelAmount = Convert.ToDecimal(singlelItem["未到款金额"].ToString()),
+	ExcelDiscount = 0m,
+	ExcelCompany = item.CompanyName,
+	ExcelDaoKuanDate = item.DaoKuanDate.ToString("yyyy/M/d"),
+	PO = tmpList.First().PO,
+	SheetName = tmpList.First().SheetName,
+	RowIndex = Convert.ToInt32(singlelItem[0])
+}</mca:CSharpValue>
+                                              </InArgument>
+                                            </ui:AssignOperation.Value>
+                                          </ui:AssignOperation>
+                                        </scg:List>
+                                      </ui:MultipleAssign.AssignOperations>
+                                    </ui:MultipleAssign>
+                                    <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Add">
+                                      <InvokeMethod.TargetObject>
+                                        <InArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                                          <mca:CSharpValue x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_113">tmpDetailInfo.UpdateExcelInfos</mca:CSharpValue>
+                                        </InArgument>
+                                      </InvokeMethod.TargetObject>
+                                      <InArgument x:TypeArguments="cp:UpdateExcelInfo">
+                                        <mca:CSharpValue x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_114">tmpUpdateExcelInfo</mca:CSharpValue>
+                                      </InArgument>
+                                    </InvokeMethod>
+                                  </Sequence>
+                                </ActivityAction>
+                              </ui:ForEach.Body>
+                              <ui:ForEach.Values>
+                                <InArgument x:TypeArguments="sc:IEnumerable">
+                                  <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">singleMailRows</mca:CSharpValue>
+                                </InArgument>
+                              </ui:ForEach.Values>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:ForEach>
+                            <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="412,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_5" MethodName="Add">
+                              <InvokeMethod.TargetObject>
+                                <InArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+                                  <mca:CSharpValue x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_142">item.Details</mca:CSharpValue>
+                                </InArgument>
+                              </InvokeMethod.TargetObject>
+                              <InArgument x:TypeArguments="cp:MessageDetailInfo">
+                                <mca:CSharpValue x:TypeArguments="cp:MessageDetailInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_141">tmpDetailInfo</mca:CSharpValue>
+                              </InArgument>
+                            </InvokeMethod>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence DisplayName="记录日志" sap:VirtualizedContainerService.HintSize="376,571" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_12">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="cp:RecogInfo">
+                              <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_67">recogInfo</mca:CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="cp:RecogInfo">
+                              <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_126" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount,
+	ExecDate = DateTime.Now
+}</mca:CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:MultipleAssign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+                          <ui:MultipleAssign.AssignOperations>
+                            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:String">
+                                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_32">recogInfo.Description</mca:CSharpReference>
+                                  </OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:String">
+                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">string.Format("在OA到款更新中 未获取到{0}公司 到款金额{1} 的PO号。未更新发票明细表到款 未更新OA到款 请核查。",item.CompanyName,item.Amount)</mca:CSharpValue>
+                                  </InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">
+                                    <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">recogInfo.Status</mca:CSharpReference>
+                                  </OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="s:DateTime">
+                                    <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">recogInfo.ExecDate</mca:CSharpReference>
+                                  </OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="s:DateTime">
+                                    <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">DateTime.Now</mca:CSharpValue>
+                                  </InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Decimal">
+                                    <mca:CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">recogInfo.DaoKuanAmount</mca:CSharpReference>
+                                  </OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Decimal">
+                                    <mca:CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">item.Amount</mca:CSharpValue>
+                                  </InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_55">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:Int32">
+                                    <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_85">recogInfo.Result</mca:CSharpReference>
+                                  </OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:Int32">3</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                            </scg:List>
+                          </ui:MultipleAssign.AssignOperations>
+                        </ui:MultipleAssign>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">recogForCustomer</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">recogPath</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                              <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">recogInfo</mca:CSharpValue>
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <ui:ForEach.Values>
+        <InArgument x:TypeArguments="sc:IEnumerable">
+          <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">messageInfos</mca:CSharpValue>
+        </InArgument>
+      </ui:ForEach.Values>
+    </ui:ForEach>
+    <ui:MultipleAssign DisplayName="筛选PO不为空的数据" sap:VirtualizedContainerService.HintSize="1661,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_16">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_46">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(cp:MessageNoticeInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:List(cp:MessageNoticeInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_76">messages</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(cp:MessageNoticeInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:List(cp:MessageNoticeInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_144">messageInfos.Where(r=&gt;r.Details!=null).ToList()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+  </Sequence>
+</Activity>

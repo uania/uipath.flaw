@@ -1,0 +1,1 @@
+C:\Users\wu.cai1\AppData\Local\UiPath\app-21.4.4\UiRobot.exe -file C:/ProgramData/UiPath/Packages/UpdateOADaoKuan.1.1.11.nupkg 

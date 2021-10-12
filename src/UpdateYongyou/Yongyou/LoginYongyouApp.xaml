@@ -1,0 +1,655 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="LoginYongyouApp" this:LoginYongyouApp.userName="03" this:LoginYongyouApp.selectDate="2021-09-13" this:LoginYongyouApp.zhangTao="666" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="result" Type="OutArgument(scg:KeyValuePair(x:Boolean, x:String))" />
+    <x:Property Name="userName" Type="InArgument(x:String)" />
+    <x:Property Name="password" Type="InArgument(x:String)" />
+    <x:Property Name="selectDate" Type="InArgument(x:String)" />
+    <x:Property Name="zhangTao" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:LoginYongyouApp.password>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:LoginYongyouApp.password>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1135,2408</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="LoginYongyouApp" sap:VirtualizedContainerService.HintSize="768,2243" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="isSaturationClick" />
+      <Variable x:TypeArguments="x:String" Name="exceptionMessage" />
+      <Variable x:TypeArguments="x:Boolean" Default="False" Name="hasException" />
+      <Variable x:TypeArguments="x:String" Name="firstZhangTao" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="查找登录框" sap:VirtualizedContainerService.HintSize="726,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+      <ui:WaitUiElementAppear.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fce5304a-7fb4-4a9d-92a2-a8229cb68ec3" InformativeScreenshot="434d5b94d1cd6ceead18edfa2a964734" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;&lt;wnd cls='IHWindowClass' title='Input Capture Window' /&gt;" TimeoutMS="10000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:WaitUiElementAppear.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:WaitUiElementAppear>
+    <Delay DisplayName="等待登录框加载完成" sap:VirtualizedContainerService.HintSize="726,22" sap2010:WorkflowViewState.IdRef="Delay_3">
+      <InArgument x:TypeArguments="x:TimeSpan">
+        <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">new TimeSpan(0,0,3)</mca:CSharpValue>
+      </InArgument>
+    </Delay>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击用户名输入框" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAABwAAAAfCAYAAAD0ma06AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAClSURBVEhL7dIxC8IwEIZh//+Pq4MQByGOGRxucLgx8hU7tDkvdxBDh3vhg2LTPhS81MkFOLwAhxdgUymlpltah2tvLhDAcl1286Iu8Iht82QG+c0ihhHR91Q/M0gvEjEM96yd9wuRhGGeXOD0fyk6gt5MIDOvX5IfuQHxG+7hjKUumJ8t8ms420sF0z2JL9aGZ7RUUHqhZVrnAv9RgMMLcHiTwVo/koZFhDC1M6IAAAAASUVORK5CYII=" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="01417222-7e48-4af4-abd4-0bc0d5413f82">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="删除之前的用户名" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="TypeInto_4" Text="%[k(back)][k(back)][k(back)][k(back)][k(back)][k(back)][k(del)][k(del)][k(del)][k(del)][k(del)][k(del)]">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="3a8472ff-f2c0-4805-b82c-caf746c43014">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:TypeInto.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:TypeInto>
+    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="输入用户名" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="TypeInto_1">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="2c29ab45-600a-446a-bb5f-c52c5f8bf04c">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:TypeInto.Target>
+      <ui:TypeInto.Text>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">userName</mca:CSharpValue>
+        </InArgument>
+      </ui:TypeInto.Text>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:TypeInto>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击密码" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ClickImage_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAAaCAYAAACtv5zzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVEhL7ZIxCoAwDEW9/+HqIHQR6iEcMjjERmzAYvwdLCr2wYcQS16qdlyZJoD8RbAwhymw690WqaVXAhQQkQ7OI88QUJA2D+O+tdwm1ltPbgKAgrTt4ZXEWvuAckHG+wU0E/vB6yArckbOWpiCkuEpctbCFJwNuopFE2gsnvvI1X/Tu2gCyNcFzCsh8XNYMZZ6ngAAAABJRU5ErkJggg==" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="30b13aed-a3bb-4beb-9539-d48b5170afbd" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="输入密码" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="TypeInto_5">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="1ebf5bcc-5b96-4778-bb07-da402fe51c24">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:TypeInto.Target>
+      <ui:TypeInto.Text>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">password</mca:CSharpValue>
+        </InArgument>
+      </ui:TypeInto.Text>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:TypeInto>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击账套" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACEAAAAfCAYAAABplKSyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC4SURBVFhH7ZUxC8IwEIX9/z+uDkIchDg4dHDI4NDB4ZlTH8SS6Gup0MJ9cEMvd8mXK7Q7rACXIC5BXIJsSOIOpGtCPEfEU0Q4BHT77iMsZ2tWY7XWoyJJ1A79FdajIkkMt2HyJKxHRZ5Ef+mR0nvz2qhz7imba6x28UmMb62GymSJkjJfC5VtSnDz8TNp5b8xW6KFWleyyCRaoeKvg0gS4Tjjs517VCSJVfzA/o1LEJcgLkFc4gXwAFomm8CgKuAJAAAAAElFTkSuQmCC" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="9b77c9ac-a0ea-4ae3-bb69-c84da79ff894">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:RetryScope DisplayName="点击账套下拉框" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="20">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="500,237" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AnchorBase AnchorPosition="Left" DisplayName="点击账套的下拉框" sap:VirtualizedContainerService.HintSize="458,145" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+              <ui:AnchorBase.Action>
+                <ActivityAction x:TypeArguments="ui:Anchor">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                  </ActivityAction.Argument>
+                  <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击账套下拉" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="ClickImage_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:ClickImage.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:ClickImage.CursorPosition>
+                    <ui:ClickImage.Image>
+                      <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAACIAAAAQCAYAAABz9a1kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABYSURBVEhL7dIxCgAgCEDR7n84O5Jhk4gWqYOBD1py8EMNLKJDpA6R/g2BCftYbnOLO0RbdprduJ5GW6jdvXD/Eb6YH6/QZ82KIKEQkhFBwiFZOkQqEoK4AHWpaAHtCIFIAAAAAElFTkSuQmCC" />
+                    </ui:ClickImage.Image>
+                    <ui:ClickImage.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="cd9540ba-ba68-45f1-9f98-e36fe500f447">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:ClickImage.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ClickImage>
+                </ActivityAction>
+              </ui:AnchorBase.Action>
+              <ui:AnchorBase.AnchorProvider>
+                <ui:WaitImageAppear FoundElement="{x:Null}" DisplayName="锚点" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="WaitImageAppear_1">
+                  <ui:WaitImageAppear.Image>
+                    <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAB8AAAAbCAYAAACEP1QvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACtSURBVEhL7ZUxDoMwDEV7/8PRoVI6VApDBwaGDB0YOnzyqyIBSrBBVFYlP8kDjp0XZwgXGOJyE1y+zRtIfUJsI+IjItwCmmuzCOa4xhrWskdCJS/JpGCPhEo+vIbdk7NHQj159+yQ0nfT0pXm3OeQuYa1p02+nlIbErvlc+b5Ukj8l3zadP09UcuXOCyvoa0jp0xeCwm/9k3C/cDzmnskVHLTH8uvcLkJLjcAGAEFO7Z795cbQgAAAABJRU5ErkJggg==" />
+                  </ui:WaitImageAppear.Image>
+                  <ui:WaitImageAppear.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9d11f193-7b34-4f1f-b2a9-eabc707e77e3" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:WaitImageAppear.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:WaitImageAppear>
+              </ui:AnchorBase.AnchorProvider>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:AnchorBase>
+          </Sequence>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean">
+          <ui:ImageFound Found="{x:Null}" DisplayName="等待账套加载完成" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_3">
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAB2CAYAAADSiVPSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFiSURBVGhD7ZcxT8JQGEXfX/FvufJ3nAyjq26OuuHoYoKDSR1I6sDQgeENDB0Yrt9nIIGm5LbIfSH6neQkpbzH6YNSSoKYCFAiQIkA5UICGyCvMuqvGvWiRvVRYf4+P9D3+XM+xsf6HGdQoO8FmT7HGRRo1+3oFfgcZ/AKmmWDnLcTt8s/wPb9HIiN8bGjVtA92qE6owP77O/v07m8wG5i9/GO7v6TA8fojjvLCo7p/JO3qPo84VJhc5xBAfnF7jdEgBIBSgQoEaAUCLR2aRWa8HAFpQkvEyhNWDxCabq+nUFpym9TKLXT1D5toQkbu70QagG7QRJaINDahlALvNqGzoT1DEpLBJ5sQ2dCtmuG0AKB1T2UJixvoPQvBJoplJYI3NmGzgKBnnP3nJYI2FdaaIHA2n7ahKb8PIHS+IdDiQAlApQIUCJAiQAlApQIUCJAiQAlApQIUCJAiQAlApQIEIBvNO5q2ZxqHLwAAAAASUVORK5CYII=" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="38fbdb5a-217e-4158-b08d-7dda4c97b34c" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;" TimeoutMS="1000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+        </ActivityFunc>
+      </ui:RetryScope.Condition>
+      <ui:RetryScope.RetryInterval>
+        <InArgument x:TypeArguments="x:TimeSpan">
+          <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">new TimeSpan(0,0,1)</mca:CSharpValue>
+        </InArgument>
+      </ui:RetryScope.RetryInterval>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
+    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="输入账套" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="TypeInto_3">
+      <ui:TypeInto.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="98cbb5a4-0a6e-4243-9e1b-178606f46408">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:TypeInto.Target>
+      <ui:TypeInto.Text>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">zhangTao+ "[k(enter)]"</mca:CSharpValue>
+        </InArgument>
+      </ui:TypeInto.Text>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:TypeInto>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="选择日期" sap:VirtualizedContainerService.HintSize="726,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Yongyou\\SelectCalendar2.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="selectDate">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">selectDate</mca:CSharpValue>
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击登录" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ClickImage_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition OffsetX="-80" OffsetY="20" Position="TopRight" />
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAVsAAAAmCAYAAABqBDhGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFySURBVHhe7dRBasNAEATAvDGPzBd9TNBhQCwja2Vr2xCqocCaWc+xv75/Hr8ArKVsAQKULUCAsgUIULYAAcoWIEDZAgQoW4AAZQsQoGwBApQtQICy5aO2jN9b9jP4D5QtSz3Lfj/+nnU13Q1IULbEVY6+j2bvuvseXKFsWWosuMqzWWX/5g4rbsIsZctyY15907ma7gYkKFsizlJvxv/dafV9eEbZslyl240q3e5dq+7CDGXLUpVu90yl223uSHcXVlG2LFPZ/57JeOcVd92BuyhbImbLb/ZdqXTzcVbzLd0OVlK2RMwW3Oy7vcorM0hRtkTMltzsuzNH6d5CgrIl4kq6/19RGX/DJylbYqoAj1S63Zl96nvc1Td8grIl6qj0Kt3uyD7drpttGeeQoGyJqpzNzlS63eZst6XbwSrKlmXuSHf3yJjuDXyKsgUIULYAAcoWIEDZAgQoW4AAZQsQoGwBApQtQICyBQhQtgDLPX7/AHXjv3zcLs+LAAAAAElFTkSuQmCC" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="84dce482-2277-41d2-90f0-ee161f181d7d" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;" TimeoutMS="3000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <Delay sap:VirtualizedContainerService.HintSize="726,22" sap2010:WorkflowViewState.IdRef="Delay_2">
+      <InArgument x:TypeArguments="x:TimeSpan">
+        <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">new TimeSpan(0,0,6)</mca:CSharpValue>
+      </InArgument>
+    </Delay>
+    <ui:ClickImage DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="选择财务会计" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGYAAAARCAYAAAAv+NkbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEtSURBVFhH7ZXdDcIwDIRZhVXYhGWYgPl4ZQAGKOrDSZZ1jn9oTB/y8CnN+dzKOUEu78+2Lc7HCuakrGBOSiqY2+NF9aO43p8p3cPrO/p7R5IOphrOPqyGeZhmob0S1KM+T+umFEwlHD1s5ECwj/RKsn5N1j+D9B1TDQfDslWDHolXB6N+pjMy3lmULv9KOBhWrxJL07qn4Vky8uAdgGnd/P0XI+tSY3s8S43pGdCPdzF0Twftd4xeZX10CKPaL7D3zvpWhlIwrOaBYfVqadiPyHgluk/uLa2bdDBMj4BhrVU/S5hueXdGNQ28sifTP4vS5f8LowOwDoTpGa+n65rl7aQ1GAw8OqSIZum75sF6Ilo3bcHoYdne80BjeoRoX/X9R9L+V7aIsYI5Jdv2BcUt0F4TQlrJAAAAAElFTkSuQmCC" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7dfbf779-a751-4c48-bc0f-b8b28ebb0d3a" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:ClickImage DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="选择应收管理" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ClickImage_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAH0AAAAaCAYAAACacVPHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGESURBVGhD7ZbRbcNADEO7SlfpJl2mE3S+/naADuDCHwQIhtKd7STIQfp4iERRV0BEkL79/m1bU4sOvSAdekE69IJ06AXp0AtiQ//4+rnRrvD++W11hX0zO+qJdpw+8/7O7otw/hUIQ39W8KxHNbPrGTM7TnM6en7H1auRhn42eBxtBLy85+oI9ew9o55MY6L5aG8Vwt/0K8EfOUh2VGU0wyfX7Bmhu6N9eFYj/UfubPB6kOxAPEN9ZB+4d7TOmNk/8+4r8rRv+uwh0Uce9ArPHW4HRD70PHP1ajzsN50/71mPiLxHdP3bEbyzEmnobjYDHwS103Qe6dDQRzg/UC/jvKpl+mqEoTt9Fj6OHsr10EZexc2jndFbDHv3OoJ3ViL9R+4sfBA9Tta7Wv1uFn0yu5bhvKxBV21FHh76jA4wVx/3WY2edZ6rBqJ3lOyNlbh76DgMjpfhdp2Omfasubn2Gey9srMCD/mmN69Nh16QDr0gHXpBOvSCdOgF6dAL0qGXY9v+AVHh0TvyVAXuAAAAAElFTkSuQmCC" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="c337a977-d477-4aea-9573-d32198645a46" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:ImageFound DisplayName="检查加密点数饱和异常" sap:VirtualizedContainerService.HintSize="726,53" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+      <ui:ImageFound.Found>
+        <OutArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">isSaturationClick</mca:CSharpReference>
+        </OutArgument>
+      </ui:ImageFound.Found>
+      <ui:ImageFound.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+      </ui:ImageFound.Image>
+      <ui:ImageFound.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="4723f121-0e97-41db-a2be-c53513b5260d" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ImageFound.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ImageFound>
+    <If sap:VirtualizedContainerService.HintSize="726,611" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">isSaturationClick</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="305,448" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ClickImage ContinueOnError="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="检测加密点数饱和异常" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ClickImage_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:ClickImage.CursorPosition>
+              <ui:CursorPosition OffsetX="-30" OffsetY="-30" Position="BottomRight" />
+            </ui:ClickImage.CursorPosition>
+            <ui:ClickImage.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+            </ui:ClickImage.Image>
+            <ui:ClickImage.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="4f992525-752f-4938-b0b1-f2ce01f34c89">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ClickImage.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ClickImage>
+          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">hasException</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">exceptionMessage</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">加密点数已饱和，请检查产品登录情况</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)">
+                <mca:CSharpReference x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">result</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)">
+                <mca:CSharpValue x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">new KeyValuePair&lt;bool,string&gt;(hasException,exceptionMessage)</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,349" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ClickImage DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="点击收款处理" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="ClickImage_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:ClickImage.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:ClickImage.CursorPosition>
+            <ui:ClickImage.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGEAAAAZCAYAAAAhd0APAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFaSURBVGhD7ZXBbUMxDEO7SlfpJl2mE3S+XjNAB/iBDwQIgbJlB/rRQYcHS6LsgiGK//H4v67mvXQIBegQCtAhFKBDKECHUIAOoQAdQgFCIXz9/Mn5Lp/fv7L2sDuzO0qL/g0PtZ9BOITTINiMVzP4ATzUnYHSvBm/xTtenc1WCCdBvGLS7oyeWWl2B/A8UmcT/iacBjEzaVlpOG3taeO0e6yj9uA7mWx9mE+CYDOorcGIYfXOqren1aN1Nrf/J6CfGcYew7rF6uh5zjPg7dg6mxLfhB3Ddhe9PXdqD+xksxWC0lbAjDXGc8zQe6h9oPTVbnSeTTgENY8wjMGcNbkyrfTZnej7PB+1B9/JZOvDfAKbUbUyazXvZJSm9jCfvXE36SEwMGnNcj+r0fM80jP8jtLUPJvbQ4j+AHZX6WoOcJ+J7DB2P4tbQ2g0HUIBOoQCdAgF6BDeznU9AeFV3/Lnt54LAAAAAElFTkSuQmCC" />
+            </ui:ClickImage.Image>
+            <ui:ClickImage.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="ffc00046-9862-4335-a09d-6b404ab9a99b" TimeoutMS="2000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ClickImage.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ClickImage>
+          <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)">
+                <mca:CSharpReference x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">result</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)">
+                <mca:CSharpValue x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">new KeyValuePair&lt;bool,string&gt;(hasException,exceptionMessage)</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>

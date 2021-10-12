@@ -1,0 +1,682 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="OpenYongyouWebsite" this:OpenYongyouWebsite.userName="03" this:OpenYongyouWebsite.zhangTao="666" this:OpenYongyouWebsite.selectDate="2018-03-06" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="pendingData" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="recogFileFullPath" Type="InArgument(x:String)" />
+    <x:Property Name="userName" Type="InArgument(x:String)" />
+    <x:Property Name="password" Type="InArgument(x:String)" />
+    <x:Property Name="zhangTao" Type="InArgument(x:String)" />
+    <x:Property Name="selectDate" Type="InArgument(x:String)" />
+    <x:Property Name="recogForCustomerPath" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:OpenYongyouWebsite.password>
+    <InArgument x:TypeArguments="x:String">
+      <Literal x:TypeArguments="x:String" Value="" />
+    </InArgument>
+  </this:OpenYongyouWebsite.password>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1166,2331</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="OpenYongyouWebsite" sap:VirtualizedContainerService.HintSize="1176,2166" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Boolean" Name="isNotOpenYongyou" />
+      <Variable x:TypeArguments="ui:Browser" Name="yongyouWebsite" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="1134,53" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="http://u8.anruidigital.com:81/">
+      <ui:OpenBrowser.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,632" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="gnclientpro" />
+              <Variable x:TypeArguments="x:Boolean" Name="isLogin" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:UiElementExists DisplayName="检测是否登录" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Exists>
+                <OutArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">isLogin</mca:CSharpReference>
+                </OutArgument>
+              </ui:UiElementExists.Exists>
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="41ff7f3f-5f2e-4179-87b3-e713830e4602" InformativeScreenshot="1a21b15c209a51ce281a6325730ff008" Selector="&lt;webctrl aaname='退出系统' tag='A' /&gt;" TimeoutMS="2000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:UiElementExists>
+            <If sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">!isLogin</mca:CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'A  #'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2cd1fef1-6208-47be-9fc9-ab5e8272b727" InformativeScreenshot="d97ec58a9651e08ea33f0ca21d02a523" Selector="&lt;webctrl aaname='登录' parentid='form1id' tag='A' /&gt;" TimeoutMS="2000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </If.Then>
+            </If>
+            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击应用列表" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="338ffc96-ec3d-4118-a24e-f91d7034d418" InformativeScreenshot="ec5069705105078e8c97668714e8e3ea" Selector="&lt;webctrl tag='SPAN' /&gt;" TimeoutMS="2000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:Click>
+            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="选择用友" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cfe37ed7-f03f-4d01-9046-d4dec199eeb2" InformativeScreenshot="8f5764b2d2dc9d250debff23ac522501" Selector="&lt;webctrl aaname='EnterprisePortal' tag='SPAN' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:Click>
+            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="打开客户端" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e3d5c611-1a95-4009-9a9c-1104c2396a44" InformativeScreenshot="3d25a79ffa25a08af705ed6e7739b0de" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='应用列表 - Google Chrome' /&gt;&lt;ctrl name='要打开 远程接入客户端 吗？' role='dialog' /&gt;&lt;ctrl name='打开 远程接入客户端' role='push button' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:Click>
+          </Sequence>
+        </ActivityAction>
+      </ui:OpenBrowser.Body>
+      <ui:OpenBrowser.UiBrowser>
+        <OutArgument x:TypeArguments="ui:Browser">
+          <mca:CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">yongyouWebsite</mca:CSharpReference>
+        </OutArgument>
+      </ui:OpenBrowser.UiBrowser>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:OpenBrowser>
+    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Window="{x:Null}" DisplayName="附加用友客户端" sap:VirtualizedContainerService.HintSize="1134,53" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="fb41b1a5b93b3166db347403e2bbc33a" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;" TimeoutMS="10000">
+      <ui:WindowScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Delay DisplayName="等待应用程序启动" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+              <InArgument x:TypeArguments="x:TimeSpan">
+                <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_101">new TimeSpan(0,0,10)</mca:CSharpValue>
+              </InArgument>
+            </Delay>
+            <ui:ImageFound DisplayName="检查是否连接超时" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_4">
+              <ui:ImageFound.Found>
+                <OutArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">isNotOpenYongyou</mca:CSharpReference>
+                </OutArgument>
+              </ui:ImageFound.Found>
+              <ui:ImageFound.Image>
+                <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="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" />
+              </ui:ImageFound.Image>
+              <ui:ImageFound.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="a552fa8b-4136-42d0-b5bc-3c2436d23b34" TimeoutMS="1000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:ImageFound.Target>
+            </ui:ImageFound>
+          </Sequence>
+        </ActivityAction>
+      </ui:WindowScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:WindowScope>
+    <If sap:VirtualizedContainerService.HintSize="1134,1547" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">isNotOpenYongyou</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="没有打开用友客户端" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Email\\SendEmail.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="toEmail">RPA-Finance@anruidigital.com</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="subject">异常通知</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="body">无法打开用友客户端</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="fromEmail">rpa@anruidigital.com</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="sender">ARC RPA</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="fromPwd">Yuk55268</InArgument>
+              <InArgument x:TypeArguments="s:String[]" x:Key="files">
+                <mca:CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">new string[0]</mca:CSharpValue>
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <ui:CloseApplication DisplayName="Close Application 'UserLoginFrame'" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CloseApplication_1">
+            <ui:CloseApplication.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="188a7e9d-713e-4283-8cc1-eef560da0c24" InformativeScreenshot="008b549fec6d378fc273e27739f82f39" Selector="&lt;wnd app='gneslclient.exe' cls='MainFrameWnd' title='天联高级版客户端 7.0.3.0' /&gt;&lt;wnd cls='UserLoginFrame' title='天联高级版客户端 7.0.3.0' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:CloseApplication.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CloseApplication>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="继续更新用友" sap:VirtualizedContainerService.HintSize="889,1384" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" Name="loginYongyouResult" />
+            <Variable x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" Name="execResult" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="登录用友客户端" sap:VirtualizedContainerService.HintSize="847,53" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Yongyou\\LoginYongyouApp.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" x:Key="result">
+                <mca:CSharpReference x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">loginYongyouResult</mca:CSharpReference>
+              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="userName">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_100">userName</mca:CSharpValue>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="password">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99">password</mca:CSharpValue>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="selectDate">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_98">selectDate</mca:CSharpValue>
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="zhangTao">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_97">zhangTao</mca:CSharpValue>
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <If DisplayName="登录结果判断" sap:VirtualizedContainerService.HintSize="847,1199" sap2010:WorkflowViewState.IdRef="If_5">
+            <If.Condition>
+              <InArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">loginYongyouResult.Key</mca:CSharpValue>
+              </InArgument>
+            </If.Condition>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="登录异常" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Email\\SendEmail.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="toEmail">RPA-Finance@anruidigital.com</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="subject">异常通知</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="body">
+                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">loginYongyouResult.Value</mca:CSharpValue>
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="fromEmail">rpa@anruidigital.com</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="sender">ARC RPA</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="fromPwd">Yuk55268</InArgument>
+                  <InArgument x:TypeArguments="s:String[]" x:Key="files">
+                    <mca:CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">new string[0]</mca:CSharpValue>
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </If.Then>
+            <If.Else>
+              <Sequence sap:VirtualizedContainerService.HintSize="602,1036" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="560,790" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                  <ui:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,667" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="tmpFinanceNumber" />
+                          <Variable x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" Name="exec2Result" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">
+                              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">tmpFinanceNumber</mca:CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">string.IsNullOrWhiteSpace(row["财务编号"].ToString()) ? row["PO号（或财务编号）"].ToString() : row["财务编号"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="执行用友应用程序" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Yongyou\\Execyongyou.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="serialNumber">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">row["PO号（或财务编号）"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="companyName">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">row["公司名称"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="invoiceAmount">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">row["开票金额"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="receivedAmount">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">row["到款金额"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="discountAmount">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">row["折扣金额"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="notReceivedAmount">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">row["未到款金额"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="poNumber">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">tmpFinanceNumber</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="dueBank">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">row["收款银行"].ToString()</mca:CSharpValue>
+                            </InArgument>
+                            <OutArgument x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" x:Key="result">
+                              <mca:CSharpReference x:TypeArguments="scg:KeyValuePair(x:Boolean, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">execResult</mca:CSharpReference>
+                            </OutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="recogFilePath">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">recogFileFullPath</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="recogForCustomerPath">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_102">recogForCustomerPath</mca:CSharpValue>
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:InvokeWorkflowFile>
+                        <If sap:VirtualizedContainerService.HintSize="484,320" sap2010:WorkflowViewState.IdRef="If_7">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">execResult.Key</mca:CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <ui:AppendLine DisplayName="记录执行情况" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_4" UseDefaultEncoding="False">
+                              <ui:AppendLine.FileName>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_114">recogForCustomerPath</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.FileName>
+                              <ui:AppendLine.Text>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_115">execResult.Value + "PO:"+row["PO号（或财务编号）"].ToString()</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.Text>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendLine>
+                          </If.Then>
+                        </If>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEachRow.Body>
+                  <ui:ForEachRow.DataTable>
+                    <InArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">pendingData</mca:CSharpValue>
+                    </InArgument>
+                  </ui:ForEachRow.DataTable>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:ForEachRow>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="发送执行结果" sap:VirtualizedContainerService.HintSize="560,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Email\\SendEmail.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:String" x:Key="toEmail">RPA-Finance@anruidigital.com</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="subject">异常通知</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="body">发生异常</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="fromEmail">rpa@anruidigital.com</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="sender">ARC RPA</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="fromPwd">Yuk55268</InArgument>
+                    <InArgument x:TypeArguments="s:String[]" x:Key="files">
+                      <mca:CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_108">new string[1]{recogForCustomerPath}</mca:CSharpValue>
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:ClickImage DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="退出客户端" sap:VirtualizedContainerService.HintSize="1134,53" sap2010:WorkflowViewState.IdRef="ClickImage_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD0AAAAgCAYAAAChKnCsAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF6SURBVFhH7ZY9SgRBEIW9lulexUg2NNrU0MAjGAgewXCuMImwiaCBwQQGExh0YFB2wdZSFPWqu8VgsLvgo3/eK6jHQDMXu9uZemOE7oURuhdG6F4YoXthhNbcPB7p+JGIvsmFNfZ4vVsHhl7WRCmHi2CP11uCS++90n5LSS8BQ6f8kWvwemuQwWX1tN+eS1SF3t8/0+X1k4v26/5aUFlPy7kEDL1+0ZndYXI9mrPX0SK8ge1d67lEXehA87B+jS571oV6UGl/ifAhEyINYXssMqhdre4RaTXg0J95+BORhrA9FhlcVnTnUdJLwNBveXAh0jz0A4eQwdEq2HPLHQKHXnKAE1azLzgjXt5bv4cMKeVpdt96h4Ch+Y9L2D+U/7zYVxuYkSFl9TS7b71DVIWOEP9fBba0lNfvAUNPLyvN7ymEPV5vhB0uKu0r0eKHoa/uphxqofk1h3dgjT1e79aBofkvTB4pRM2f2hbBof8xI3QvjNC9MEL3wUw/hoqqIQCc4UwAAAAASUVORK5CYII=" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e6134f41-fd56-479c-a308-ead5a17cf9aa" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:ClickImage DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="确定退出" sap:VirtualizedContainerService.HintSize="1134,53" sap2010:WorkflowViewState.IdRef="ClickImage_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:ClickImage.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:ClickImage.CursorPosition>
+      <ui:ClickImage.Image>
+        <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE8AAAAUCAYAAADMfWCyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACxSURBVFhH7ZVBCsAgDAT9/3d78NgiVFhCuq2mxhxyGNBNKjgEW+pRz2SOlGcg5RlIeQZSngFXeaUUivZNZNzlaXnjqcbEspoHoScPM1lnNS9CTx4TxGpehJ08uceM1TxxlTdCyrtpFxuhfyPPmclXsnXy2IVTngJesq0lWh8ymq9kyw8D91hHZC/mWsbOWoXrmyf3T2BfXzO+9v3N1jfvC29idolrhJcXmZRnIOVNU88LuXvRqW85F5gAAAAASUVORK5CYII=" />
+      </ui:ClickImage.Image>
+      <ui:ClickImage.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="759feef6-3747-40c4-a0f2-c57ef4f00fa0" Selector="&lt;wnd app='gnclientpro.exe' cls='#32770' title='天联高级版客户端' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:ClickImage.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ClickImage>
+    <ui:CloseApplication ContinueOnError="True" DisplayName="关闭用友客户端" sap:VirtualizedContainerService.HintSize="1134,53" sap2010:WorkflowViewState.IdRef="CloseApplication_2">
+      <ui:CloseApplication.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9d329e54-09f7-4c89-a905-f71b3343c700" InformativeScreenshot="a52403ee8a67e3f44c3a21d854e608b0" Selector="&lt;wnd app='gneslclient.exe' cls='MainFrameWnd' title='天联高级版客户端 7.0.3.0' /&gt;&lt;wnd cls='UserLoginFrame' title='天联高级版客户端 7.0.3.0' /&gt;" TimeoutMS="3000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:CloseApplication.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CloseApplication>
+    <ui:CloseTab ContinueOnError="True" DisplayName="关闭用友浏览器" sap:VirtualizedContainerService.HintSize="1042,22" sap2010:WorkflowViewState.IdRef="CloseTab_2">
+      <ui:CloseTab.Browser>
+        <InArgument x:TypeArguments="ui:Browser">
+          <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">yongyouWebsite</mca:CSharpValue>
+        </InArgument>
+      </ui:CloseTab.Browser>
+    </ui:CloseTab>
+  </Sequence>
+</Activity>

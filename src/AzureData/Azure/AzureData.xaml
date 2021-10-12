@@ -1,0 +1,673 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="AzureData" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="932,801.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Database</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Database.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>DocumentFormat.OpenXml.Presentation</x:String>
+      <x:String>DocumentFormat.OpenXml</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Database</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>DocumentFormat.OpenXml</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap:VirtualizedContainerService.HintSize="633.6,636.8" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="SubscriptionInfo">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="Guid">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">693a92f1-e68d-4575-93b7-3da08c8bb20a</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="Infos">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="Msg" />
+      <Variable x:TypeArguments="ui:DatabaseConnection" Name="DBConnect" />
+      <Variable x:TypeArguments="sd:DataTable" Name="UseInfo">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="UseResult">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="ServiceResult">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="ProjectConsumeTable">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="ProjectConsumeResult">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="s:DateTime" Name="LastWeek" />
+      <Variable x:TypeArguments="s:DateTime" Name="LastMonth" />
+      <Variable x:TypeArguments="sd:DataTable" Name="LastLog">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="ServiceTable">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_74">new System.Data.DataTable()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="ReadPath">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">D:\UIPathData\Azure\数字资产.xlsx</Literal>
+        </Variable.Default>
+      </Variable>
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,107.7 170,107.7 170,123.6</av:PointCollection>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID2</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">340,125.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="导入数据" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="variable1" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="A:J" SheetName="Sheet1">
+                  <ui:ExcelReadRange.DataTable>
+                    <OutArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">SubscriptionInfo</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:ExcelReadRange.DataTable>
+                </ui:ExcelReadRange>
+                <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xD;&#xA;            {&#xD;&#xA;                guid = Guid.NewGuid().ToString();&#xD;&#xA;                DataTable subscriptionInfo1 = subscriptionInfo;&#xD;&#xA;                subscriptionInfo.Columns.Add(&quot;Guid&quot;);&#xD;&#xA;                subscriptionInfo.Columns.Add(&quot;AddDate&quot;);&#xD;&#xA;                subscriptionInfo.Columns.Remove(&quot;说明&quot;);&#xD;&#xA;                subscriptionInfo.Columns[&quot;订阅名称 (Subscription Name)&quot;].ColumnName = &quot;SubscriptionName&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;订阅ID&quot;].ColumnName = &quot;SubscriptionId&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;IDColumn&quot;].ColumnName = &quot;IdCloumn&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;资源ID&quot;].ColumnName = &quot;AbundantId&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;项目&quot;].ColumnName = &quot;Project&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;PO号&quot;].ColumnName = &quot;POHao&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;部门&quot;].ColumnName = &quot;Department&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;AM&quot;].ColumnName = &quot;AM&quot;;&#xD;&#xA;                subscriptionInfo.Columns[&quot;资源 Owner&quot;].ColumnName = &quot;AbundantOwner&quot;;&#xD;&#xA;                for (int i = subscriptionInfo1.Rows.Count - 1; i &gt;= 0; i--)&#xD;&#xA;                {&#xD;&#xA;                    subscriptionInfo.Rows[i][&quot;Guid&quot;] = guid;&#xD;&#xA;                    subscriptionInfo.Rows[i][&quot;AddDate&quot;] = System.DateTime.Now.Date;&#xD;&#xA;                     subscriptionInfo.Rows[i][&quot;AM&quot;] = subscriptionInfo.Rows[i][&quot;AM&quot;] .ToString().Trim();&#xD;&#xA;                    if (string.IsNullOrWhiteSpace(subscriptionInfo1.Rows[i][&quot;IdCloumn&quot;].ToString()))&#xD;&#xA;                    {&#xD;&#xA;                        subscriptionInfo.Rows.Remove(subscriptionInfo.Rows[i]);&#xD;&#xA;                    }&#xD;&#xA;                }&#xD;&#xA;            }&#xD;&#xA;            catch (Exception ex)&#xD;&#xA;            {&#xD;&#xA;                msg = ex.Message;&#xD;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+                  <ui:InvokeCode.Arguments>
+                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="subscriptionInfo">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">SubscriptionInfo</mca:CSharpReference>
+                    </InOutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="guid">
+                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">Guid</mca:CSharpReference>
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="msg">
+                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_47">Msg</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:InvokeCode.Arguments>
+                </ui:InvokeCode>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExcelApplicationScope.WorkbookPath>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">ReadPath</mca:CSharpValue>
+            </InArgument>
+          </ui:ExcelApplicationScope.WorkbookPath>
+        </ui:ExcelApplicationScope>
+        <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_6" Range="E:AE" SheetName="Sheet3">
+                  <ui:ExcelReadRange.DataTable>
+                    <OutArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_57">Infos</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:ExcelReadRange.DataTable>
+                </ui:ExcelReadRange>
+                <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" Range="A:H" SheetName="Sheet2">
+                  <ui:ExcelReadRange.DataTable>
+                    <OutArgument x:TypeArguments="sd:DataTable">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_58">ServiceTable</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:ExcelReadRange.DataTable>
+                </ui:ExcelReadRange>
+                <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xA;            {&#xA;                serviceResult.Columns.Add(&quot;服务&quot;); &#xA;                serviceResult.Columns.Add(&quot;单价&quot;);&#xA;                for (int i = 0; i &lt; serviceTable.Rows.Count; i++)&#xA;                {&#xA;                    if (serviceTable.Rows[i][&quot;计费方式&quot;].ToString()== &quot;月统计计费&quot; || serviceTable.Rows[i][&quot;计费方式&quot;].ToString() == &quot;日期&quot; || string.IsNullOrWhiteSpace(serviceTable.Rows[i][&quot;Column2&quot;].ToString()))&#xA;                    {&#xA;                        continue;&#xA;                    }&#xA;&#xA;                    int count = serviceResult.Select(string.Format(&quot;{0} = '{1}'&quot;, &quot;服务&quot;, serviceTable.Rows[i][&quot;Column2&quot;].ToString())).Count();&#xA;                    if (count == 0)&#xA;                    {&#xA;                        DataRow dr = serviceResult.NewRow();&#xA;                        dr[&quot;服务&quot;] = serviceTable.Rows[i][&quot;Column2&quot;];&#xA;                        dr[&quot;单价&quot;] = serviceTable.Rows[i][&quot;Column6&quot;];&#xA;                        serviceResult.Rows.Add(dr);&#xA;                    }&#xA;&#xA;                }&#xA;&#xA;            }&#xA;            catch (Exception ex)&#xA;            {&#xA;                msg = ex.Message;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_12" Language="CSharp">
+                  <ui:InvokeCode.Arguments>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="serviceTable">
+                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">ServiceTable</mca:CSharpValue>
+                    </InArgument>
+                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="serviceResult">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_59">ServiceResult</mca:CSharpReference>
+                    </InOutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="msg">
+                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_60">Msg</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:InvokeCode.Arguments>
+                </ui:InvokeCode>
+                <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xA;            {&#xA;                DataTable infos1 = infos;&#xA;                DataTable data = new DataTable();&#xA;                data = serviceTable;&#xA;                infos1.Columns[&quot;订阅 Guid (SubscriptionGuid)&quot;].ColumnName = &quot;SubscriptionGuid&quot;;&#xA;                infos1.Columns[&quot;订阅名称 (Subscription Name)&quot;].ColumnName = &quot;SubscriptionName&quot;;&#xA;                infos1.Columns[&quot;日期 (Date)&quot;].ColumnName = &quot;Data&quot;;&#xA;                infos1.Columns[&quot;月 (Month)&quot;].ColumnName = &quot;Month&quot;;&#xA;                infos1.Columns[&quot;日 (Day)&quot;].ColumnName = &quot;Day&quot;;&#xA;                infos1.Columns[&quot;年 (Year)&quot;].ColumnName = &quot;Year&quot;;&#xA;                infos1.Columns[&quot;产品 (Product)&quot;].ColumnName = &quot;Product&quot;;&#xA;                infos1.Columns[&quot;资源 GUID (Meter ID)&quot;].ColumnName = &quot;AbundantGuid&quot;;&#xA;                infos1.Columns[&quot;服务 (Meter Category)&quot;].ColumnName = &quot;ServiceName&quot;;&#xA;                infos1.Columns[&quot;服务类型 (Meter Sub-Category)&quot;].ColumnName = &quot;ServiceType&quot;;&#xA;                infos1.Columns[&quot;服务区域 (Meter Region)&quot;].ColumnName = &quot;ServiceArea&quot;;&#xA;                infos1.Columns[&quot;服务资源 (Meter Name)&quot;].ColumnName = &quot;ServiceAbundant&quot;;&#xA;                infos1.Columns[&quot;已消耗资源数量 (Consumed Quantity)&quot;].ColumnName = &quot;ConsumedQuantity&quot;;&#xA;                infos1.Columns[&quot;资源费率 (ResourceRate)&quot;].ColumnName = &quot;ResourceRate&quot;;&#xA;                infos1.Columns[&quot;扩展的成本 (ExtendedCost)&quot;].ColumnName = &quot;ExtendedCost&quot;;&#xA;                infos1.Columns[&quot;服务子区域 (Resource Location)&quot;].ColumnName = &quot;ResourceLocation&quot;;&#xA;                infos1.Columns[&quot;服务信息 (Consumed Service)&quot;].ColumnName = &quot;ConsumedService&quot;;&#xA;                infos1.Columns[&quot;组件 (Instance ID)&quot;].ColumnName = &quot;InstanceID&quot;;&#xA;                infos1.Columns[&quot;服务信息 1 (ServiceInfo1)&quot;].ColumnName = &quot;ServiceInfo1&quot;;&#xA;                infos1.Columns[&quot;服务信息 2 (ServiceInfo2)&quot;].ColumnName = &quot;ServiceInfo2&quot;;&#xA;                infos1.Columns[&quot;附加信息 (AdditionalInfo)&quot;].ColumnName = &quot;AdditionalInfo&quot;;&#xA;                infos1.Columns[&quot;(Tags)&quot;].ColumnName = &quot;Tags&quot;;&#xA;                infos1.Columns[&quot;(Store Service Identifier)&quot;].ColumnName = &quot;StoreService&quot;;&#xA;                infos1.Columns[&quot;(Department Name)&quot;].ColumnName = &quot;DepartmentName&quot;;&#xA;                infos1.Columns[&quot;(Cost Center)&quot;].ColumnName = &quot;CostCenter&quot;;&#xA;                infos1.Columns[&quot;(Unit of Measure)&quot;].ColumnName = &quot;UnitMeasure&quot;;&#xA;                infos1.Columns[&quot;(Resource Group)&quot;].ColumnName = &quot;ResourceGroup&quot;;&#xA;                infos1.Columns.Add(&quot;Guid&quot;);&#xA;                infos1.Columns.Add(&quot;IdCloumn&quot;);&#xA;                for (int i = infos1.Rows.Count-1; i &gt;= 0; i--)&#xA;                {&#xA;&#xA;                    if (string.IsNullOrWhiteSpace(infos1.Rows[i][&quot;SubscriptionGuid&quot;].ToString()))&#xA;                    {&#xA;                        infos1.Rows.Remove(infos.Rows[i]);&#xA;                        continue;&#xA;                    }&#xA;                    infos1.Rows[i][&quot;Guid&quot;] = guid;&#xA;                    infos1.Rows[i][&quot;IdCloumn&quot;] = infos1.Rows[i][&quot;SubscriptionGuid&quot;].ToString() + infos1.Rows[i][&quot;InstanceID&quot;].ToString();&#xA;                    var dr = data.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;服务&quot;].ToString() == infos1.Rows[i][&quot;Product&quot;].ToString());&#xA;                    if (dr.Any())&#xA;                    {&#xA;                        DataTable dt = dr.CopyToDataTable();&#xA;                        infos1.Rows[i][&quot;ResourceRate&quot;] = dt.Rows[0][&quot;单价&quot;];&#xA;                        infos1.Rows[i][&quot;ExtendedCost&quot;] = Math.Round(Convert.ToDouble(infos1.Rows[i][&quot;ConsumedQuantity&quot;]) * Convert.ToDouble(infos1.Rows[i][&quot;ResourceRate&quot;]), 2).ToString();&#xA;                    }&#xA;                    else {&#xA;                        infos1.Rows[i][&quot;ResourceRate&quot;] = &quot;0&quot;;&#xA;                        infos1.Rows[i][&quot;ExtendedCost&quot;] = &quot;0&quot;;&#xA;                    }&#xA;&#xA;                }&#xA;&#xA;                infos = infos1;&#xA;            }&#xA;            catch (Exception ex)&#xA;            {&#xA;                msg = ex.Message;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_13" Language="CSharp">
+                  <ui:InvokeCode.Arguments>
+                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="infos">
+                      <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_61">Infos</mca:CSharpReference>
+                    </InOutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="guid">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">Guid</mca:CSharpValue>
+                    </InArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="msg">
+                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_62">Msg</mca:CSharpReference>
+                    </OutArgument>
+                    <InArgument x:TypeArguments="sd:DataTable" x:Key="serviceTable">
+                      <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_86">ServiceResult</mca:CSharpValue>
+                    </InArgument>
+                  </ui:InvokeCode.Arguments>
+                </ui:InvokeCode>
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExcelApplicationScope.WorkbookPath>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">ReadPath</mca:CSharpValue>
+            </InArgument>
+          </ui:ExcelApplicationScope.WorkbookPath>
+        </ui:ExcelApplicationScope>
+        <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="DatabaseConnect_1" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=h3ccampaign.database.chinacloudapi.cn;Initial Catalog=H3CIncreaseFans;Persist Security Info=True;User ID=sauser;Password=Qc-Pwd01!.">
+          <ui:DatabaseConnect.DatabaseConnection>
+            <OutArgument x:TypeArguments="ui:DatabaseConnection">
+              <mca:CSharpReference x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">DBConnect</mca:CSharpReference>
+            </OutArgument>
+          </ui:DatabaseConnect.DatabaseConnection>
+        </ui:DatabaseConnect>
+        <ui:InsertDataTable AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Insert" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="InsertDataTable_1" TableName="Azure_SubscriptionInfo">
+          <ui:InsertDataTable.DataTable>
+            <InArgument x:TypeArguments="sd:DataTable">
+              <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">SubscriptionInfo</mca:CSharpValue>
+            </InArgument>
+          </ui:InsertDataTable.DataTable>
+          <ui:InsertDataTable.ExistingDbConnection>
+            <InArgument x:TypeArguments="ui:DatabaseConnection">
+              <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">DBConnect</mca:CSharpValue>
+            </InArgument>
+          </ui:InsertDataTable.ExistingDbConnection>
+        </ui:InsertDataTable>
+        <ui:InsertDataTable AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Insert" sap:VirtualizedContainerService.HintSize="333.6,116" sap2010:WorkflowViewState.IdRef="InsertDataTable_2" TableName="Azure_Infos">
+          <ui:InsertDataTable.DataTable>
+            <InArgument x:TypeArguments="sd:DataTable">
+              <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">Infos</mca:CSharpValue>
+            </InArgument>
+          </ui:InsertDataTable.DataTable>
+          <ui:InsertDataTable.ExistingDbConnection>
+            <InArgument x:TypeArguments="ui:DatabaseConnection">
+              <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">DBConnect</mca:CSharpValue>
+            </InArgument>
+          </ui:InsertDataTable.ExistingDbConnection>
+        </ui:InsertDataTable>
+      </Sequence>
+    </FlowStep>
+    <FlowStep x:Name="__ReferenceID1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,244.4</av:Point>
+          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,313.2 300,365.6</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="找出满足条件的数据" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:InvokeCode ContinueOnError="{x:Null}" Code=" var date = DateTime.Now;&#xA;var m = (date.DayOfWeek == DayOfWeek.Sunday ? (DayOfWeek)7 : date.DayOfWeek) - DayOfWeek.Monday;&#xA; lastWeek = date.AddDays((-7 - m)).Date;&#xA; lastMonth = Convert.ToDateTime(date.AddMonths(-1).ToString(&quot;yyyy-MM-01&quot;) + &quot; 0:00:00&quot;);" DisplayName="计算上周，上月日期" sap:VirtualizedContainerService.HintSize="375.2,52.8" sap2010:WorkflowViewState.IdRef="InvokeCode_8" Language="CSharp">
+          <ui:InvokeCode.Arguments>
+            <OutArgument x:TypeArguments="s:DateTime" x:Key="lastWeek">
+              <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">LastWeek</mca:CSharpReference>
+            </OutArgument>
+            <OutArgument x:TypeArguments="s:DateTime" x:Key="lastMonth">
+              <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">LastMonth</mca:CSharpReference>
+            </OutArgument>
+          </ui:InvokeCode.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:InvokeCode>
+        <ui:ExecuteNonQuery AffectedRecords="{x:Null}" ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Non Query" sap:VirtualizedContainerService.HintSize="375.2,89.6" sap2010:WorkflowViewState.IdRef="ExecuteNonQuery_2">
+          <ui:ExecuteNonQuery.ExistingDbConnection>
+            <InArgument x:TypeArguments="ui:DatabaseConnection">
+              <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">DBConnect</mca:CSharpValue>
+            </InArgument>
+          </ui:ExecuteNonQuery.ExistingDbConnection>
+          <ui:ExecuteNonQuery.Parameters>
+            <scg:Dictionary x:TypeArguments="x:String, Argument" />
+          </ui:ExecuteNonQuery.Parameters>
+          <ui:ExecuteNonQuery.Sql>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89">"delete from [Azure_SubscriptionInfo] where AddDate &lt; '"+LastMonth+"';delete from [Azure_Infos] where Data &lt; '"+LastMonth+"'"</mca:CSharpValue>
+            </InArgument>
+          </ui:ExecuteNonQuery.Sql>
+        </ui:ExecuteNonQuery>
+        <Sequence DisplayName="使用情况" sap:VirtualizedContainerService.HintSize="333.6,68.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="获取上周使用情况" sap:VirtualizedContainerService.HintSize="333.6,52.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" InstanceCachePeriod="3000">
+            <ui:ExcelApplicationScope.Body>
+              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelReadRange AddHeaders="True" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_8" Range="C:D" SheetName="Sheet4">
+                    <ui:ExcelReadRange.DataTable>
+                      <OutArgument x:TypeArguments="sd:DataTable">
+                        <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_64">LastLog</mca:CSharpReference>
+                      </OutArgument>
+                    </ui:ExcelReadRange.DataTable>
+                  </ui:ExcelReadRange>
+                  <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xA;            {&#xA;                logTable.Columns[&quot;Column1&quot;].ColumnName = &quot;姓名&quot;;&#xA;                logTable.Columns[&quot;Column2&quot;].ColumnName = &quot;消耗&quot;;&#xA;                for (int i = logTable.Rows.Count-1; i &gt;= 0; i--)&#xA;                {&#xA;                    if (logTable.Rows[i][&quot;姓名&quot;].ToString()== &quot;姓名&quot; || string.IsNullOrWhiteSpace(logTable.Rows[i][&quot;姓名&quot;].ToString()))&#xA;                    {&#xA;                        logTable.Rows.Remove(logTable.Rows[i]);&#xA;                        continue;&#xA;                    }&#xA;                    logTable.Rows[i][&quot;消耗&quot;] = Math.Round(Convert.ToDouble(logTable.Rows[i][&quot;消耗&quot;]),2).ToString();&#xA;                }&#xA;            }&#xA;            catch (Exception ex)&#xA;            {&#xA;                msg = ex.Message;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_14" Language="CSharp">
+                    <ui:InvokeCode.Arguments>
+                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="logTable">
+                        <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_66">LastLog</mca:CSharpReference>
+                      </InOutArgument>
+                      <OutArgument x:TypeArguments="x:String" x:Key="msg">
+                        <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_65">Msg</mca:CSharpReference>
+                      </OutArgument>
+                    </ui:InvokeCode.Arguments>
+                  </ui:InvokeCode>
+                </Sequence>
+              </ActivityAction>
+            </ui:ExcelApplicationScope.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelApplicationScope.WorkbookPath>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_87">ReadPath</mca:CSharpValue>
+              </InArgument>
+            </ui:ExcelApplicationScope.WorkbookPath>
+          </ui:ExcelApplicationScope>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="333.6,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3">
+            <ui:ExecuteQuery.DataTable>
+              <OutArgument x:TypeArguments="sd:DataTable">
+                <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">UseInfo</mca:CSharpReference>
+              </OutArgument>
+            </ui:ExecuteQuery.DataTable>
+            <ui:ExecuteQuery.ExistingDbConnection>
+              <InArgument x:TypeArguments="ui:DatabaseConnection">
+                <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">DBConnect</mca:CSharpValue>
+              </InArgument>
+            </ui:ExecuteQuery.ExistingDbConnection>
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+            <ui:ExecuteQuery.Sql>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">"select Department,AM,sum(extendedcost) Count from SubscriptView group by Department,AM,Guid having Department is not null and Guid = '"+Guid+"'"</mca:CSharpValue>
+              </InArgument>
+            </ui:ExecuteQuery.Sql>
+          </ui:ExecuteQuery>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xD;&#xA;            {&#xD;&#xA;                useResult.Columns.Add(&quot;部门&quot;);&#xD;&#xA;                useResult.Columns.Add(&quot;姓名&quot;);&#xD;&#xA;                useResult.Columns.Add(&quot;上周消费金额&quot;);&#xD;&#xA;                useResult.Columns.Add(&quot;本周消费金额&quot;);&#xD;&#xA;                useResult.Columns.Add(&quot;与上周相比&quot;);&#xD;&#xA;&#xD;&#xA;                DataRow dr = useResult.NewRow();&#xD;&#xA;                dr[&quot;部门&quot;] = &quot;部门&quot;;&#xD;&#xA;                dr[&quot;姓名&quot;] = &quot;姓名&quot;;&#xD;&#xA;                dr[&quot;上周消费金额&quot;] = &quot;上周消费金额&quot;;&#xD;&#xA;                dr[&quot;本周消费金额&quot;] = &quot;本周消费金额&quot;;&#xD;&#xA;                dr[&quot;与上周相比&quot;] = &quot;与上周相比&quot;;&#xD;&#xA;                useResult.Rows.Add(dr);&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;                var result = useInfo.Rows.Cast&lt;DataRow&gt;().Select(x =&gt; x[&quot;Department&quot;]).Distinct().ToList();&#xD;&#xA;                double xf = 0;&#xD;&#xA;                double zong = 0;&#xD;&#xA;                double lastXF = 0;&#xD;&#xA;                double lastCount = 0;&#xD;&#xA;                double zLast = 0;&#xD;&#xA;                foreach (string item in result)&#xD;&#xA;                {&#xD;&#xA;                    DataTable dt = useInfo.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;Department&quot;].ToString() == item).CopyToDataTable();&#xD;&#xA;                    foreach (DataRow it in dt.Rows)&#xD;&#xA;                    {&#xD;&#xA;                        var last = lastLog.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;姓名&quot;].ToString() == it[&quot;AM&quot;].ToString());&#xD;&#xA;                        if (last.Any())&#xD;&#xA;                        {&#xD;&#xA;                            var table = last.CopyToDataTable();&#xD;&#xA;                            lastXF = Convert.ToDouble(table.Rows[0][&quot;消耗&quot;]);&#xD;&#xA;                            lastCount += lastXF;&#xD;&#xA;                        }&#xD;&#xA;                        else&#xD;&#xA;                        {&#xD;&#xA;                            lastXF = 0;&#xD;&#xA;                        }&#xD;&#xA;                        xf += Convert.ToDouble(it[&quot;Count&quot;]);&#xD;&#xA;                        dr = useResult.NewRow();&#xD;&#xA;                        dr[&quot;部门&quot;] = it[&quot;Department&quot;];&#xD;&#xA;                        dr[&quot;姓名&quot;] = it[&quot;AM&quot;];&#xD;&#xA;                        dr[&quot;本周消费金额&quot;] = it[&quot;Count&quot;];&#xD;&#xA;                        dr[&quot;上周消费金额&quot;] = lastXF;&#xD;&#xA;                        dr[&quot;与上周相比&quot;] = Convert.ToDouble(it[&quot;Count&quot;]) - lastXF;&#xD;&#xA;                        useResult.Rows.Add(dr);&#xD;&#xA;                    }&#xD;&#xA;                    dr = useResult.NewRow();&#xD;&#xA;                    dr[&quot;姓名&quot;] = &quot;小计&quot;;&#xD;&#xA;                    dr[&quot;上周消费金额&quot;] = lastCount;&#xD;&#xA;                    dr[&quot;本周消费金额&quot;] = xf.ToString();&#xD;&#xA;                    dr[&quot;与上周相比&quot;] = xf - lastCount;&#xD;&#xA;                    useResult.Rows.Add(dr);&#xD;&#xA;                    zong += xf;&#xD;&#xA;                    zLast += lastCount;&#xD;&#xA;                    xf = 0;&#xD;&#xA;                    lastCount = 0;&#xD;&#xA;                }&#xD;&#xA;                dr = useResult.NewRow();&#xD;&#xA;                dr[&quot;姓名&quot;] = &quot;总计&quot;;&#xD;&#xA;                dr[&quot;本周消费金额&quot;] = zong.ToString();&#xD;&#xA;                dr[&quot;上周消费金额&quot;] = zLast;&#xD;&#xA;                dr[&quot;与上周相比&quot;] = zong - zLast;&#xD;&#xA;                useResult.Rows.Add(dr);&#xD;&#xA;            }&#xD;&#xA;            catch (Exception ex)&#xD;&#xA;            {&#xD;&#xA;                msg = ex.Message;&#xD;&#xA;            }" DisplayName="组装使用情况数据" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_4" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="useInfo">
+                <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">UseInfo</mca:CSharpValue>
+              </InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="useResult">
+                <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">UseResult</mca:CSharpReference>
+              </InOutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="msg">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">Msg</mca:CSharpReference>
+              </OutArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="lastLog">
+                <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">LastLog</mca:CSharpValue>
+              </InArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+        </Sequence>
+        <Sequence DisplayName="项目资金使用情况" sap:VirtualizedContainerService.HintSize="375.2,387.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Execute Query" sap:VirtualizedContainerService.HintSize="333.6,89.6" sap2010:WorkflowViewState.IdRef="ExecuteQuery_6">
+            <ui:ExecuteQuery.DataTable>
+              <OutArgument x:TypeArguments="sd:DataTable">
+                <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">ProjectConsumeTable</mca:CSharpReference>
+              </OutArgument>
+            </ui:ExecuteQuery.DataTable>
+            <ui:ExecuteQuery.ExistingDbConnection>
+              <InArgument x:TypeArguments="ui:DatabaseConnection">
+                <mca:CSharpValue x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">DBConnect</mca:CSharpValue>
+              </InArgument>
+            </ui:ExecuteQuery.ExistingDbConnection>
+            <ui:ExecuteQuery.Parameters>
+              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+            </ui:ExecuteQuery.Parameters>
+            <ui:ExecuteQuery.Sql>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">"select Department,AM,Project,sum(extendedcost) Count from SubscriptView group by Department,AM,Project,Guid having Department is not null and Guid='"+Guid+"'"</mca:CSharpValue>
+              </InArgument>
+            </ui:ExecuteQuery.Sql>
+          </ui:ExecuteQuery>
+          <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xA;            {&#xA;                projectConsumeResult.Columns.Add(&quot;部门&quot;);&#xA;                projectConsumeResult.Columns.Add(&quot;AM&quot;);&#xA;                projectConsumeResult.Columns.Add(&quot;项目&quot;);&#xA;                projectConsumeResult.Columns.Add(&quot;金额&quot;);&#xA;                double xf = 0;&#xA;                double bmzj = 0;&#xA;                double gszj = 0;&#xA;                DataRow dr = projectConsumeResult.NewRow();&#xA;                dr[&quot;部门&quot;] = &quot;部门&quot;;&#xA;                dr[&quot;AM&quot;] = &quot;AM&quot;;&#xA;                dr[&quot;项目&quot;] = &quot;项目&quot;;&#xA;                dr[&quot;金额&quot;] = &quot;金额&quot;;&#xA;                projectConsumeResult.Rows.Add(dr);&#xA;                var result = projectConsumeTable.Rows.Cast&lt;DataRow&gt;().Select(x =&gt; x[&quot;Department&quot;]).Distinct().ToList();&#xA;                foreach (string item in result)&#xA;                {&#xA;                    DataTable dt = projectConsumeTable.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;Department&quot;].ToString() == item).CopyToDataTable();&#xA;                    var user = dt.Rows.Cast&lt;DataRow&gt;().Select(x =&gt; x[&quot;AM&quot;]).Distinct().ToList();&#xA;                    foreach (string us in user)&#xA;                    {&#xA;                        DataTable users = dt.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;AM&quot;].ToString() == us).CopyToDataTable();&#xA;                        foreach (DataRow use in users.Rows)&#xA;                        {&#xA;                            dr = projectConsumeResult.NewRow();&#xA;                            dr[&quot;部门&quot;] = item;&#xA;                            dr[&quot;AM&quot;] = use[&quot;AM&quot;];&#xA;                            dr[&quot;项目&quot;] = use[&quot;Project&quot;];&#xA;                            dr[&quot;金额&quot;] = use[&quot;Count&quot;];&#xA;                            projectConsumeResult.Rows.Add(dr);&#xA;                            xf += Convert.ToDouble(use[&quot;Count&quot;]);&#xA;                        }&#xA;                        dr = projectConsumeResult.NewRow();&#xA;                        dr[&quot;部门&quot;] = &quot;小计&quot;;&#xA;                        dr[&quot;AM&quot;] = us;&#xA;                        dr[&quot;金额&quot;] = xf;&#xA;                        projectConsumeResult.Rows.Add(dr);&#xA;                        bmzj += xf;&#xA;                        xf = 0;&#xA;                    }&#xA;&#xA;                    dr = projectConsumeResult.NewRow();&#xA;                    dr[&quot;部门&quot;] = &quot;部门总计&quot;;&#xA;                    dr[&quot;金额&quot;] = bmzj;&#xA;                    projectConsumeResult.Rows.Add(dr);&#xA;                    gszj += bmzj;&#xA;                    bmzj = 0;&#xA;                }&#xA;&#xA;                dr = projectConsumeResult.NewRow();&#xA;                dr[&quot;部门&quot;] = &quot;公司总计&quot;;&#xA;                dr[&quot;金额&quot;] = gszj;&#xA;                projectConsumeResult.Rows.Add(dr);&#xA;            }&#xA;            catch (Exception ex)&#xA;            {&#xA;                msg = ex.Message;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="333.6,164.8" sap2010:WorkflowViewState.IdRef="InvokeCode_7" Language="CSharp">
+            <ui:InvokeCode.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="projectConsumeTable">
+                <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">ProjectConsumeTable</mca:CSharpValue>
+              </InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="projectConsumeResult">
+                <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">ProjectConsumeResult</mca:CSharpReference>
+              </InOutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="msg">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">Msg</mca:CSharpReference>
+              </OutArgument>
+            </ui:InvokeCode.Arguments>
+          </ui:InvokeCode>
+        </Sequence>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,365.6</av:Point>
+              <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="数据导出" sap:VirtualizedContainerService.HintSize="200,68.8" sap2010:WorkflowViewState.IdRef="Sequence_12">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Default="D:/UIPathData/Azure" Name="SavePath" />
+              <Variable x:TypeArguments="x:Boolean" Default="False" Name="PathExists" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:PathExists DisplayName="Path Exists" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="PathExists_1" PathType="Folder">
+              <ui:PathExists.Exists>
+                <OutArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_45">PathExists</mca:CSharpReference>
+                </OutArgument>
+              </ui:PathExists.Exists>
+              <ui:PathExists.Path>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">SavePath</mca:CSharpValue>
+                </InArgument>
+              </ui:PathExists.Path>
+            </ui:PathExists>
+            <If sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">!PathExists</mca:CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,80.8" sap2010:WorkflowViewState.IdRef="CreateDirectory_1">
+                  <ui:CreateDirectory.Path>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">SavePath</mca:CSharpValue>
+                    </InArgument>
+                  </ui:CreateDirectory.Path>
+                </ui:CreateDirectory>
+              </If.Then>
+            </If>
+            <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">SavePath</mca:CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">SavePath+"/Azrue"+System.DateTime.Now.ToString("MM-dd-HH-mm-ss")+".xlsx"</mca:CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,546.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000">
+              <ui:ExcelApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,436.8" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExcelWriteRange AddHeaders="False" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="Sheet1" StartingCell="A1">
+                      <ui:ExcelWriteRange.DataTable>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">ServiceResult</mca:CSharpValue>
+                        </InArgument>
+                      </ui:ExcelWriteRange.DataTable>
+                    </ui:ExcelWriteRange>
+                    <ui:ExcelWriteRange AddHeaders="False" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="消费明细" StartingCell="A1">
+                      <ui:ExcelWriteRange.DataTable>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">ProjectConsumeResult</mca:CSharpValue>
+                        </InArgument>
+                      </ui:ExcelWriteRange.DataTable>
+                    </ui:ExcelWriteRange>
+                    <ui:ExcelWriteRange AddHeaders="False" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_3" SheetName="使用情况" StartingCell="A1">
+                      <ui:ExcelWriteRange.DataTable>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">UseResult</mca:CSharpValue>
+                        </InArgument>
+                      </ui:ExcelWriteRange.DataTable>
+                    </ui:ExcelWriteRange>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ExcelApplicationScope.Body>
+              <ui:ExcelApplicationScope.WorkbookPath>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">SavePath</mca:CSharpValue>
+                </InArgument>
+              </ui:ExcelApplicationScope.WorkbookPath>
+            </ui:ExcelApplicationScope>
+          </Sequence>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <FlowStep x:Name="__ReferenceID2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">70,123.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,52.8</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">170,176.4 170,206.4 300,206.4 300,244.4</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:DatabaseConnect DisplayName="Connect" sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="DatabaseConnect_5" ProviderName="System.Data.SqlClient" ConnectionString="Data Source=h3ccampaign.database.chinacloudapi.cn;Initial Catalog=H3CIncreaseFans;Persist Security Info=True;User ID=sauser;Password=Qc-Pwd01!.">
+        <ui:DatabaseConnect.DatabaseConnection>
+          <OutArgument x:TypeArguments="ui:DatabaseConnection">
+            <mca:CSharpReference x:TypeArguments="ui:DatabaseConnection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_68">DBConnect</mca:CSharpReference>
+          </OutArgument>
+        </ui:DatabaseConnect.DatabaseConnection>
+      </ui:DatabaseConnect>
+      <FlowStep.Next>
+        <x:Reference>__ReferenceID1</x:Reference>
+      </FlowStep.Next>
+    </FlowStep>
+    <FlowStep>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,475.6</av:Point>
+          <av:Size x:Key="ShapeSize">200,68.8</av:Size>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="发送邮件" sap:VirtualizedContainerService.HintSize="375.2,239.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Default="yulin.shi@anruidigital.com" Name="Receiver" />
+          <Variable x:TypeArguments="x:String" Name="EmailTitle">
+            <Variable.Default>
+              <Literal x:TypeArguments="x:String">【ARC-RPA】Azure数据报告-{0}-{1}</Literal>
+            </Variable.Default>
+          </Variable>
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" Body="Azure数据如附件，请查收！" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="333.6,146.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal">
+          <ui:SendOutlookMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_93">SavePath</mca:CSharpValue>
+              </InArgument>
+            </scg:List>
+          </ui:SendOutlookMail.Files>
+          <ui:SendOutlookMail.Subject>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">String.Format(EmailTitle, System.DateTime.Now.AddDays(-1).ToString("yyyy/MM/dd"), System.DateTime.Now.AddDays(-7).ToString("yyyy/MM/dd"))</mca:CSharpValue>
+            </InArgument>
+          </ui:SendOutlookMail.Subject>
+          <ui:SendOutlookMail.To>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91">Receiver</mca:CSharpValue>
+            </InArgument>
+          </ui:SendOutlookMail.To>
+        </ui:SendOutlookMail>
+      </Sequence>
+    </FlowStep>
+  </Flowchart>
+</Activity>

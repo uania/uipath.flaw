@@ -1,0 +1,160 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetPendingData" this:GetPendingData.filePath="C:\ProgramData\UiPath\UiPathData\UpdateYongyou\PO到款明细.xlsx" this:GetPendingData.recogFilePath="C:\ProgramData\UiPath\UiPathData\UpdateYongyou\processed.csv" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="dataTable" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="filePath" Type="InArgument(x:String)" />
+    <x:Property Name="recogFilePath" Type="InArgument(x:String)" />
+    <x:Property Name="startDate" Type="InArgument(s:DateTime)" />
+    <x:Property Name="endDate" Type="InArgument(s:DateTime)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1043,825</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetPendingData" sap:VirtualizedContainerService.HintSize="376,503" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="daoKuanTable">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">new DataTable("daoKuanTable")</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="sd:DataTable" Name="processedTable">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">new DataTable("processedTable")</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="获取已处理的数据编号" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Excel\\GetCSVData.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="fileFullPath">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">recogFilePath</mca:CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="dataTable">
+          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">processedTable</mca:CSharpReference>
+        </OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="获取到款数据" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Excel\\GetExcelData.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="filePath">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">filePath</mca:CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="dataTable">
+          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">daoKuanTable</mca:CSharpReference>
+        </OutArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="startDate">
+          <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">startDate</mca:CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="s:DateTime" x:Key="endDate">
+          <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">endDate</mca:CSharpValue>
+        </InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="result = new DataTable();&#xD;&#xA;result.Columns.Add(&quot;公司名称&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;开票金额&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;到款金额&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;折扣金额&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;未到款金额&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;PO号（或财务编号）&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;财务编号&quot;,typeof(string));&#xD;&#xA;result.Columns.Add(&quot;收款银行&quot;,typeof(string));&#xD;&#xA;if(processedTable==null || processedTable.Rows.Count&lt;=0)&#xD;&#xA;{&#xD;&#xA;&#x9;//根据PO号合并数据&#xD;&#xA;&#x9;var gRow = daoKuanTable.AsEnumerable().GroupBy(row=&gt;row[&quot;PO号（或财务编号）&quot;].ToString().Trim('\t').Trim());&#xD;&#xA;&#x9;foreach(var g in gRow)&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;var tmpRow = result.NewRow();&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;公司名称&quot;] = g.Max(r=&gt;r[&quot;公司名称&quot;].ToString());&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;开票金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;开票金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;);&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;到款金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;到款金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;);&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;折扣金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;折扣金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;未到款金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;PO号（或财务编号）&quot;] = g.Max(r=&gt;r[&quot;PO号（或财务编号）&quot;].ToString());&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;财务编号&quot;] = g.Max(r=&gt;r[&quot;财务编号&quot;].ToString());&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;收款银行&quot;] = g.Max(r=&gt;r[&quot;收款银行&quot;].ToString());&#xD;&#xA;&#x9;&#x9;result.Rows.Add(tmpRow);&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;&#xD;&#xA;}&#xD;&#xA;else&#xD;&#xA;{&#xD;&#xA;&#x9;var gRow = processedTable.AsEnumerable().GroupBy(row =&gt; row[&quot;PO&quot;]);&#xD;&#xA;&#x9;var success = gRow.Where(g =&gt; g.Any(row=&gt;row[&quot;HasException&quot;].ToString() == &quot;Flase&quot;)).Select(r =&gt; r.Key);&#xD;&#xA;&#x9;var rowList = daoKuanTable.AsEnumerable().Where(aa =&gt; !success.Contains(aa[&quot;PO&quot;].ToString()));&#xD;&#xA;&#x9;//根据PO号合并数据&#xD;&#xA;&#x9;var gRow1 = rowList.GroupBy(row=&gt;row[&quot;PO&quot;].ToString());&#xD;&#xA;&#x9;foreach(var g in gRow1)&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;var tmpRow = result.NewRow();&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;公司名称&quot;] = g.Max(r=&gt;r[&quot;公司名称&quot;].ToString());&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;开票金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;开票金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;);&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;到款金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;到款金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;);&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;折扣金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;折扣金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;未到款金额&quot;] = g.Sum(r=&gt;{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;var kv = 0m;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out kv);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;return kv;&#xD;&#xA;&#x9;&#x9;});&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;PO号（或财务编号）&quot;] = g.Max(r=&gt;r[&quot;PO号（或财务编号）&quot;].ToString());&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;财务编号&quot;] = g.Max(r=&gt;r[&quot;财务编号&quot;].ToString());&#xD;&#xA;&#x9;&#x9;tmpRow[&quot;收款银行&quot;] = g.Max(r=&gt;r[&quot;收款银行&quot;].ToString());&#xD;&#xA;&#x9;&#x9;result.Rows.Add(tmpRow);&#xD;&#xA;&#x9;}&#xD;&#xA;}" DisplayName="得到未处理的数据" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="daoKuanTable">
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">daoKuanTable</mca:CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="processedTable">
+          <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">processedTable</mca:CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="result">
+          <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">dataTable</mca:CSharpReference>
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+  </Sequence>
+</Activity>

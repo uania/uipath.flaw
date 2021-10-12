@@ -1,0 +1,1 @@
+C:\Users\wu.cai2\AppData\Local\UiPath\app-21.4.4\UiRobot.exe -file C:/ProgramData/UiPath/Packages/LingYin.Issue.1.0.1.nupkg 

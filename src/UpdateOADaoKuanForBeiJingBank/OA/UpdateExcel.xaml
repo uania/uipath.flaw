@@ -1,0 +1,1006 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="UpdateExcel" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cp="clr-namespace:CustomerClass.ProjectApproval;assembly=CustomerClass" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sl="clr-namespace:System.Linq;assembly=System.Core" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="messageInfosWithPO" Type="InArgument(scg:List(cp:MessageNoticeInfo))" />
+    <x:Property Name="specificDt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="genericDt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="recogPath" Type="InArgument(x:String)" />
+    <x:Property Name="recogForCustomer" Type="InArgument(x:String)" />
+    <x:Property Name="invoiceDetailPath" Type="InArgument(x:String)" />
+    <x:Property Name="detailInfos" Type="OutArgument(scg:List(cp:MessageDetailInfo))" />
+    <x:Property Name="proformaDt" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="companys" Type="InArgument(scg:List(x:String))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1043,2902</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="33">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>CustomerClass.ProjectApproval</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>CustomerClass</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="UpdateExcel" sap:VirtualizedContainerService.HintSize="856,2737" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)" Name="tmpDetails" />
+      <Variable x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" Name="sGroup" />
+      <Variable x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" Name="gGroup" />
+      <Variable x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" Name="pGroup" />
+      <Variable x:TypeArguments="scg:List(cp:UpdateExcelInfo)" Name="sList" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="tmpPartialFilter" />
+      <Variable x:TypeArguments="scg:List(cp:MessageDetailInfo)" Name="tmpPartials" />
+      <Variable x:TypeArguments="scg:List(sl:IGrouping(x:String, cp:MessageDetailInfo))" Name="tmpPartialGroup" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="814,315" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_38">tmpDetails</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_129">messageInfosWithPO.SelectMany(r=&gt;r.Details)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_39">sGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_130">specificDt.Select().GroupBy(r=&gt;r["PO号（或财务编号）"].ToString())</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_40">gGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_131">genericDt.Select().GroupBy(r=&gt;r["PO号（或财务编号）"].ToString())</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_41">pGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_132">proformaDt.Select().GroupBy(r=&gt;r["PO号（或财务编号）"].ToString())</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(x:String)">
+                <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_50">tmpPartialFilter</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(x:String)">
+                <mca:CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_150">tmpDetails.Where(r=&gt;r.UpdateExcelInfos!=null&amp;&amp;r.UpdateExcelInfos.Any(sr=&gt;sr.ExcelAmount == 0)).Select(r=&gt;r.PO).Distinct().ToList()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">tmpPartials</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_147">tmpDetails.Where(r=&gt;tmpPartialFilter.Contains(r.PO)).ToList()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">tmpDetails</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_135">tmpDetails.Where(r=&gt;!tmpPartialFilter.Contains(r.PO)).ToList()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(sl:IGrouping(x:String, cp:MessageDetailInfo))">
+                <mca:CSharpReference x:TypeArguments="scg:List(sl:IGrouping(x:String, cp:MessageDetailInfo))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">tmpPartialGroup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(sl:IGrouping(x:String, cp:MessageDetailInfo))">
+                <mca:CSharpValue x:TypeArguments="scg:List(sl:IGrouping(x:String, cp:MessageDetailInfo))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_148">tmpPartials.GroupBy(r=&gt;r.PO).ToList()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:ForEach x:TypeArguments="sl:IGrouping(x:String, cp:MessageDetailInfo)" CurrentIndex="{x:Null}" DisplayName="记录部分到款的日志" sap:VirtualizedContainerService.HintSize="814,53" sap2010:WorkflowViewState.IdRef="ForEach`1_8">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="sl:IGrouping(x:String, cp:MessageDetailInfo)">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sl:IGrouping(x:String, cp:MessageDetailInfo)" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,463" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Sequence DisplayName="记录日志-更新完成" sap:VirtualizedContainerService.HintSize="376,371" sap2010:WorkflowViewState.IdRef="Sequence_18">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="cp:RecogInfo" Name="recogInfo" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_11">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="cp:RecogInfo">
+                    <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">recogInfo</mca:CSharpReference>
+                  </OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="cp:RecogInfo">
+                    <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_137" xml:space="preserve">new RecogInfo(){
+	MessageId = item.Max(r=&gt;r.MessageId),
+	MessageBody = item.Max(r=&gt;r.MessageBody),
+	CompanyName = item.Max(r=&gt;r.CompanyName),
+	DaoKuanDate = item.Max(r=&gt;r.DaoKuanDate),
+	DaoKuanAmount = item.Sum(r=&gt;r.Amount),
+	InvoiceNo = item.Max(r=&gt;r.InvoiceNo),
+	PO = item.Max(r=&gt;r.PO),
+	BankName = item.Max(r=&gt;r.BankName),
+	Description = string.Format("在OA到款更新中 {0}公司的项目PO号{1} 为部分到款 未更新OA 未更新发票明细表 请核查。",item.Max(r=&gt;r.CompanyName),item.Max(r=&gt;r.PO)),
+	ExecDate = DateTime.Now,
+	Status = 1,
+	Result = 1
+}</mca:CSharpValue>
+                  </InArgument>
+                </Assign.Value>
+              </Assign>
+              <Delay sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1">
+                <InArgument x:TypeArguments="x:TimeSpan">
+                  <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_138">new TimeSpan(0,0,1)</mca:CSharpValue>
+                </InArgument>
+              </Delay>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_139">recogForCustomer</mca:CSharpValue>
+                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_140">recogPath</mca:CSharpValue>
+                  </InArgument>
+                  <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                    <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_141">recogInfo</mca:CSharpValue>
+                  </InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+            </Sequence>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <ui:ForEach.Values>
+        <InArgument x:TypeArguments="sc:IEnumerable">
+          <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_142">tmpPartialGroup</mca:CSharpValue>
+        </InArgument>
+      </ui:ForEach.Values>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="//转换&#xA;sList = new List&lt;UpdateExcelInfo&gt;();&#xA;//专票&#xA;foreach(var row in sGroup){&#xA;&#x9;var sum = row.Select(r=&gt;{&#xA;&#x9;&#x9;var wv = 0m;&#xA;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out wv);&#xA;&#x9;&#x9;return wv;&#xA;&#x9;}).Sum();&#xA;&#x9;sList.Add(new UpdateExcelInfo{&#xA;&#x9;&#x9;PO = row.Key,&#xA;&#x9;&#x9;ExcelAmount = sum,&#xA;&#x9;&#x9;ExcelCompany = row.Max(r=&gt;r[&quot;公司名称&quot;].ToString()),&#xA;&#x9;&#x9;SheetName = &quot;专票&quot;&#xA;&#x9;});&#xA;}&#xA;//普票&#xA;foreach(var row in gGroup){&#xA;&#x9;var sum = row.Select(r=&gt;{&#xA;&#x9;&#x9;var wv = 0m;&#xA;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out wv);&#xA;&#x9;&#x9;return wv;&#xA;&#x9;}).Sum();&#xA;&#x9;sList.Add(new UpdateExcelInfo{&#xA;&#x9;&#x9;PO = row.Key,&#xA;&#x9;&#x9;ExcelAmount = sum,&#xA;&#x9;&#x9;ExcelCompany = row.Max(r=&gt;r[&quot;公司名称&quot;].ToString()),&#xA;&#x9;&#x9;SheetName = &quot;普票&quot;&#xA;&#x9;});&#xA;}&#xA;//形式发票&#xA;foreach(var row in pGroup){&#xA;&#x9;var sum = row.Select(r=&gt;{&#xA;&#x9;&#x9;var wv = 0m;&#xA;&#x9;&#x9;decimal.TryParse(r[&quot;未到款金额&quot;].ToString(),out wv);&#xA;&#x9;&#x9;return wv;&#xA;&#x9;}).Sum();&#xA;&#x9;sList.Add(new UpdateExcelInfo{&#xA;&#x9;&#x9;PO = row.Key,&#xA;&#x9;&#x9;ExcelAmount = sum,&#xA;&#x9;&#x9;ExcelCompany = row.Max(r=&gt;r[&quot;公司名称&quot;].ToString()),&#xA;&#x9;&#x9;SheetName = &quot;形式发票&quot;&#xA;&#x9;});&#xA;}" DisplayName="将分组数据转换成列表" sap:VirtualizedContainerService.HintSize="814,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
+      <ui:InvokeCode.Arguments>
+        <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" x:Key="sGroup">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">sGroup</mca:CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" x:Key="gGroup">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">gGroup</mca:CSharpValue>
+        </InArgument>
+        <InArgument x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" x:Key="pGroup">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(sl:IGrouping(x:String, sd:DataRow))" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">pGroup</mca:CSharpValue>
+        </InArgument>
+        <OutArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)" x:Key="sList">
+          <mca:CSharpReference x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">sList</mca:CSharpReference>
+        </OutArgument>
+      </ui:InvokeCode.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeCode>
+    <ui:ForEach x:TypeArguments="cp:MessageDetailInfo" CurrentIndex="{x:Null}" DisplayName="过滤邮件详情不同金额的数据" sap:VirtualizedContainerService.HintSize="814,383" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+      <ui:ForEach.Body>
+        <ActivityAction x:TypeArguments="cp:MessageDetailInfo">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="cp:MessageDetailInfo" Name="item" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="305,246" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="cp:UpdateExcelInfo" Name="sListItem" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="获取指定po的发票明细表信息" sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="cp:UpdateExcelInfo">
+                  <mca:CSharpReference x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">sListItem</mca:CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="cp:UpdateExcelInfo">
+                  <mca:CSharpValue x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">sList.First(r=&gt;r.PO == item.PO)</mca:CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <If sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_126">companys.Contains(item.CompanyName)</mca:CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <If DisplayName="金额是否匹配" sap:VirtualizedContainerService.HintSize="484,233" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If.Condition>
+                    <InArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_124">item.Amount == sListItem.ExcelAmount</mca:CSharpValue>
+                    </InArgument>
+                  </If.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence DisplayName="获取发票明细表中的详情" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="scg:IEnumerable(sd:DataRow)" Name="tmpPORows" />
+                        <Variable x:TypeArguments="x:String" Name="tmpTableName" />
+                        <Variable x:TypeArguments="scg:List(cp:UpdateExcelInfo)" Name="updateExcelInfos" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <If DisplayName="初始化明细列表" sap:VirtualizedContainerService.HintSize="484,245" sap2010:WorkflowViewState.IdRef="If_4">
+                        <If.Condition>
+                          <InArgument x:TypeArguments="x:Boolean">
+                            <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">item.UpdateExcelInfos == null</mca:CSharpValue>
+                          </InArgument>
+                        </If.Condition>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                                <mca:CSharpReference x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">item.UpdateExcelInfos</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                                <mca:CSharpValue x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">new List&lt;UpdateExcelInfo&gt;()</mca:CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </If.Then>
+                      </If>
+                      <Assign sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                            <mca:CSharpReference x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">updateExcelInfos</mca:CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">new List&lt;UpdateExcelInfo&gt;();</mca:CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:InvokeCode ContinueOnError="{x:Null}" Code="updateExcelInfos = new List&lt;UpdateExcelInfo&gt;();&#xA;var discount = item.DiscountAmount;&#xA;switch(sListItem.SheetName){&#xA;&#x9;case &quot;专票&quot;:&#xA;&#x9;&#x9;for(int i=0;i&lt;specificDt.Rows.Count;i++){&#xA;&#x9;&#x9;&#x9;if(specificDt.Rows[i][&quot;PO号（或财务编号）&quot;].ToString() == sListItem.PO){&#xA;&#x9;&#x9;&#x9;&#x9;var tmpInfo = new UpdateExcelInfo{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;PO = sListItem.PO,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;InvoiceNo = specificDt.Rows[i][&quot;发票号码&quot;].ToString(),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelAmount = string.IsNullOrWhiteSpace(specificDt.Rows[i][&quot;未到款金额&quot;].ToString()) ? 0m : Convert.ToDecimal(specificDt.Rows[i][&quot;未到款金额&quot;].ToString()),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelDiscount = string.IsNullOrWhiteSpace(specificDt.Rows[i][&quot;折扣金额&quot;].ToString()) ? 0m : Convert.ToDecimal(specificDt.Rows[i][&quot;折扣金额&quot;].ToString()),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RowIndex = i,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SheetName = sListItem.SheetName,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelCompany = sListItem.ExcelCompany,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelDaoKuanDate = item.DaoKuanDate.ToString(&quot;yyyy-MM-dd&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;};&#xA;&#x9;&#x9;&#x9;&#x9;//处理折扣金额&#xA;&#x9;&#x9;&#x9;&#x9;if(discount&gt;0){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;//计算该条明细还可以添加多少折扣&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if(discount&lt;=tmpInfo.ExcelAmount){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tmpInfo.ExcelDiscount = tmpInfo.ExcelDiscount + discount;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tmpInfo.ExcelAmount = tmpInfo.ExcelAmount - discount;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;discount = 0m;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;else{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tmpInfo.ExcelDiscount = tmpInfo.ExcelDiscount + tmpInfo.ExcelAmount;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;discount = discount - tmpInfo.ExcelAmount;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;tmpInfo.ExcelAmount  = 0m;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;&#x9;updateExcelInfos.Add(tmpInfo);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;break;&#xA;&#x9;case &quot;普票&quot;:&#xA;&#x9;&#x9;for(int i=0;i&lt;genericDt.Rows.Count;i++){&#xA;&#x9;&#x9;&#x9;if(genericDt.Rows[i][&quot;PO号（或财务编号）&quot;].ToString() == sListItem.PO){&#xA;&#x9;&#x9;&#x9;&#x9;var tmpInfo = new UpdateExcelInfo{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;PO = sListItem.PO,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;InvoiceNo = genericDt.Rows[i][&quot;发票号码&quot;].ToString(),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelAmount = string.IsNullOrWhiteSpace(genericDt.Rows[i][&quot;未到款金额&quot;].ToString()) ? 0m : Convert.ToDecimal(genericDt.Rows[i][&quot;未到款金额&quot;].ToString()),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelDiscount = 0m,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RowIndex = i,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SheetName = sListItem.SheetName,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelCompany = sListItem.ExcelCompany,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelDaoKuanDate = item.DaoKuanDate.ToString(&quot;yyyy-MM-dd&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;};&#xA;&#x9;&#x9;&#x9;&#x9;updateExcelInfos.Add(tmpInfo);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;break;&#xA;&#x9;case &quot;形式发票&quot;:&#xA;&#x9;&#x9;for(int i=0;i&lt;proformaDt.Rows.Count;i++){&#xA;&#x9;&#x9;&#x9;if(proformaDt.Rows[i][&quot;PO号（或财务编号）&quot;].ToString() == sListItem.PO){&#xA;&#x9;&#x9;&#x9;&#x9;var tmpInfo = new UpdateExcelInfo{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;PO = sListItem.PO,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;InvoiceNo = proformaDt.Rows[i][&quot;发票号码&quot;].ToString(),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelAmount = string.IsNullOrWhiteSpace(proformaDt.Rows[i][&quot;未到款金额&quot;].ToString()) ? 0m : Convert.ToDecimal(proformaDt.Rows[i][&quot;未到款金额&quot;].ToString()),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelDiscount = 0m,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;RowIndex = i,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;SheetName = sListItem.SheetName,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelCompany = sListItem.ExcelCompany,&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;ExcelDaoKuanDate = item.DaoKuanDate.ToString(&quot;yyyy-MM-dd&quot;)&#xA;&#x9;&#x9;&#x9;&#x9;};&#xA;&#x9;&#x9;&#x9;&#x9;updateExcelInfos.Add(tmpInfo);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;break;&#xA;}" DisplayName="获取发票明细表中的数据并返回行号" sap:VirtualizedContainerService.HintSize="484,164" sap2010:WorkflowViewState.IdRef="InvokeCode_2" Language="CSharp">
+                        <ui:InvokeCode.Arguments>
+                          <InArgument x:TypeArguments="cp:UpdateExcelInfo" x:Key="sListItem">
+                            <mca:CSharpValue x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">sListItem</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="specificDt">
+                            <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_45">specificDt</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="genericDt">
+                            <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">genericDt</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="proformaDt">
+                            <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_47">proformaDt</mca:CSharpValue>
+                          </InArgument>
+                          <OutArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)" x:Key="updateExcelInfos">
+                            <mca:CSharpReference x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">updateExcelInfos</mca:CSharpReference>
+                          </OutArgument>
+                          <InArgument x:TypeArguments="cp:MessageDetailInfo" x:Key="item">
+                            <mca:CSharpValue x:TypeArguments="cp:MessageDetailInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">item</mca:CSharpValue>
+                          </InArgument>
+                        </ui:InvokeCode.Arguments>
+                      </ui:InvokeCode>
+                      <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="484,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="AddRange">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_52">item.UpdateExcelInfos</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="scg:List(cp:UpdateExcelInfo)">
+                          <mca:CSharpValue x:TypeArguments="scg:List(cp:UpdateExcelInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_51">updateExcelInfos</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence DisplayName="记录日志-金额不匹配" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="cp:RecogInfo" Name="recogInfo" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="cp:RecogInfo">
+                            <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">recogInfo</mca:CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="cp:RecogInfo">
+                            <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_127" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount,
+	InvoiceNo = item.InvoiceNo,
+	PO = item.PO,
+	BankName = item.BankName,
+	Description = string.Format("在OA到款更新中 {0}公司的项目PO号{1} 金额与发票明细表金额不匹配 未更新OA到款 请核查。",item.CompanyName,item.PO),
+	ExecDate = DateTime.Now,
+	Status = 1,
+	Result = 3
+}</mca:CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">recogForCustomer</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">recogPath</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                            <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">recogInfo</mca:CSharpValue>
+                          </InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                      </ui:InvokeWorkflowFile>
+                    </Sequence>
+                  </If.Else>
+                </If>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="没有邮件详情的获取行号" sap:VirtualizedContainerService.HintSize="376,256" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeCode ContinueOnError="{x:Null}" Code="//记录已经处理过的行 用于处理重复发票号的行号获取&#xA;var flag = new List&lt;int&gt;();&#xA;foreach(var exItem in item.UpdateExcelInfos){&#xA;&#x9;switch(sListItem.SheetName){&#xA;&#x9;&#x9;case &quot;专票&quot;:&#xA;&#x9;&#x9;&#x9;for(int i=0;i&lt;specificDt.Rows.Count;i++){&#xA;&#x9;&#x9;&#x9;&#x9;if(specificDt.Rows[i][&quot;发票号码&quot;].ToString() == exItem.InvoiceNo &amp;&amp; !flag.Contains(i)){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;flag.Add(i);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;exItem.RowIndex = i;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;case &quot;普票&quot;:&#xA;&#x9;&#x9;&#x9;for(int i=0;i&lt;genericDt.Rows.Count;i++){&#xA;&#x9;&#x9;&#x9;&#x9;if(genericDt.Rows[i][&quot;发票号码&quot;].ToString() == exItem.InvoiceNo &amp;&amp; !flag.Contains(i)){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;flag.Add(i);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;exItem.RowIndex = i;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;case &quot;形式发票&quot;:&#xA;&#x9;&#x9;&#x9;for(int i=0;i&lt;proformaDt.Rows.Count;i++){&#xA;&#x9;&#x9;&#x9;&#x9;if(proformaDt.Rows[i][&quot;发票号码&quot;].ToString() == exItem.InvoiceNo &amp;&amp; !flag.Contains(i)){&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;flag.Add(i);&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;exItem.RowIndex = i;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;break;&#xA;&#x9;}&#xA;}" DisplayName="获取发票明细表中的数据并返回行号" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_3" Language="CSharp">
+                    <ui:InvokeCode.Arguments>
+                      <InArgument x:TypeArguments="cp:UpdateExcelInfo" x:Key="sListItem">
+                        <mca:CSharpValue x:TypeArguments="cp:UpdateExcelInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">sListItem</mca:CSharpValue>
+                      </InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="specificDt">
+                        <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">specificDt</mca:CSharpValue>
+                      </InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="genericDt">
+                        <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">genericDt</mca:CSharpValue>
+                      </InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" x:Key="proformaDt">
+                        <mca:CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">proformaDt</mca:CSharpValue>
+                      </InArgument>
+                      <InOutArgument x:TypeArguments="cp:MessageDetailInfo" x:Key="item">
+                        <mca:CSharpReference x:TypeArguments="cp:MessageDetailInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">item</mca:CSharpReference>
+                      </InOutArgument>
+                    </ui:InvokeCode.Arguments>
+                  </ui:InvokeCode>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEach.Body>
+      <ui:ForEach.Values>
+        <InArgument x:TypeArguments="sc:IEnumerable">
+          <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">tmpDetails</mca:CSharpValue>
+        </InArgument>
+      </ui:ForEach.Values>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEach>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="更新excel" sap:VirtualizedContainerService.HintSize="814,1469" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="780,1360" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEach x:TypeArguments="cp:MessageDetailInfo" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="738,1268" sap2010:WorkflowViewState.IdRef="ForEach`1_6">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="cp:MessageDetailInfo">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="cp:MessageDetailInfo" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="702,1133" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If sap:VirtualizedContainerService.HintSize="660,1041" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If.Condition>
+                        <InArgument x:TypeArguments="x:Boolean">
+                          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_125">item.UpdateExcelInfos!=null&amp;&amp;item.UpdateExcelInfos.Any()</mca:CSharpValue>
+                        </InArgument>
+                      </If.Condition>
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="624,859" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:ForEach x:TypeArguments="cp:UpdateExcelInfo" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="582,418" sap2010:WorkflowViewState.IdRef="ForEach`1_7">
+                            <ui:ForEach.Body>
+                              <ActivityAction x:TypeArguments="cp:UpdateExcelInfo">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="cp:UpdateExcelInfo" Name="exItem" />
+                                </ActivityAction.Argument>
+                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="546,283" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Switch x:TypeArguments="x:String" DisplayName="Switch" sap:VirtualizedContainerService.HintSize="504,191" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                                    <Switch.Expression>
+                                      <InArgument x:TypeArguments="x:String">
+                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_75">exItem.SheetName</mca:CSharpValue>
+                                      </InArgument>
+                                    </Switch.Expression>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Sequence x:Key="专票" sap:VirtualizedContainerService.HintSize="305,70" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:String" Name="tmpCellSurfix" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">
+                                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_34">tmpCellSurfix</mca:CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">(exItem.RowIndex + 2).ToString()</mca:CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:ExcelWriteCell DisplayName="更新到款银行" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">"I"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_76">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_114">item.BankName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新到款日期" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">"J"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">exItem.ExcelDaoKuanDate</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新到款金额" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89">"K"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_86">exItem.ExcelAmount.ToString("f2")</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新折扣金额" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">"L"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_87">exItem.ExcelDiscount.ToString("f2")</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                    </Sequence>
+                                    <Sequence x:Key="普票" sap:VirtualizedContainerService.HintSize="305,70" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:String" Name="tmpCellSurfix" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">
+                                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">tmpCellSurfix</mca:CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91">(exItem.RowIndex + 2).ToString()</mca:CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:ExcelWriteCell DisplayName="更新到款银行" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">"I"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_115">item.BankName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新到款日期" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_95">"J"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_97">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">exItem.ExcelDaoKuanDate</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新到款金额" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_7">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_98">"K"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_100">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99">exItem.ExcelAmount.ToString("f2")</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:ExcelWriteCell>
+                                    </Sequence>
+                                    <Sequence x:Key="形式发票" sap:VirtualizedContainerService.HintSize="376,70" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                      <Sequence.Variables>
+                                        <Variable x:TypeArguments="x:String" Name="tmpCellSurfix" />
+                                      </Sequence.Variables>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">
+                                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_36">tmpCellSurfix</mca:CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_104">(exItem.RowIndex + 2).ToString()</mca:CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <ui:ExcelWriteCell DisplayName="更新到款银行" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_9">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_105">"F"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_107">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_116">item.BankName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新到款日期" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_10">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_108">"G"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_110">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_109">exItem.ExcelDaoKuanDate</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                      </ui:ExcelWriteCell>
+                                      <ui:ExcelWriteCell DisplayName="更新到款金额" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_11">
+                                        <ui:ExcelWriteCell.Cell>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">"H"+tmpCellSurfix</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Cell>
+                                        <ui:ExcelWriteCell.SheetName>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_113">exItem.SheetName</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.SheetName>
+                                        <ui:ExcelWriteCell.Text>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_112">exItem.ExcelAmount.ToString("f2")</mca:CSharpValue>
+                                          </InArgument>
+                                        </ui:ExcelWriteCell.Text>
+                                      </ui:ExcelWriteCell>
+                                    </Sequence>
+                                  </Switch>
+                                </Sequence>
+                              </ActivityAction>
+                            </ui:ForEach.Body>
+                            <ui:ForEach.Values>
+                              <InArgument x:TypeArguments="sc:IEnumerable">
+                                <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">item.UpdateExcelInfos</mca:CSharpValue>
+                              </InArgument>
+                            </ui:ForEach.Values>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:ForEach>
+                          <Sequence DisplayName="记录日志-更新完成" sap:VirtualizedContainerService.HintSize="582,309" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="cp:RecogInfo" Name="recogInfo" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="Assign_6">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="cp:RecogInfo">
+                                  <mca:CSharpReference x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">recogInfo</mca:CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="cp:RecogInfo">
+                                  <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_128" xml:space="preserve">new RecogInfo(){
+	MessageId = item.MessageId,
+	MessageBody = item.MessageBody,
+	CompanyName = item.CompanyName,
+	DaoKuanDate = item.DaoKuanDate,
+	DaoKuanAmount = item.Amount,
+	InvoiceNo = item.InvoiceNo,
+	PO = item.PO,
+	BankName = item.BankName,
+	Description = string.Format("在OA到款更新中 {0}公司的项目PO号{1} 已更新发票明细表 请核查。",item.CompanyName,item.PO),
+	ExecDate = DateTime.Now,
+	Status = 1,
+	Result = 1
+}</mca:CSharpValue>
+                                </InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="OA\\WriteLog.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">recogForCustomer</mca:CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_72">recogPath</mca:CSharpValue>
+                                </InArgument>
+                                <InArgument x:TypeArguments="cp:RecogInfo" x:Key="recogInfo">
+                                  <mca:CSharpValue x:TypeArguments="cp:RecogInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">recogInfo</mca:CSharpValue>
+                                </InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+              <ui:ForEach.Values>
+                <InArgument x:TypeArguments="sc:IEnumerable">
+                  <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">tmpDetails</mca:CSharpValue>
+                </InArgument>
+              </ui:ForEach.Values>
+            </ui:ForEach>
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:ExcelApplicationScope.WorkbookPath>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">invoiceDetailPath</mca:CSharpValue>
+        </InArgument>
+      </ui:ExcelApplicationScope.WorkbookPath>
+    </ui:ExcelApplicationScope>
+    <Assign sap:VirtualizedContainerService.HintSize="814,61" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+          <mca:CSharpReference x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">detailInfos</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="scg:List(cp:MessageDetailInfo)">
+          <mca:CSharpValue x:TypeArguments="scg:List(cp:MessageDetailInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_117">tmpDetails.ToList()</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+  </Sequence>
+</Activity>
