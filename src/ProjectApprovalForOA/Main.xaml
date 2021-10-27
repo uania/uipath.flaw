@@ -1,0 +1,1261 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1043,1434" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:cp="clr-namespace:CustomerClass.ProjectApproval;assembly=CustomerClass" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>CustomerClass.ProjectApproval</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>CustomerClass</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart sap:VirtualizedContainerService.HintSize="644,1369" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="baseFolder">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">C:\ProgramData\UiPath\UiPathData\ProjectApproval</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="recogForCustomerCSVPath" />
+      <Variable x:TypeArguments="x:String" Name="recogPath" />
+      <Variable x:TypeArguments="x:String" Name="readDingDingrecogPath" />
+      <Variable x:TypeArguments="x:String" Name="dependencyRecogPath" />
+      <Variable x:TypeArguments="s:DateTime" Name="startDate" />
+      <Variable x:TypeArguments="s:DateTime" Name="endDate" />
+      <Variable x:TypeArguments="x:String" Name="errorLogPath" />
+      <Variable x:TypeArguments="x:String" Name="ddAccount" />
+      <Variable x:TypeArguments="x:String" Name="ddPassword" />
+      <Variable x:TypeArguments="x:String" Name="attachmentFolder" />
+      <Variable x:TypeArguments="x:String" Name="outProjectInfoFileFolder" />
+      <Variable x:TypeArguments="scg:List(cp:ProjectInfo)" Name="projectInfos" />
+      <Variable x:TypeArguments="scg:List(cp:RecogForProject)" Name="processedInfos" />
+      <Variable x:TypeArguments="x:String" Name="url" />
+      <Variable x:TypeArguments="x:String" Name="oaAccount" />
+      <Variable x:TypeArguments="x:String" Name="oaPassword" />
+      <Variable x:TypeArguments="ui:Browser" Name="browser" />
+      <Variable x:TypeArguments="scg:List(cp:ProjectInfo)" Name="companys" />
+      <Variable x:TypeArguments="scg:List(cp:ProjectInfo)" Name="departments" />
+      <Variable x:TypeArguments="scg:List(cp:ProjectInfo)" Name="customers" />
+      <Variable x:TypeArguments="scg:List(cp:ProjectInfo)" Name="needAgainSetups" />
+      <Variable x:TypeArguments="x:String" Name="receiver">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">RPA-Finance@anruidigital.com</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="projectFilePath" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+        <x:Double x:Key="Height">1333.408</x:Double>
+        <x:Double x:Key="Width">610</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID9</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID9">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
+          <av:Size x:Key="ShapeSize">200,53</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">300,180.5 300,230.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch DisplayName="TryCatch-用户输入" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+        <TryCatch.Try>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="用户输入" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\CustomerInput.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <OutArgument x:TypeArguments="x:String" x:Key="oaPassword">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">oaPassword</mca:CSharpReference>
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="oaAccount">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">oaAccount</mca:CSharpReference>
+              </OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="projectFilePath">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">projectFilePath</mca:CSharpReference>
+              </OutArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="376,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_1" UseDefaultEncoding="False">
+                  <ui:AppendLine.FileName>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">errorLogPath</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.FileName>
+                  <ui:AppendLine.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">string.Format("======在执行用户输入模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.Text>
+                </ui:AppendLine>
+                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_2" UseDefaultEncoding="False">
+                  <ui:AppendLine.FileName>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">errorLogPath</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.FileName>
+                  <ui:AppendLine.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">exception.Message</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.Text>
+                </ui:AppendLine>
+                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_3" UseDefaultEncoding="False">
+                  <ui:AppendLine.FileName>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">errorLogPath</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.FileName>
+                  <ui:AppendLine.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">exception.StackTrace.ToString()</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.Text>
+                </ui:AppendLine>
+                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_4" Text="======   ======" UseDefaultEncoding="False">
+                  <ui:AppendLine.FileName>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">errorLogPath</mca:CSharpValue>
+                    </InArgument>
+                  </ui:AppendLine.FileName>
+                </ui:AppendLine>
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+      </TryCatch>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID0">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,230.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,53</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">300,283.5 300,333.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <TryCatch DisplayName="TryCatch-创建基础文件夹和文件" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+            <TryCatch.Try>
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="创建基础文件夹和文件" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\CreateFile.xaml">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="baseFolder">
+                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">baseFolder</mca:CSharpValue>
+                  </InArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="recogForCustomerCSVPath">
+                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">recogForCustomerCSVPath</mca:CSharpReference>
+                  </OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="recogPath">
+                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">recogPath</mca:CSharpReference>
+                  </OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="readDingDingrecogPath">
+                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">readDingDingrecogPath</mca:CSharpReference>
+                  </OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="dependencyRecogPath">
+                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">dependencyRecogPath</mca:CSharpReference>
+                  </OutArgument>
+                  <OutArgument x:TypeArguments="x:String" x:Key="errorLogPath">
+                    <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">errorLogPath</mca:CSharpReference>
+                  </OutArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:InvokeWorkflowFile>
+            </TryCatch.Try>
+            <TryCatch.Catches>
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ActivityAction x:TypeArguments="s:Exception">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="376,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_5" UseDefaultEncoding="False">
+                      <ui:AppendLine.FileName>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">errorLogPath</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.FileName>
+                      <ui:AppendLine.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">string.Format("======在执行创建基础文件模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.Text>
+                    </ui:AppendLine>
+                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_6" UseDefaultEncoding="False">
+                      <ui:AppendLine.FileName>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">errorLogPath</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.FileName>
+                      <ui:AppendLine.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">exception.Message</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.Text>
+                    </ui:AppendLine>
+                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_7" UseDefaultEncoding="False">
+                      <ui:AppendLine.FileName>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">errorLogPath</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.FileName>
+                      <ui:AppendLine.Text>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">exception.StackTrace.ToString()</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.Text>
+                    </ui:AppendLine>
+                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_8" Text="======   ======" UseDefaultEncoding="False">
+                      <ui:AppendLine.FileName>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">errorLogPath</mca:CSharpValue>
+                        </InArgument>
+                      </ui:AppendLine.FileName>
+                    </ui:AppendLine>
+                  </Sequence>
+                </ActivityAction>
+              </Catch>
+            </TryCatch.Catches>
+          </TryCatch>
+          <FlowStep.Next>
+            <FlowStep x:Name="__ReferenceID1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">200,333.5</av:Point>
+                  <av:Size x:Key="ShapeSize">200,53</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">300,386.5 300,436.5</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <TryCatch DisplayName="TryCatch-读取已处理的项目号" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                <TryCatch.Try>
+                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="读取已处理的项目号" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Excel\\ReadRecog.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">recogPath</mca:CSharpValue>
+                      </InArgument>
+                      <OutArgument x:TypeArguments="scg:List(cp:RecogForProject)" x:Key="recogInfos">
+                        <mca:CSharpReference x:TypeArguments="scg:List(cp:RecogForProject)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">processedInfos</mca:CSharpReference>
+                      </OutArgument>
+                      <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="projectInfos">
+                        <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">projectInfos</mca:CSharpReference>
+                      </OutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="projectInfoPath">
+                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_123">projectFilePath</mca:CSharpValue>
+                      </InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:InvokeWorkflowFile>
+                </TryCatch.Try>
+                <TryCatch.Catches>
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ActivityAction x:TypeArguments="s:Exception">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="376,673" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_13" UseDefaultEncoding="False">
+                          <ui:AppendLine.FileName>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">errorLogPath</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.FileName>
+                          <ui:AppendLine.Text>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">string.Format("======在执行读取已处理的项目号模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.Text>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AppendLine>
+                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_14" UseDefaultEncoding="False">
+                          <ui:AppendLine.FileName>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">errorLogPath</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.FileName>
+                          <ui:AppendLine.Text>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">exception.Message</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.Text>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AppendLine>
+                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_15" UseDefaultEncoding="False">
+                          <ui:AppendLine.FileName>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">errorLogPath</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.FileName>
+                          <ui:AppendLine.Text>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">exception.StackTrace.ToString()</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.Text>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AppendLine>
+                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_16" Text="======   ======" UseDefaultEncoding="False">
+                          <ui:AppendLine.FileName>
+                            <InArgument x:TypeArguments="x:String">
+                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">errorLogPath</mca:CSharpValue>
+                            </InArgument>
+                          </ui:AppendLine.FileName>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:AppendLine>
+                      </Sequence>
+                    </ActivityAction>
+                  </Catch>
+                </TryCatch.Catches>
+              </TryCatch>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">200,436.5</av:Point>
+                      <av:Size x:Key="ShapeSize">200,53</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">300,489.5 300,539.5</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch DisplayName="TryCatch-打开OA系统" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_6">
+                    <TryCatch.Try>
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="打开OA系统" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\EntryOA.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="url">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59">url</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="oaAccount">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">oaAccount</mca:CSharpValue>
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="oaPassword">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">oaPassword</mca:CSharpValue>
+                          </InArgument>
+                          <OutArgument x:TypeArguments="ui:Browser" x:Key="browser">
+                            <mca:CSharpReference x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">browser</mca:CSharpReference>
+                          </OutArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:InvokeWorkflowFile>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="242,70" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_21" UseDefaultEncoding="False">
+                              <ui:AppendLine.FileName>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">errorLogPath</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.FileName>
+                              <ui:AppendLine.Text>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_51">string.Format("======在执行打开OA模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.Text>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendLine>
+                            <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_22" UseDefaultEncoding="False">
+                              <ui:AppendLine.FileName>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_52">errorLogPath</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.FileName>
+                              <ui:AppendLine.Text>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">exception.Message</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.Text>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendLine>
+                            <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_23" UseDefaultEncoding="False">
+                              <ui:AppendLine.FileName>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">errorLogPath</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.FileName>
+                              <ui:AppendLine.Text>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">exception.StackTrace.ToString()</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.Text>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendLine>
+                            <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_24" Text="======   ======" UseDefaultEncoding="False">
+                              <ui:AppendLine.FileName>
+                                <InArgument x:TypeArguments="x:String">
+                                  <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">errorLogPath</mca:CSharpValue>
+                                </InArgument>
+                              </ui:AppendLine.FileName>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AppendLine>
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID3">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <av:Point x:Key="ShapeLocation">200,539.5</av:Point>
+                          <av:Size x:Key="ShapeSize">200,53</av:Size>
+                          <av:PointCollection x:Key="ConnectorLocation">300,592.5 300,642.5</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <TryCatch DisplayName="TryCatch-创建合同" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_7">
+                        <TryCatch.Try>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="创建合同" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\ExecSetup.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="projectInfos">
+                                <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">projectInfos</mca:CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">recogPath</mca:CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="errorLogPath">
+                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">errorLogPath</mca:CSharpValue>
+                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="recogForCustomerCSVPath">
+                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">recogForCustomerCSVPath</mca:CSharpValue>
+                              </InArgument>
+                              <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="companys">
+                                <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">companys</mca:CSharpReference>
+                              </OutArgument>
+                              <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="departments">
+                                <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">departments</mca:CSharpReference>
+                              </OutArgument>
+                              <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="customers">
+                                <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_15">customers</mca:CSharpReference>
+                              </OutArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </ui:InvokeWorkflowFile>
+                        </TryCatch.Try>
+                        <TryCatch.Catches>
+                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_7">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ActivityAction x:TypeArguments="s:Exception">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="376,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,136" sap2010:WorkflowViewState.IdRef="AppendLine_25" UseDefaultEncoding="False">
+                                  <ui:AppendLine.FileName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">errorLogPath</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.FileName>
+                                  <ui:AppendLine.Text>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">string.Format("======在执行创建合同模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendLine>
+                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="AppendLine_26" UseDefaultEncoding="False">
+                                  <ui:AppendLine.FileName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">errorLogPath</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.FileName>
+                                  <ui:AppendLine.Text>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">exception.Message</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendLine>
+                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="AppendLine_27" UseDefaultEncoding="False">
+                                  <ui:AppendLine.FileName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">errorLogPath</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.FileName>
+                                  <ui:AppendLine.Text>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">exception.StackTrace.ToString()</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.Text>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendLine>
+                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_28" Text="======   ======" UseDefaultEncoding="False">
+                                  <ui:AppendLine.FileName>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">errorLogPath</mca:CSharpValue>
+                                    </InArgument>
+                                  </ui:AppendLine.FileName>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:AppendLine>
+                              </Sequence>
+                            </ActivityAction>
+                          </Catch>
+                        </TryCatch.Catches>
+                      </TryCatch>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID4">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">200,642.5</av:Point>
+                              <av:Size x:Key="ShapeSize">200,53</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">300,695.5 300,745.5</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch DisplayName="TryCatch-创建缺少的客户" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                            <TryCatch.Try>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="创建缺少的客户" sap:VirtualizedContainerService.HintSize="342,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\CreateDependencyForSetup.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="ui:Browser" x:Key="browser">
+                                    <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77">browser</mca:CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="errorLogPath">
+                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_76">errorLogPath</mca:CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="companys">
+                                    <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_75">companys</mca:CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="departments">
+                                    <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_74">departments</mca:CSharpValue>
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="customers">
+                                    <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">customers</mca:CSharpValue>
+                                  </InArgument>
+                                  <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="needAgainSetups">
+                                    <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">needAgainSetups</mca:CSharpReference>
+                                  </OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="dependencyRecogPath">
+                                    <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_72">dependencyRecogPath</mca:CSharpValue>
+                                  </InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_8">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="s:Exception">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                  </ActivityAction.Argument>
+                                  <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="242,70" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_29" UseDefaultEncoding="False">
+                                      <ui:AppendLine.FileName>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">errorLogPath</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.FileName>
+                                      <ui:AppendLine.Text>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">string.Format("======在执行创建缺少的公司、部门、客户模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.Text>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:AppendLine>
+                                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_30" UseDefaultEncoding="False">
+                                      <ui:AppendLine.FileName>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">errorLogPath</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.FileName>
+                                      <ui:AppendLine.Text>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">exception.Message</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.Text>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:AppendLine>
+                                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_31" UseDefaultEncoding="False">
+                                      <ui:AppendLine.FileName>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_82">errorLogPath</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.FileName>
+                                      <ui:AppendLine.Text>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">exception.StackTrace.ToString()</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.Text>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:AppendLine>
+                                    <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_32" Text="======   ======" UseDefaultEncoding="False">
+                                      <ui:AppendLine.FileName>
+                                        <InArgument x:TypeArguments="x:String">
+                                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_84">errorLogPath</mca:CSharpValue>
+                                        </InArgument>
+                                      </ui:AppendLine.FileName>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:AppendLine>
+                                  </Sequence>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">200,745.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,53</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">300,798.5 300,848.5</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <TryCatch DisplayName="TryCatch-创建合同again" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_9">
+                                <TryCatch.Try>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="创建合同" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\ExecSetup.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="projectInfos">
+                                        <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_132">needAgainSetups</mca:CSharpValue>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_87">recogPath</mca:CSharpValue>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="errorLogPath">
+                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_88">errorLogPath</mca:CSharpValue>
+                                      </InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="recogForCustomerCSVPath">
+                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89">recogForCustomerCSVPath</mca:CSharpValue>
+                                      </InArgument>
+                                      <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="companys">
+                                        <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">companys</mca:CSharpReference>
+                                      </OutArgument>
+                                      <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="departments">
+                                        <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">departments</mca:CSharpReference>
+                                      </OutArgument>
+                                      <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)" x:Key="customers">
+                                        <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">customers</mca:CSharpReference>
+                                      </OutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:InvokeWorkflowFile>
+                                </TryCatch.Try>
+                                <TryCatch.Catches>
+                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ActivityAction x:TypeArguments="s:Exception">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                      </ActivityAction.Argument>
+                                      <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="242,70" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_33" UseDefaultEncoding="False">
+                                          <ui:AppendLine.FileName>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">errorLogPath</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.FileName>
+                                          <ui:AppendLine.Text>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_97">string.Format("======在执行创建合同again模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.Text>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:AppendLine>
+                                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_34" UseDefaultEncoding="False">
+                                          <ui:AppendLine.FileName>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">errorLogPath</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.FileName>
+                                          <ui:AppendLine.Text>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_93">exception.Message</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.Text>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:AppendLine>
+                                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_35" UseDefaultEncoding="False">
+                                          <ui:AppendLine.FileName>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">errorLogPath</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.FileName>
+                                          <ui:AppendLine.Text>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_95">exception.StackTrace.ToString()</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.Text>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:AppendLine>
+                                        <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_36" Text="======   ======" UseDefaultEncoding="False">
+                                          <ui:AppendLine.FileName>
+                                            <InArgument x:TypeArguments="x:String">
+                                              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">errorLogPath</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:AppendLine.FileName>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                        </ui:AppendLine>
+                                      </Sequence>
+                                    </ActivityAction>
+                                  </Catch>
+                                </TryCatch.Catches>
+                              </TryCatch>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID8">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">200,848.5</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,53</av:Size>
+                                      <av:PointCollection x:Key="ConnectorLocation">300,901.5 300,951.5</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If DisplayName="记录日志" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_2">
+                                    <If.Condition>
+                                      <InArgument x:TypeArguments="x:Boolean">
+                                        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_125">customers != null &amp;&amp; customers.Any()</mca:CSharpValue>
+                                      </InArgument>
+                                    </If.Condition>
+                                    <If.Then>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="496,665" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:ForEach x:TypeArguments="cp:ProjectInfo" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="454,573" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+                                          <ui:ForEach.Body>
+                                            <ActivityAction x:TypeArguments="cp:ProjectInfo">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="cp:ProjectInfo" Name="item" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="418,436" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Sequence DisplayName="写日志-已存在的po" sap:VirtualizedContainerService.HintSize="376,344" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                                  <Sequence.Variables>
+                                                    <Variable x:TypeArguments="cp:RecogForProject" Name="tmpRecogInfo" />
+                                                    <Variable x:TypeArguments="cp:RecogForProject" Name="historyRecorgInfo" />
+                                                  </Sequence.Variables>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:MultipleAssign DisplayName="构建日志信息" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                                                    <ui:MultipleAssign.AssignOperations>
+                                                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                                          <ui:AssignOperation.To>
+                                                            <OutArgument x:TypeArguments="cp:RecogForProject">
+                                                              <mca:CSharpReference x:TypeArguments="cp:RecogForProject" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">tmpRecogInfo</mca:CSharpReference>
+                                                            </OutArgument>
+                                                          </ui:AssignOperation.To>
+                                                          <ui:AssignOperation.Value>
+                                                            <InArgument x:TypeArguments="cp:RecogForProject">
+                                                              <mca:CSharpValue x:TypeArguments="cp:RecogForProject" sap2010:WorkflowViewState.IdRef="CSharpValue`1_131" xml:space="preserve">new RecogForProject(){
+	PONumber = item.PONumber,
+	CompanyName = item.CompanyName,
+	ContractDocsPath = item.ContractDocsPath,
+	ContractName = item.ContractName,
+	DepartName = item.DepartName,
+	DiscountsReminder = item.DiscountsReminder,
+	ExecDate = DateTime.Now,
+	ExpirationTime = item.ExpirationTime,
+	PaymentCycle = item.PaymentCycle,
+	PaymentType = item.PaymentType,
+	ReceiveTime = item.ReceiveTime,
+	Desc = "无法创建缺少的公司部门或者客户名称导致立项失败，请等待下次执行或手动创建并立项",
+	Status = 2
+}</mca:CSharpValue>
+                                                            </InArgument>
+                                                          </ui:AssignOperation.Value>
+                                                        </ui:AssignOperation>
+                                                      </scg:List>
+                                                    </ui:MultipleAssign.AssignOperations>
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                  </ui:MultipleAssign>
+                                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="写log" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Setup\\WriteLog.xaml">
+                                                    <ui:InvokeWorkflowFile.Arguments>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="recogForCustomer">
+                                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_128">recogForCustomerCSVPath</mca:CSharpValue>
+                                                      </InArgument>
+                                                      <InArgument x:TypeArguments="x:String" x:Key="recogPath">
+                                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_129">recogPath</mca:CSharpValue>
+                                                      </InArgument>
+                                                      <InArgument x:TypeArguments="cp:RecogForProject" x:Key="recogInfo">
+                                                        <mca:CSharpValue x:TypeArguments="cp:RecogForProject" sap2010:WorkflowViewState.IdRef="CSharpValue`1_130">tmpRecogInfo</mca:CSharpValue>
+                                                      </InArgument>
+                                                    </ui:InvokeWorkflowFile.Arguments>
+                                                  </ui:InvokeWorkflowFile>
+                                                </Sequence>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </ui:ForEach.Body>
+                                          <ui:ForEach.Values>
+                                            <InArgument x:TypeArguments="sc:IEnumerable">
+                                              <mca:CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_126">customers</mca:CSharpValue>
+                                            </InArgument>
+                                          </ui:ForEach.Values>
+                                        </ui:ForEach>
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </Sequence>
+                                    </If.Else>
+                                  </If>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID6">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">200,951.5</av:Point>
+                                          <av:Size x:Key="ShapeSize">200,53</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">300,1004.5 300,1054.5</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <TryCatch DisplayName="TryCatch-发送执行结果" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_11">
+                                        <TryCatch.Try>
+                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="发送执行结果" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Email\\SendEmail.xaml">
+                                            <ui:InvokeWorkflowFile.Arguments>
+                                              <InArgument x:TypeArguments="x:String" x:Key="toEmail">yifan.liu@anruidigital.com</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="subject">立项RPA执行结果通知</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="body">见附件</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="fromEmail">rpa@anruidigital.com</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="sender">ARC RPA</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="fromPwd">Yuk55268</InArgument>
+                                              <InArgument x:TypeArguments="scg:IEnumerable(x:String)" x:Key="files">
+                                                <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_124">new string[]{recogForCustomerCSVPath,dependencyRecogPath}</mca:CSharpValue>
+                                              </InArgument>
+                                            </ui:InvokeWorkflowFile.Arguments>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:InvokeWorkflowFile>
+                                        </TryCatch.Try>
+                                        <TryCatch.Catches>
+                                          <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_11">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ActivityAction x:TypeArguments="s:Exception">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="242,70" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_41" UseDefaultEncoding="False">
+                                                  <ui:AppendLine.FileName>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_113">errorLogPath</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.FileName>
+                                                  <ui:AppendLine.Text>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_120">string.Format("======在执行发送邮件模块时发生异常,时间：{0} ======",DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.Text>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:AppendLine>
+                                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_42" UseDefaultEncoding="False">
+                                                  <ui:AppendLine.FileName>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_115">errorLogPath</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.FileName>
+                                                  <ui:AppendLine.Text>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_116">exception.Message</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.Text>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:AppendLine>
+                                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_43" UseDefaultEncoding="False">
+                                                  <ui:AppendLine.FileName>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_117">errorLogPath</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.FileName>
+                                                  <ui:AppendLine.Text>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_118">exception.StackTrace.ToString()</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.Text>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:AppendLine>
+                                                <ui:AppendLine DisplayName="Append Line" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="AppendLine_44" Text="======   ======" UseDefaultEncoding="False">
+                                                  <ui:AppendLine.FileName>
+                                                    <InArgument x:TypeArguments="x:String">
+                                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_119">errorLogPath</mca:CSharpValue>
+                                                    </InArgument>
+                                                  </ui:AppendLine.FileName>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:AppendLine>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </Catch>
+                                        </TryCatch.Catches>
+                                      </TryCatch>
+                                      <FlowStep.Next>
+                                        <FlowStep x:Name="__ReferenceID7">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">200,1054.5</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:CloseTab DisplayName="关闭浏览器" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="CloseTab_1">
+                                            <ui:CloseTab.Browser>
+                                              <InArgument x:TypeArguments="ui:Browser">
+                                                <mca:CSharpValue x:TypeArguments="ui:Browser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_122">browser</mca:CSharpValue>
+                                              </InArgument>
+                                            </ui:CloseTab.Browser>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:CloseTab>
+                                        </FlowStep>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID0</x:Reference>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+  </Flowchart>
+</Activity>

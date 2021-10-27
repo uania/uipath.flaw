@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="EntryOA" this:EntryOA.url="https://poa.anruichina.com/" this:EntryOA.oaAccount="rpa@anruidigital.com" this:EntryOA.oaPassword="Yuk55268" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="EntryOA" this:EntryOA.url="https://poa.anruichina.com/" this:EntryOA.oaAccount="rpa@anruidigital.com" this:EntryOA.oaPassword="Yuk55268" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="url" Type="InArgument(x:String)" />
     <x:Property Name="oaAccount" Type="InArgument(x:String)" />
@@ -6,10 +6,10 @@
     <x:Property Name="browser" Type="OutArgument(ui:Browser)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1055,2583</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,2228</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <sco:Collection x:TypeArguments="x:String">
+    <scg:List x:TypeArguments="x:String" Capacity="28">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -38,10 +38,10 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>Microsoft.CSharp</AssemblyReference>
       <AssemblyReference>System</AssemblyReference>
       <AssemblyReference>System.Core</AssemblyReference>
@@ -76,21 +76,21 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EntryOA" sap:VirtualizedContainerService.HintSize="1065,2418" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EntryOA" sap:VirtualizedContainerService.HintSize="605,2063" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="1023,2326" sap2010:WorkflowViewState.IdRef="OpenBrowser_1">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="563,1971" sap2010:WorkflowViewState.IdRef="OpenBrowser_1">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="989,2223" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="529,1868" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="existsKeepLogin" />
               <Variable x:TypeArguments="x:Boolean" Name="existsStillSend" />
@@ -102,8 +102,8 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="947,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-            <ui:UiElementExists DisplayName="是否存在仍然发送的提示" sap:VirtualizedContainerService.HintSize="947,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="487,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+            <ui:UiElementExists DisplayName="是否存在仍然发送的提示" sap:VirtualizedContainerService.HintSize="487,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
               <ui:UiElementExists.Exists>
                 <OutArgument x:TypeArguments="x:Boolean">
                   <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">existsStillSend</mca:CSharpReference>
@@ -119,7 +119,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:UiElementExists>
-            <If DisplayName="仍然发送的提示处理" sap:VirtualizedContainerService.HintSize="947,1684" sap2010:WorkflowViewState.IdRef="If_4">
+            <If DisplayName="仍然发送的提示处理" sap:VirtualizedContainerService.HintSize="487,1329" sap2010:WorkflowViewState.IdRef="If_4">
               <If.Condition>
                 <InArgument x:TypeArguments="x:Boolean">
                   <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">existsStillSend</mca:CSharpValue>
@@ -132,13 +132,14 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="376,412" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3">
+                <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
-                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,145" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:ClickImage DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="2000" DisplayName="点击仍然发送" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="ClickImage_4" KeyModifiers="None" MouseButton="BTN_LEFT">
@@ -184,28 +185,35 @@
                   </ui:RetryScope.RetryInterval>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
               </If.Then>
               <If.Else>
-                <Sequence DisplayName="登录流程" sap:VirtualizedContainerService.HintSize="526,1523" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="登录流程" sap:VirtualizedContainerService.HintSize="242,1168" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Boolean" Name="isLogin" />
+                  </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:UiElementExists DisplayName="选择账号页面处理" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                  <ui:UiElementExists DisplayName="是否已经登录" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
                     <ui:UiElementExists.Exists>
                       <OutArgument x:TypeArguments="x:Boolean">
-                        <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">existsSelectAccount</mca:CSharpReference>
+                        <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">isLogin</mca:CSharpReference>
                       </OutArgument>
                     </ui:UiElementExists.Exists>
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9a27f8f-81cc-4697-b67a-d8c9ef261585" InformativeScreenshot="bfb0e34feba74a0eeeb5375ab82a7675" Selector="&lt;html app='chrome.exe' title='登录到您的帐户' /&gt;&lt;webctrl id='otherTileText' tag='DIV' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="49f862df-0054-49a4-b0b5-cd1f247bab84" InformativeScreenshot="485aaa448edbdd22854bc38ac30f2d6c" Selector="&lt;webctrl tag='INPUT' id='ButtonChange' type='submit' /&gt;" TimeoutMS="2000">
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
                     </ui:UiElementExists.Target>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -214,7 +222,57 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:UiElementExists>
-                  <If DisplayName="使用另一个账号" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If DisplayName="切换登录账号" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_5">
+                    <If.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">isLogin</mca:CSharpValue>
+                      </InArgument>
+                    </If.Condition>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击切换账号" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="73a4d93d-a3fa-49c5-a28a-78b8243b022f" InformativeScreenshot="485aaa448edbdd22854bc38ac30f2d6c" Selector="&lt;webctrl tag='INPUT' id='ButtonChange' type='submit' /&gt;" TimeoutMS="2000">
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                      </ui:Click>
+                    </If.Then>
+                  </If>
+                  <ui:UiElementExists DisplayName="选择账号页面处理" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                    <ui:UiElementExists.Exists>
+                      <OutArgument x:TypeArguments="x:Boolean">
+                        <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">existsSelectAccount</mca:CSharpReference>
+                      </OutArgument>
+                    </ui:UiElementExists.Exists>
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9a27f8f-81cc-4697-b67a-d8c9ef261585" InformativeScreenshot="bfb0e34feba74a0eeeb5375ab82a7675" Selector="&lt;html app='chrome.exe' title='登录到您的帐户' /&gt;&lt;webctrl id='otherTileText' tag='DIV' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
+                    </ui:UiElementExists.Target>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:UiElementExists>
+                  <If DisplayName="使用另一个账号" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_3">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
                         <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">existsSelectAccount</mca:CSharpValue>
@@ -251,7 +309,7 @@
                       </ui:Click>
                     </If.Then>
                   </If>
-                  <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="输入账号" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="SetValue_1">
+                  <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="输入账号" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="SetValue_1">
                     <ui:SetValue.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ae36defe-bc6a-44e6-b02a-083c4a678656" InformativeScreenshot="a74f6ab28913f3ae4ee9dcfc6bcbf1e9" Selector="&lt;webctrl tag='INPUT' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
                     </ui:SetValue.Target>
@@ -267,7 +325,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:SetValue>
-                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击下一步" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击下一步" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -292,7 +350,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:Click>
-                  <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="2000" DisplayName="输入密码" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="SetValue_4">
+                  <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="2000" DisplayName="输入密码" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="SetValue_4">
                     <ui:SetValue.Target>
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="856966f6-fb90-4646-a1bd-d61182fd88ce" InformativeScreenshot="275e67059765eff35792eef8e7891d00" Selector="&lt;html app='chrome.exe' title='登录到您的帐户' /&gt;&lt;webctrl tag='INPUT' type='password' /&gt;" TimeoutMS="5000" WaitForReady="COMPLETE" />
                     </ui:SetValue.Target>
@@ -308,7 +366,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:SetValue>
-                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击登录" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击登录" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -336,7 +394,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:Click>
-                  <ui:UiElementExists DisplayName="是否存在保持登录的提示" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                  <ui:UiElementExists DisplayName="是否存在保持登录的提示" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Exists>
                       <OutArgument x:TypeArguments="x:Boolean">
                         <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">existsKeepLogin</mca:CSharpReference>
@@ -352,7 +410,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:UiElementExists>
-                  <If DisplayName="保持登录框处理" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If DisplayName="保持登录框处理" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_1">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
                         <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">existsKeepLogin</mca:CSharpValue>
@@ -382,10 +440,10 @@
                       </ui:Click>
                     </If.Then>
                   </If>
-                  <ui:UiElementExists DisplayName="是否存在仍然发送的提示" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                  <ui:UiElementExists DisplayName="是否存在仍然发送的提示" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="UiElementExists_7">
                     <ui:UiElementExists.Exists>
                       <OutArgument x:TypeArguments="x:Boolean">
-                        <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">existsStillSend</mca:CSharpReference>
+                        <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">existsStillSend</mca:CSharpReference>
                       </OutArgument>
                     </ui:UiElementExists.Exists>
                     <ui:UiElementExists.Target>
@@ -398,15 +456,15 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:UiElementExists>
-                  <If DisplayName="仍然发送的提示处理" sap:VirtualizedContainerService.HintSize="484,594" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If DisplayName="仍然发送的提示处理" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_6">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
-                        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">existsStillSend</mca:CSharpValue>
+                        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">existsStillSend</mca:CSharpValue>
                       </InArgument>
                     </If.Condition>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -449,7 +507,7 @@
                         </ui:RetryScope.ActivityBody>
                         <ui:RetryScope.Condition>
                           <ActivityFunc x:TypeArguments="x:Boolean">
-                            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'A'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+                            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'A'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_8">
                               <ui:UiElementExists.Target>
                                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d7e76ed-0700-449c-8e9c-1da28c9ec36b" InformativeScreenshot="6160a0c60af1aabb09641433a9edb716" Selector="&lt;webctrl parentid='li_g' tag='A' /&gt;" TimeoutMS="2000" WaitForReady="COMPLETE" />
                               </ui:UiElementExists.Target>
@@ -458,7 +516,7 @@
                         </ui:RetryScope.Condition>
                         <ui:RetryScope.RetryInterval>
                           <InArgument x:TypeArguments="x:TimeSpan">
-                            <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">new TimeSpan(0,0,5)</mca:CSharpValue>
+                            <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">new TimeSpan(0,0,5)</mca:CSharpValue>
                           </InArgument>
                         </ui:RetryScope.RetryInterval>
                         <sap:WorkflowViewStateService.ViewState>
@@ -473,7 +531,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <ui:Hover CursorMotionType="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateHover="{x:Null}" DelayBefore="3000" DisplayName="鼠标放在个人业务上" sap:VirtualizedContainerService.HintSize="947,106" sap2010:WorkflowViewState.IdRef="Hover_1">
+            <ui:Hover CursorMotionType="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateHover="{x:Null}" DelayBefore="3000" DisplayName="鼠标放在个人业务上" sap:VirtualizedContainerService.HintSize="487,106" sap2010:WorkflowViewState.IdRef="Hover_1">
               <ui:Hover.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -494,7 +552,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:Hover>
-            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击发票申请" sap:VirtualizedContainerService.HintSize="947,53" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击发票申请" sap:VirtualizedContainerService.HintSize="487,53" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>

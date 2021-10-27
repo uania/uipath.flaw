@@ -1,12 +1,27 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ExecSetup" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cp="clr-namespace:CustomerClass.ProjectApproval;assembly=CustomerClass" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ExecSetup" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cp="clr-namespace:CustomerClass.ProjectApproval;assembly=CustomerClass" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=mscorlib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="projectInfos" Type="InArgument(scg:List(cp:ProjectInfo))" />
     <x:Property Name="recogPath" Type="InArgument(x:String)" />
     <x:Property Name="errorLogPath" Type="InArgument(x:String)" />
     <x:Property Name="recogForCustomerCSVPath" Type="InArgument(x:String)" />
+    <x:Property Name="companys" Type="OutArgument(scg:List(cp:ProjectInfo))" />
+    <x:Property Name="departments" Type="OutArgument(scg:List(cp:ProjectInfo))" />
+    <x:Property Name="customers" Type="OutArgument(scg:List(cp:ProjectInfo))" />
   </x:Members>
+  <this:ExecSetup.projectInfos>
+    <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+      <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_59" xml:space="preserve">new List&lt;ProjectInfo&gt;{
+	new ProjectInfo{
+		 PONumber = "123456124324",
+		 CompanyName = "微软",
+		 DepartName = "我的部门",
+		 CustomerName = "小佑"
+	}
+}</mca:CSharpValue>
+    </InArgument>
+  </this:ExecSetup.projectInfos>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1043,746</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,3760</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -84,13 +99,61 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ExecSetup" sap:VirtualizedContainerService.HintSize="376,581" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ExecSetup" sap:VirtualizedContainerService.HintSize="516,3695" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:Hover CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateHover="{x:Null}" DisplayName="鼠标放在公司业务上" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Hover_1">
+    <ui:MultipleAssign DisplayName="初始化" sap:VirtualizedContainerService.HintSize="474,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">companys</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">new List&lt;ProjectInfo&gt;()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">departments</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">new List&lt;ProjectInfo&gt;()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                <mca:CSharpReference x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">customers</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">new List&lt;ProjectInfo&gt;()</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:Hover CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateHover="{x:Null}" DisplayName="鼠标放在公司业务上" sap:VirtualizedContainerService.HintSize="474,106" sap2010:WorkflowViewState.IdRef="Hover_1">
       <ui:Hover.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -102,14 +165,20 @@
         </ui:CursorPosition>
       </ui:Hover.CursorPosition>
       <ui:Hover.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="83783361-c918-4369-a9fe-3aa7129b422c" InformativeScreenshot="230c4a735a956e24adfee1164ae925f8" Selector="&lt;html app='chrome.exe' title='首页' /&gt;&lt;webctrl parentid='li_m' tag='A' /&gt;" TimeoutMS="2000">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="83783361-c918-4369-a9fe-3aa7129b422c" InformativeScreenshot="230c4a735a956e24adfee1164ae925f8" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl parentid='li_m' tag='A' /&gt;" TimeoutMS="2000">
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
       </ui:Hover.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:Hover>
-    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击合同管理" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击合同管理" sap:VirtualizedContainerService.HintSize="474,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
       <ui:Click.CursorPosition>
         <ui:CursorPosition Position="Center">
           <ui:CursorPosition.OffsetX>
@@ -121,35 +190,98 @@
         </ui:CursorPosition>
       </ui:Click.CursorPosition>
       <ui:Click.Target>
-        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e440cb11-0fb8-4d21-b959-4ad7e568e2ca" InformativeScreenshot="b9c9c09f538943d32a20eb5600ede49a" Selector="&lt;html app='chrome.exe' title='首页' /&gt;&lt;webctrl id='m_po' tag='A' /&gt;" TimeoutMS="2000">
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e440cb11-0fb8-4d21-b959-4ad7e568e2ca" InformativeScreenshot="b9c9c09f538943d32a20eb5600ede49a" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl id='m_po' tag='A' /&gt;" TimeoutMS="2000">
           <ui:Target.WaitForReady>
             <InArgument x:TypeArguments="ui:WaitForReady" />
           </ui:Target.WaitForReady>
         </ui:Target>
       </ui:Click.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:Click>
-    <ui:ForEach x:TypeArguments="cp:ProjectInfo" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,197" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+    <ui:ForEach x:TypeArguments="cp:ProjectInfo" CurrentIndex="{x:Null}" DisplayName="执行立项" sap:VirtualizedContainerService.HintSize="474,3218" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="cp:ProjectInfo">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="cp:ProjectInfo" Name="item" />
           </ActivityAction.Argument>
-          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="458,1111" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,3081" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,2844" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Boolean" Name="existsCompany" />
+                  <Variable x:TypeArguments="x:Boolean" Name="existsDepartName" />
+                  <Variable x:TypeArguments="x:String" Default="微软" Name="tmpSelectorCName" />
+                  <Variable x:TypeArguments="x:String" Name="tmpSelectorDName">
+                    <Variable.Default>
+                      <Literal x:TypeArguments="x:String">Dynamic and PP</Literal>
+                    </Variable.Default>
+                  </Variable>
+                  <Variable x:TypeArguments="x:String" Name="tmpSelectorCusName">
+                    <Variable.Default>
+                      <Literal x:TypeArguments="x:String">William Li</Literal>
+                    </Variable.Default>
+                  </Variable>
+                </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击创建新合同" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                  <ui:MultipleAssign.AssignOperations>
+                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">tmpSelectorCName</mca:CSharpReference>
+                          </OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">item.CompanyName</mca:CSharpValue>
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">tmpSelectorDName</mca:CSharpReference>
+                          </OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">item.DepartName</mca:CSharpValue>
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                        <ui:AssignOperation.To>
+                          <OutArgument x:TypeArguments="x:String">
+                            <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">tmpSelectorCusName</mca:CSharpReference>
+                          </OutArgument>
+                        </ui:AssignOperation.To>
+                        <ui:AssignOperation.Value>
+                          <InArgument x:TypeArguments="x:String">
+                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">item.CustomerName</mca:CSharpValue>
+                          </InArgument>
+                        </ui:AssignOperation.Value>
+                      </ui:AssignOperation>
+                    </scg:List>
+                  </ui:MultipleAssign.AssignOperations>
+                </ui:MultipleAssign>
+                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击创建新合同" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -174,7 +306,466 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:Click>
-                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="输入合同编号" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="SetValue_1">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入公司名称" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_3">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="69aff2c9-5c96-4696-882c-2b1a9ffdcce0" InformativeScreenshot="b81f832514c144d2eae027f715764b3e" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='textbox' tag='SPAN' /&gt;" TimeoutMS="2000">
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                  <ui:TypeInto.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">item.CompanyName</mca:CSharpValue>
+                    </InArgument>
+                  </ui:TypeInto.Text>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:TypeInto>
+                <ui:UiElementExists DisplayName="检测公司是否存在" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                  <ui:UiElementExists.Exists>
+                    <OutArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">existsCompany</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:UiElementExists.Exists>
+                  <ui:UiElementExists.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f80ffbfc-484c-47e2-9030-19002567dd62" InformativeScreenshot="e7a6cd4125fadbaca1083b4a285d77b5" TimeoutMS="1000">
+                      <ui:Target.Selector>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_60">String.Format("&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='option' aaname='{0}' id='select2-MainContentHolder_DropDownListCompamy-result*' tag='LI' /&gt;", tmpSelectorCName)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:Target.Selector>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:UiElementExists.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:UiElementExists>
+                <If DisplayName="不存在公司跳过并添加到companys" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If.Condition>
+                    <InArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">!existsCompany</mca:CSharpValue>
+                    </InArgument>
+                  </If.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <InvokeMethod DisplayName="添加到companys" sap:VirtualizedContainerService.HintSize="245,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">companys</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="cp:ProjectInfo">
+                          <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">item</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                      <InvokeMethod DisplayName="添加到departments" sap:VirtualizedContainerService.HintSize="245,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_4" MethodName="Add">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">departments</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="cp:ProjectInfo">
+                          <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">item</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                      <InvokeMethod DisplayName="添加到customers" sap:VirtualizedContainerService.HintSize="245,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_5" MethodName="Add">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_56">customers</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="cp:ProjectInfo">
+                          <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">item</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                      <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击返回" sap:VirtualizedContainerService.HintSize="245,53" sap2010:WorkflowViewState.IdRef="Click_13" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f4706840-bd56-4d24-b3c8-25ed82be2f63" InformativeScreenshot="bb73729cbf80892fa9e0b96732b7d5ca" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl id='HeadContentHolder_Cancel' tag='INPUT' type='submit' /&gt;" TimeoutMS="2000">
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:Click>
+                      <ui:Continue sap:VirtualizedContainerService.HintSize="245,22" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="选择公司" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="950dfaa9-a7c0-4424-9c7f-f32f7cf43635" InformativeScreenshot="a6f2144958751acff62c6b71bd40b738" TimeoutMS="2000">
+                      <ui:Target.Selector>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_64">String.Format("&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='option' aaname='{0}' id='select2-MainContentHolder_DropDownListCompamy-result*' tag='LI' /&gt;", tmpSelectorCName)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:Target.Selector>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:Click.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:Click>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入部门" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="TypeInto_4">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51af95b2-ccd3-4b82-aacd-f3e366e81529" InformativeScreenshot="ab85644aecdcb0cc6eee24a94713a6e4" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='textbox' id='select2-MainContentHolder_DropDownListDepartMent-container' tag='SPAN' /&gt;" TimeoutMS="2000">
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                  <ui:TypeInto.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_47">item.DepartName</mca:CSharpValue>
+                    </InArgument>
+                  </ui:TypeInto.Text>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:TypeInto>
+                <ui:UiElementExists DisplayName="检测部门是否存在" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                  <ui:UiElementExists.Exists>
+                    <OutArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">existsDepartName</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:UiElementExists.Exists>
+                  <ui:UiElementExists.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f80ffbfc-484c-47e2-9030-19002567dd62" InformativeScreenshot="8b8713b6e01eff7a5e4d5b02e751898c" TimeoutMS="1000">
+                      <ui:Target.Selector>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_65">String.Format("&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='option' aaname='{0}' id='select2-MainContentHolder_DropDownListDepartMent-result*' tag='LI' /&gt;", tmpSelectorDName)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:Target.Selector>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:UiElementExists.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:UiElementExists>
+                <If DisplayName="不存在部门跳过并添加到departments" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If.Condition>
+                    <InArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_45">!existsDepartName</mca:CSharpValue>
+                    </InArgument>
+                  </If.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <InvokeMethod DisplayName="添加到departments" sap:VirtualizedContainerService.HintSize="245,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">departments</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="cp:ProjectInfo">
+                          <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">item</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                      <InvokeMethod DisplayName="添加到customers" sap:VirtualizedContainerService.HintSize="245,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_6" MethodName="Add">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_58">customers</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="cp:ProjectInfo">
+                          <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_57">item</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                      <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击返回" sap:VirtualizedContainerService.HintSize="245,53" sap2010:WorkflowViewState.IdRef="Click_14" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f4706840-bd56-4d24-b3c8-25ed82be2f63" InformativeScreenshot="bb73729cbf80892fa9e0b96732b7d5ca" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl id='HeadContentHolder_Cancel' tag='INPUT' type='submit' /&gt;" TimeoutMS="2000">
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:Click>
+                      <ui:Continue sap:VirtualizedContainerService.HintSize="245,22" sap2010:WorkflowViewState.IdRef="Continue_3" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="选择部门" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="950dfaa9-a7c0-4424-9c7f-f32f7cf43635" InformativeScreenshot="a6f2144958751acff62c6b71bd40b738" TimeoutMS="2000">
+                      <ui:Target.Selector>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_66">String.Format("&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='option' aaname='{0}' id='select2-MainContentHolder_DropDownListDepartMent-result*' tag='LI' /&gt;", tmpSelectorDName)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:Target.Selector>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:Click.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:Click>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入客户名称" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="TypeInto_5">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="732a0987-1891-4e40-ba39-9199bb8efa5f" InformativeScreenshot="07d70bc75909251b1dee44fa411fb315" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='textbox' id='select2-MainContentHolder_CustomerName-container' tag='SPAN' /&gt;" TimeoutMS="2000">
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                  <ui:TypeInto.Text>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_48">item.CustomerName</mca:CSharpValue>
+                    </InArgument>
+                  </ui:TypeInto.Text>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:TypeInto>
+                <ui:UiElementExists DisplayName="检测客户是否存在" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                  <ui:UiElementExists.Exists>
+                    <OutArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">existsDepartName</mca:CSharpReference>
+                    </OutArgument>
+                  </ui:UiElementExists.Exists>
+                  <ui:UiElementExists.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f80ffbfc-484c-47e2-9030-19002567dd62" InformativeScreenshot="fdea954f26a36d805949f073f97c95d5" TimeoutMS="1000">
+                      <ui:Target.Selector>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">String.Format("&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='option' aaname='{0}' tag='LI' /&gt;", tmpSelectorCusName)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:Target.Selector>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:UiElementExists.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:UiElementExists>
+                <If DisplayName="不存在部门跳过并添加到customers" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If.Condition>
+                    <InArgument x:TypeArguments="x:Boolean">
+                      <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_49">!existsDepartName</mca:CSharpValue>
+                    </InArgument>
+                  </If.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="287,384" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <InvokeMethod DisplayName="添加到customers" sap:VirtualizedContainerService.HintSize="245,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_3" MethodName="Add">
+                        <InvokeMethod.TargetObject>
+                          <InArgument x:TypeArguments="scg:List(cp:ProjectInfo)">
+                            <mca:CSharpValue x:TypeArguments="scg:List(cp:ProjectInfo)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_52">customers</mca:CSharpValue>
+                          </InArgument>
+                        </InvokeMethod.TargetObject>
+                        <InArgument x:TypeArguments="cp:ProjectInfo">
+                          <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">item</mca:CSharpValue>
+                        </InArgument>
+                      </InvokeMethod>
+                      <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击返回" sap:VirtualizedContainerService.HintSize="245,53" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT">
+                        <ui:Click.CursorPosition>
+                          <ui:CursorPosition Position="Center">
+                            <ui:CursorPosition.OffsetX>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetX>
+                            <ui:CursorPosition.OffsetY>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:CursorPosition.OffsetY>
+                          </ui:CursorPosition>
+                        </ui:Click.CursorPosition>
+                        <ui:Click.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f4706840-bd56-4d24-b3c8-25ed82be2f63" InformativeScreenshot="bb73729cbf80892fa9e0b96732b7d5ca" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl id='HeadContentHolder_Cancel' tag='INPUT' type='submit' /&gt;" TimeoutMS="2000">
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:Click.Target>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:Click>
+                      <ui:Continue sap:VirtualizedContainerService.HintSize="245,22" sap2010:WorkflowViewState.IdRef="Continue_4" />
+                    </Sequence>
+                  </If.Then>
+                  <If.Else>
+                    <Sequence sap2010:WorkflowViewState.IdRef="Sequence_10">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Sequence>
+                  </If.Else>
+                </If>
+                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="选择客户" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_LEFT">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="950dfaa9-a7c0-4424-9c7f-f32f7cf43635" InformativeScreenshot="13212259dfbaf700b9527205ba1cf2f5" TimeoutMS="2000">
+                      <ui:Target.Selector>
+                        <InArgument x:TypeArguments="x:String">
+                          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">String.Format("&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='option' aaname='{0}' tag='LI' /&gt;", tmpSelectorCusName)</mca:CSharpValue>
+                        </InArgument>
+                      </ui:Target.Selector>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:Click.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:Click>
+                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="输入合同编号" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="SetValue_1">
                   <ui:SetValue.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="11ef7dae-fdca-46db-8019-951f1ab99720" InformativeScreenshot="4c5f92ce6d6b52091ffd28c1e9f404f5" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl tag='INPUT' type='text' /&gt;" TimeoutMS="2000">
                       <ui:Target.WaitForReady>
@@ -194,7 +785,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:SetValue>
-                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="输入合同金额" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="SetValue_2">
+                <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="输入合同金额" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="SetValue_2">
                   <ui:SetValue.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d654b9f3-2e41-4e99-ac02-b9540809c94e" InformativeScreenshot="1cb8c54dce0fd809360dca9e49339a26" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl id='ctl00_MainContentHolder_ContractMoney_text' tag='INPUT' type='text' /&gt;" TimeoutMS="2000">
                       <ui:Target.WaitForReady>
@@ -214,7 +805,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:SetValue>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入收到合同的时间" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TypeInto_1">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入收到合同的时间" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="TypeInto_1">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b2c57344-496c-4fed-8877-9d6fa9d780c2" InformativeScreenshot="fcb26d5ac69f65ce3839e0749f623363" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl id='ctl00_MainContentHolder_POTime_dateInput_text' tag='INPUT' type='text' /&gt;" TimeoutMS="2000">
                       <ui:Target.WaitForReady>
@@ -234,7 +825,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入合同截止时间" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TypeInto_2">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入合同截止时间" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="TypeInto_2">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4416a57c-03cc-498c-aa3f-aa93b462925c" InformativeScreenshot="efe562b1f7191fbc1243c2046d83cf2b" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl id='ctl00_MainContentHolder_EndTime_dateInput_text' tag='INPUT' type='text' /&gt;">
                       <ui:Target.TimeoutMS>
@@ -257,67 +848,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入公司名称" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TypeInto_3">
-                  <ui:TypeInto.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="69aff2c9-5c96-4696-882c-2b1a9ffdcce0" InformativeScreenshot="b81f832514c144d2eae027f715764b3e" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='textbox' tag='SPAN' /&gt;" TimeoutMS="2000">
-                      <ui:Target.WaitForReady>
-                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                      </ui:Target.WaitForReady>
-                    </ui:Target>
-                  </ui:TypeInto.Target>
-                  <ui:TypeInto.Text>
-                    <InArgument x:TypeArguments="x:String">
-                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">item.CompanyName+ "[k(enter)]"</mca:CSharpValue>
-                    </InArgument>
-                  </ui:TypeInto.Text>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入部门" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TypeInto_4">
-                  <ui:TypeInto.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51af95b2-ccd3-4b82-aacd-f3e366e81529" InformativeScreenshot="ab85644aecdcb0cc6eee24a94713a6e4" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='textbox' id='select2-MainContentHolder_DropDownListDepartMent-container' tag='SPAN' /&gt;" TimeoutMS="2000">
-                      <ui:Target.WaitForReady>
-                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                      </ui:Target.WaitForReady>
-                    </ui:Target>
-                  </ui:TypeInto.Target>
-                  <ui:TypeInto.Text>
-                    <InArgument x:TypeArguments="x:String">
-                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">item.DepartName+ "[k(enter)]"</mca:CSharpValue>
-                    </InArgument>
-                  </ui:TypeInto.Text>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:TypeInto>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" ClickBeforeTyping="True" DisplayName="输入客户名称" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TypeInto_5">
-                  <ui:TypeInto.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="732a0987-1891-4e40-ba39-9199bb8efa5f" InformativeScreenshot="07d70bc75909251b1dee44fa411fb315" Selector="&lt;html app='chrome.exe' title='添加合同' /&gt;&lt;webctrl aria-role='textbox' id='select2-MainContentHolder_CustomerName-container' tag='SPAN' /&gt;" TimeoutMS="2000">
-                      <ui:Target.WaitForReady>
-                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                      </ui:Target.WaitForReady>
-                    </ui:Target>
-                  </ui:TypeInto.Target>
-                  <ui:TypeInto.Text>
-                    <InArgument x:TypeArguments="x:String">
-                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">item.CustomerName+ "[k(enter)]"</mca:CSharpValue>
-                    </InArgument>
-                  </ui:TypeInto.Text>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:TypeInto>
-                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击收款方式下拉框" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击收款方式下拉框" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -595,10 +1126,10 @@
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="424,941" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>

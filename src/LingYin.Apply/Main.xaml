@@ -69,15 +69,11 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>CustomerClass</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap:VirtualizedContainerService.HintSize="634,870" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
-      <Variable x:TypeArguments="x:String" Name="errorLogPath">
-        <Variable.Default>
-          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">baseFolder + "\\error.LingYing.Apply.log"</mca:CSharpValue>
-        </Variable.Default>
-      </Variable>
       <Variable x:TypeArguments="x:String" Name="filePath" />
       <Variable x:TypeArguments="x:String" Name="recogForCustomerCSVPath" />
       <Variable x:TypeArguments="x:String" Name="recogPath" />
@@ -88,14 +84,11 @@
       <Variable x:TypeArguments="scg:List(cla:RebateDetail)" Name="rebates" />
       <Variable x:TypeArguments="x:String" Name="customerSelectPath" />
       <Variable x:TypeArguments="ui:Browser" Name="browser" />
-      <Variable x:TypeArguments="x:String" Name="url">
+      <Variable x:TypeArguments="x:String" Default="https://poa.anruichina.com/" Name="url" />
+      <Variable x:TypeArguments="x:String" Default="RPA-Finance@anruidigital.com" Name="receiver" />
+      <Variable x:TypeArguments="x:String" Name="errorLogPath">
         <Variable.Default>
-          <Literal x:TypeArguments="x:String">https://poa.anruichina.com/</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="receiver">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">RPA-Finance@anruidigital.com</Literal>
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">baseFolder + "\\error.LingYing.Apply.log"</mca:CSharpValue>
         </Variable.Default>
       </Variable>
     </Flowchart.Variables>
@@ -341,10 +334,10 @@
                   </ui:InvokeWorkflowFile>
                 </TryCatch.Try>
                 <TryCatch.Catches>
-                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,141" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -352,7 +345,7 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                       </ActivityAction.Argument>
-                      <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                      <Sequence DisplayName="异常处理" sap:VirtualizedContainerService.HintSize="376,70" sap2010:WorkflowViewState.IdRef="Sequence_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>

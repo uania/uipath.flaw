@@ -1,0 +1,898 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetData" this:GetData.attachmentFolder="\\192.168.1.19\rpa测试数据\CreateOAProject" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:cp="clr-namespace:CustomerClass.ProjectApproval;assembly=CustomerClass" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="projectInfo" Type="OutArgument(cp:ProjectInfo)" />
+    <x:Property Name="attachmentFolder" Type="InArgument(x:String)" />
+    <x:Property Name="attachmentPaths" Type="InOutArgument(scg:Dictionary(x:String, x:String))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1043,3671</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>CustomerClass.ProjectApproval</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>CustomerClass</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetData" sap:VirtualizedContainerService.HintSize="476,3606" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="amountStr" />
+      <Variable x:TypeArguments="x:String" Name="receiveTimeStr" />
+      <Variable x:TypeArguments="x:String" Name="expirationTimeStr" />
+      <Variable x:TypeArguments="x:String" Name="tmpAttachmentName" />
+      <Variable x:TypeArguments="x:String" Name="tmpAttachmentSurfix" />
+      <Variable x:TypeArguments="x:String" Name="tmpAttachmentCompanyFolder" />
+      <Variable x:TypeArguments="x:String" Name="tmpAttachmentFullName" />
+      <Variable x:TypeArguments="x:String" Name="tmpAttachmentFullNameBackup" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsMSImg" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsWDImg" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsSubWindowImg" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsMS2Img" />
+      <Variable x:TypeArguments="x:Boolean" Name="existsWD2Img" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If DisplayName="初始化变量" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="If_2">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">projectInfo == null</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:MultipleAssign DisplayName="初始化变量" sap:VirtualizedContainerService.HintSize="334,98" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="cp:ProjectInfo">
+                    <mca:CSharpReference x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">projectInfo</mca:CSharpReference>
+                  </OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="cp:ProjectInfo">
+                    <mca:CSharpValue x:TypeArguments="cp:ProjectInfo" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">new ProjectInfo()</mca:CSharpValue>
+                  </InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+      </If.Then>
+    </If>
+    <If DisplayName="初始化变量" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">attachmentPaths == null</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:MultipleAssign DisplayName="初始化变量" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+              <ui:AssignOperation sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                    <mca:CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_29">attachmentPaths</mca:CSharpReference>
+                  </OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                    <mca:CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">new Dictionary&lt;string,string&gt;()</mca:CSharpValue>
+                  </InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:MultipleAssign>
+      </If.Then>
+    </If>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取合同编号" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_1">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="61b4dc46-e7db-47ae-b6a4-7eb9e27b760e" InformativeScreenshot="f56528910c6b5f597ce8c76b2bc403c7" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='24' /&gt;" TimeoutMS="8000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">projectInfo.PONumber</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取合同金额" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_2">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="3d3dd6f37cf2e9633c48bfabdf4273dd" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='27' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">amountStr</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取公司名称" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_3">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="5ef253afcfce019162331fdf9ce397e8" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='53' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">projectInfo.CompanyName</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="收到合同的日期" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_4">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="dc15a73b66046a2f24dfa0508aba247e" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='30' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">receiveTimeStr</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="合同的截止日期" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_5">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="d2f46ddd8d5f31d5d752d5650d0b5abb" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='33' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">expirationTimeStr</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取部门名称" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_6">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="609c050aada76127cfe50761d32d2ee8" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='56' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">projectInfo.DepartName</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取客户名称" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_7">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="44bac7006320f86e5c40c31f2294a7d2" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='50' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">projectInfo.CustomerName</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取收款方式名称" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_8">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="d799f6da89ab9e2c49a9e540aa2d6423" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='36' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">projectInfo.PaymentType</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取付款周期" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_9">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="c8bf2ed9c6fba9255dac0c10f60a128c" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='39' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">projectInfo.PaymentCycle</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取折扣提醒" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_10">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="d08b8c8621a1dd175ddd5e50a93b17b9" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='42' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">projectInfo.DiscountsReminder</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取合同名称" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_11">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0d3b76f7-92d4-4a69-bc90-be554bff73e2" InformativeScreenshot="fca2d91eedc1ed73230279a78a347415" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl role='text' idx='45' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">projectInfo.ContractName</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <ui:MultipleAssign DisplayName="转换日期和金额" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_42">projectInfo.ReceiveTime</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_53">Convert.ToDateTime(receiveTimeStr)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_43">projectInfo.ExpirationTime</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_54">Convert.ToDateTime(expirationTimeStr)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Decimal">
+                <mca:CSharpReference x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">projectInfo.Amount</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Decimal">
+                <mca:CSharpValue x:TypeArguments="x:Decimal" sap2010:WorkflowViewState.IdRef="CSharpValue`1_55">Convert.ToDecimal(amountStr)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_57">projectInfo.PaymentCycle</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_71">projectInfo.PaymentCycle.TrimEnd('天')</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:InterruptibleDoWhile DisplayName="点击附件打开下载框" sap:VirtualizedContainerService.HintSize="434,1097" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_3">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,928" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DelayBefore="1000" DisplayName="点击附件" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition OffsetY="35" Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8986e8d6-c1d5-4a54-ac26-ec8435a918e5" InformativeScreenshot="84499ec2fdd5588b6a5cc1524d82cffd" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;wnd cls='Chrome_WidgetWin_0' /&gt;&lt;ctrl role='document' /&gt;&lt;ctrl name='合同文档' role='text' /&gt;" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:ImageFound DisplayName="检测下载框是否打开" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_1">
+            <ui:ImageFound.Found>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_46">existsMSImg</mca:CSharpReference>
+              </OutArgument>
+            </ui:ImageFound.Found>
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD0AAAAiCAYAAADs4tGnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEQSURBVGhD7da9DoMgEMDxvnjnrp0cnVydXNwdHHwAE+MbGHyF6yFggJhra1ALvX9irB9Df8UKN0goIYT+RMfo2GM0EaNjj9FEjI69g9EzNPkT7tWoj38jRhO9QY9QPhBnb3kHk4fuK++eRw39cuXcAqA1DBHloE+t2egZpqGDzEHjtvw45xYArUY5a2d9bEc/3lNbXDLal6JhqBFdQPPZdwgWo4kY7eahF4h5qXlo55o5TmSk1dQkMRZag51RTwm9jjCCMrnPce+DZWmhZeo8OR+nh8aEWYxsz8Vqno4SrR/lr1dW5i8Q5eIEMy+pHdvmE3JwYdCyHfArwLJw6IhiNBGjY4/RRIyOPUYT/SEa4AUOrKvdUtkVIQAAAABJRU5ErkJggg==" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target Element="{x:Null}" Id="f5e9e9ac-b394-49e6-809f-bcb0c510f991" Selector="&lt;wnd app='dingtalk.exe' cls='StandardFrame_DingTalk' title='钉钉' /&gt;" TimeoutMS="1000">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="9, 14, 1899, 1011" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+          <ui:ImageFound DisplayName="检测下载框是否打开" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_2">
+            <ui:ImageFound.Found>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_54">existsSubWindowImg</mca:CSharpReference>
+              </OutArgument>
+            </ui:ImageFound.Found>
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAAeCAYAAACsYQl4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD6SURBVGhD7da9DoIwGIVhb9zZ1cmRyZWJxd2BwQtg4Q5IuIVPamsItf/BE2vOm3QgEVMfSD8PwiARGhShQREaFKFBERoUoUERGhShQREaFKFBERpUFdBDd5bjKXF1o7lr36b+unz/TQZz7W6UdtnDpZ/N9Vo10K7N270wvgStCmP7kVWEzsyNHUZWEbqgLXYcWUXowjS2ngspe4tAz3JvrGETWs1DJnPnnv0i9PtNjg9IHd/ootbjYnuM+CN0dp9ncgo2obPyD74YNqGTi/+7CGFXAa1/gDV4PSvlgZSk9pD6sF2fqwL6HyI0KEKDIjQoQoMiNChCQxJ5Aic+kU7qc79GAAAAAElFTkSuQmCC" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target Element="{x:Null}" Id="94d16eb5-a44e-4752-847d-fc817e28221b" Selector="&lt;wnd app='dingtalk.exe' cls='StandardFrame_DingTalk' title='钉钉' /&gt;" TimeoutMS="1000">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="18, 9, 1888, 1018" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+          <ui:ImageFound DisplayName="检测下载框是否打开" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_6">
+            <ui:ImageFound.Found>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_55">existsWDImg</mca:CSharpReference>
+              </OutArgument>
+            </ui:ImageFound.Found>
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG0AAAAiCAYAAABV9lfvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGsSURBVGhD7ZcxjoMwEEX34ltvuxUlVdpUadKnSJEDREK5AYIrzNp4nPUYL2wihD3wn2QRE6IweZ4f80GgWLqu41cSSCsYSFMIpCkE0hQCaQqBNIVAmkIgTSGQNklPl/qbPk8PnpfBgtK4wK+ZUd+o5U+Uz06kHRuepmjORtyZ7jwthwcdk4tLSrufomsy1QJpQUKM7z2U1lPb3KgS0szIkByLSGuvB1nIf0YxkeO6rLr2PA+RnRbj6l5/ES4gzRU92WExQ8cd6JL+7pV5X1quOiBt79LGf9RuvCR0dXYtzRWYFuSu+RVZSpdZImmDCF9HJE285+dblNbxjivYZQ0dWczz2rjTXGJYGYE0Fia6bovSwrgUMr3IIjpuLO3ZYeb+KnuszdHebxyTeqXJLb+MjqntcBQ92UhJs7jzvq5kMmiW5og6zRY0E4GD7Owx+Zc0wzMR0ovPLdYtSeOCRSyG8PvJH2tVuONfXjw+QlU+XHt8EXbw6hviw59LjOzRyMzd58TIsegWlKacN8TlSglIUwikKQTSFAJpCoE0hUCaQiBNIZCmEEhTSFoa0Q8nspyY4kRokgAAAABJRU5ErkJggg==" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target Element="{x:Null}" Id="94d16eb5-a44e-4752-847d-fc817e28221b" Selector="&lt;wnd app='dingtalk.exe' cls='StandardFrame_DingTalk' title='钉钉' /&gt;" TimeoutMS="1000">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="8, 9, 1902, 1023" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+          <ui:ImageFound DisplayName="检测下载框是否打开" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_3">
+            <ui:ImageFound.Found>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_56">existsWD2Img</mca:CSharpReference>
+              </OutArgument>
+            </ui:ImageFound.Found>
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAADUAAAA1CAYAAADh5qNwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQhSURBVGhD7Zk7ctRAEIZ9A7gB3ABuADeAG8ANOAKkRCYjw0RkPBIyQjIyyEioAnsf2pdW6306GM83oy5UqvFuj1Zas2a76i/L0kz3/8/09Iy0R9n51Nw0HETtCw6i9gUHUSGMJ+cOaTYxo3FmBqPU9Icji9Rk9v5isTTL1cpcXFwYMa65N5svXBva0oe++MCX+A3F3IStRJXF9AZD9z+EY40+ozRzPsriQrHXobIoghF4mI7dKEOoipiyiTh84psYscIqiRJBfnZGLo3qtuls5nzLrMUIixZVFlTH7Fxl+K4iLEpUWdCqsPibMmLEClOLKgpK+kOzXDY3Q2UjFjG1wtSiqEQsXEZtNp/n4XZn06lfY3CAS4ijQC2KEfJVbpyH2b0R23GwXEIcBWpRTH23N7CpsMxD6GxkC+Onn8Y8/WzMw3ceXL/9kTeIMGLDAS4hjgK1KLex2hGKseNvxtx+ZczRyzB49uJr3lhpw9Rv8iGOArWomFlidu6feOJ3Xhtz8t2YX2n+0BrX3OMZbZg9+mhMZivEUaAWlfT6udvNdu+NJ/vEptkmow1tH3/Ibygs6dckKs10qUfKaQWJibDnylSES4ijQC1qrjgKkUKsE9Iq1uhDX41xhApxFKhFLRTriXXCiPM31mL6wiXEUaAWtVKc8Z598cS0i75oFA9t2sIlxFGgFqWxB7aKQayq0RcfGgtxFPzfojSvGFQviBX3JK3FpB9cQhwF+kKxaLZQyFbw0R6pNhlcQhwFalHn9pSssVvHxtyNLOkUFvrQV1Nk4BLiKFCLGtkzl8YevY9PQdl8mS2NwSXEUaAW1e4mucv1xibKMQnbJIxZ4cSOIOmjMbiEOAqiRG1aV7LYSSU50HLNa0ZRIGK4xzMRpN3b4FCbqK490HLkX2dSKAAzRlqxTuReGTzTppwYHOAS4iiIEDUwrU7XzBdXDymjTfUqpx1iKffsQYCTR5UKSWw41PbqwQh1kp479l+XERsOtb0kyus8I5VlkzzM7oyYMku1vc7Lhxfy+bTVXpuGdRuxiEnsWj+8FD+RkQKtTuK+xzVtxCCWT7uaP5GVP2ZSVs/a6wvHtoZvYhCrkY+ZICTstNVpZI3hE9+xgkCUKFAWRlq4fE/6tcwaPvCFT19t4wSBaFGgKIw8ZwFTmf6cVRcnYvDhqxyb/Y5+yhGIMBaur4p+D4EQaQMGltTEtuOjTfGbIdfc4xltpD198YEvfOI7VhCoLAoQjEr0d9Y4wgzcKPtCAtm2G33w+7TlIP/zjDa0pQ998SGzg+9YQWArUYCgZXGMsk9LZq/vRj8MEcIP3//ID9lFlMWROpAUkV7o0EH+l+eSZtuKEdQmSiCkRKCIDEGeF/uEfMaidlFlFAmHEOqzLRoXdR04iNoXHETtC26gqKm5BEY8Mdez9tLHAAAAAElFTkSuQmCC" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target Element="{x:Null}" Id="94d16eb5-a44e-4752-847d-fc817e28221b" Selector="&lt;wnd app='dingtalk.exe' cls='StandardFrame_DingTalk' title='钉钉' /&gt;" TimeoutMS="1000">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="14, 14, 1885, 1020" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+          <ui:ImageFound DisplayName="检测下载框是否打开" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ImageFound_5">
+            <ui:ImageFound.Found>
+              <OutArgument x:TypeArguments="x:Boolean">
+                <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">existsMS2Img</mca:CSharpReference>
+              </OutArgument>
+            </ui:ImageFound.Found>
+            <ui:ImageFound.Image>
+              <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIwAAABrCAYAAAClgWoEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALBSURBVHhe7dYxipZBEAZh738pNVhBMdHAGyiCm+qGK38giFRg89U261jBk/e8VDAvvv94eEz+VsFkpGAyUjAZKZiMFExGCiYjBZORgslIwWSkYDJSMBkpmIwUTEYKJiMFk5GCyUjBZKRgMlIwGSmYjBRMRgomIwWTkYLJSMFkpGAyshrM3d2bx5evXucJ3LalzW2rwdBD46HNbQVzENrcVjAHoc1tBXMQ2txWMAehzW0FcxDa3FYwB6HNbQVzENrcVjAHoc1tBXMQ2txWMAehzW0FcxDa3FYwB6HNbQVzENrcdlww3+7vnyW61Uab2wpmCd1qo81tBbOEbrXR5raCWUK32mhzW8EsoVtttLmtYJbQrTba3FYwS+hWG21uK5gldKuNNrcVzBK61Uab2wpmCd1qo81tBbOEbrXR5raCWUK32mhzW8EsoVtttLmtYJbQrTba3FYwS+hWG21uK5gldKuNNrcVzBK61Uab2wpmCd1qo81tBbOEbrXR5raCWUK32mhzW8EsoVtttLmtYJbQrTba3FYwS+hWG21uK5gldKuNNrcVzBK61Uab2wpmCd1qo81tBbOEbrXR5raCWUK32mhzW8Fc8OHjp79Gt9poc1vBXEBhkLfv3uOtNtrcVjAXUBx/ohufCm1uK5gLKJDf0X1PiTa3FcwFFMkvdNtTo81tBXMBhXJDd22gzW0FcwHFsvXBJbS5rWAu+DMWumcTbW4rmAueUyw3tLmtYC54TrHc0Oa2grngOcVyQ5vbjgvmf0ab2wrmILS5rWAOQpvbCuYgtLmtYA5Cm9sK5iC0ua1gDkKb2wrmILS5rWAOQpvbCuYgtLmtYA5Cm9sK5iC0ua1gDkKb2wrmILS5rWAOQpvbVoP5/OUrPjTX3balzW2rweTfVzAZKZiMFExGCiYjBZORgslIwWSkYDJSMBl4ePwJUMKU2Gueg5kAAAAASUVORK5CYII=" />
+            </ui:ImageFound.Image>
+            <ui:ImageFound.Target>
+              <ui:Target Element="{x:Null}" Id="94d16eb5-a44e-4752-847d-fc817e28221b" Selector="&lt;wnd app='dingtalk.exe' cls='StandardFrame_DingTalk' title='钉钉' /&gt;" TimeoutMS="1000">
+                <ui:Target.ClippingRegion>
+                  <ui:Region Rectangle="14, 11, 1902, 1018" />
+                </ui:Target.ClippingRegion>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:ImageFound.Target>
+          </ui:ImageFound>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <ui:InterruptibleDoWhile.Condition>
+        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_70">!existsMSImg &amp;&amp; !existsWDImg &amp;&amp; !existsSubWindowImg &amp;&amp; !existsMS2Img &amp;&amp; !existsWD2Img</mca:CSharpValue>
+      </ui:InterruptibleDoWhile.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <ui:GetValue ContinueOnError="{x:Null}" DisplayName="获取文件名称" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="GetValue_12">
+      <ui:GetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="17f7e550-5a77-48b8-a1a5-1feb2deccae3" InformativeScreenshot="2e16ba295d463ea59699d6c0a1efe1c4" Selector="&lt;wnd app='dingtalk.exe' cls='DingImgViewWnd' title='*' /&gt;&lt;ctrl role='text' idx='1' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:GetValue.Target>
+      <ui:GetValue.Value>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">tmpAttachmentName</mca:CSharpReference>
+        </OutArgument>
+      </ui:GetValue.Value>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetValue>
+    <Assign DisplayName="获取文件后缀" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">tmpAttachmentSurfix</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">Path.GetExtension(tmpAttachmentName)</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <If DisplayName="创建附件文件夹" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">!attachmentPaths.ContainsKey(projectInfo.CompanyName)</mca:CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,451" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_33">tmpAttachmentCompanyFolder</mca:CSharpReference>
+              </OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">Path.Combine(attachmentFolder,projectInfo.CompanyName)</mca:CSharpValue>
+              </InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="CreateDirectory_1">
+            <ui:CreateDirectory.Path>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">tmpAttachmentCompanyFolder</mca:CSharpValue>
+              </InArgument>
+            </ui:CreateDirectory.Path>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CreateDirectory>
+          <InvokeMethod DisplayName="添加目录" sap:VirtualizedContainerService.HintSize="334,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Add">
+            <InvokeMethod.TargetObject>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">
+                <mca:CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">attachmentPaths</mca:CSharpValue>
+              </InArgument>
+            </InvokeMethod.TargetObject>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">projectInfo.CompanyName</mca:CSharpValue>
+            </InArgument>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">tmpAttachmentCompanyFolder</mca:CSharpValue>
+            </InArgument>
+          </InvokeMethod>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">
+              <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_50">tmpAttachmentCompanyFolder</mca:CSharpReference>
+            </OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">
+              <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">Path.Combine(attachmentFolder,projectInfo.CompanyName)</mca:CSharpValue>
+            </InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Else>
+    </If>
+    <ui:MultipleAssign DisplayName="附件路径" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_31">tmpAttachmentFullName</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">Path.Combine(tmpAttachmentCompanyFolder,projectInfo.PONumber+tmpAttachmentSurfix)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_32">projectInfo.ContractDocsPath</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">tmpAttachmentFullName</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">
+                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_36">tmpAttachmentFullNameBackup</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">Path.Combine(tmpAttachmentCompanyFolder,projectInfo.PONumber+"-backup-"+tmpAttachmentSurfix)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
+    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击下载" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1cf71bf5-ae5f-4c38-bd5b-335e780cd32d" InformativeScreenshot="4f0e6cb1d5173be7690de1d3df25eebb" Selector="&lt;wnd app='dingtalk.exe' cls='DingImgViewWnd' title='*' /&gt;&lt;ctrl name='下载' role='push button' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:Click>
+    <ui:SetValue AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="设置保存的文件名和地址" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="SetValue_1">
+      <ui:SetValue.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="51329311-b075-4cfa-bd86-8f231c64f3af" InformativeScreenshot="3c3df9cfb91b9e26aca037050ec0b661" Selector="&lt;wnd app='dingtalk.exe' cls='#32770' title='另存为' /&gt;&lt;wnd aaname='浏览器窗格' cls='DirectUIHWND' /&gt;&lt;wnd aaname='文件名:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;" TimeoutMS="5000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:SetValue.Target>
+      <ui:SetValue.Text>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">tmpAttachmentFullNameBackup</mca:CSharpValue>
+        </InArgument>
+      </ui:SetValue.Text>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:SetValue>
+    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="点击保存" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9acd78d9-95b1-4758-826f-b9310cccfc55" InformativeScreenshot="abf0ebce3ae0049d38f9a235d5a8cdbc" Selector="&lt;wnd app='dingtalk.exe' cls='#32770' title='另存为' /&gt;&lt;wnd ctrlid='1' title='保存(&amp;amp;S)' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:Click>
+    <ui:InterruptibleDoWhile DisplayName="等待文件下载完成" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+      <ui:InterruptibleDoWhile.Body>
+        <Delay sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_3">
+          <InArgument x:TypeArguments="x:TimeSpan">
+            <mca:CSharpValue x:TypeArguments="x:TimeSpan" sap2010:WorkflowViewState.IdRef="CSharpValue`1_47">new TimeSpan(0,0,3)</mca:CSharpValue>
+          </InArgument>
+        </Delay>
+      </ui:InterruptibleDoWhile.Body>
+      <ui:InterruptibleDoWhile.Condition>
+        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">!File.Exists(tmpAttachmentFullNameBackup)</mca:CSharpValue>
+      </ui:InterruptibleDoWhile.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InterruptibleDoWhile>
+    <InvokeMethod DisplayName="重命名下载的文件" sap:VirtualizedContainerService.HintSize="434,137" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Move" TargetType="si:File">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">tmpAttachmentFullNameBackup</mca:CSharpValue>
+      </InArgument>
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_39">tmpAttachmentFullName</mca:CSharpValue>
+      </InArgument>
+    </InvokeMethod>
+    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="关闭下载弹框" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b380f2da-7846-431d-9ef5-579cedd6c6f9" InformativeScreenshot="d428e51524cc7ac5ab6b2b58ff123d69" Selector="&lt;wnd app='dingtalk.exe' cls='DingImgViewWnd' title='*' /&gt;&lt;ctrl name='' role='push button' /&gt;" TimeoutMS="2000">
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:Click>
+    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="关闭详情" sap:VirtualizedContainerService.HintSize="434,53" sap2010:WorkflowViewState.IdRef="Click_5" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="838da135-277e-4f15-bff4-cd026a68f37c" InformativeScreenshot="aaad7cd0e4df9c982f918f49b5b4d17e" Selector="&lt;wnd app='dingtalk.exe' cls='SlidePanel' idx='*' /&gt;&lt;ctrl name='' role='push button' /&gt;">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+          <ui:Target.WaitForReady>
+            <InArgument x:TypeArguments="ui:WaitForReady" />
+          </ui:Target.WaitForReady>
+        </ui:Target>
+      </ui:Click.Target>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:Click>
+  </Sequence>
+</Activity>

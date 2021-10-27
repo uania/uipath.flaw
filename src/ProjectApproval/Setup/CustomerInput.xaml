@@ -1,12 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CustomerInput" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CustomerInput" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="ddAccount" Type="OutArgument(x:String)" />
     <x:Property Name="ddPassword" Type="OutArgument(x:String)" />
-    <x:Property Name="contractFilePath" Type="OutArgument(x:String)" />
     <x:Property Name="outProjectInfoFileFolder" Type="OutArgument(x:String)" />
+    <x:Property Name="attachmentFolder" Type="OutArgument(x:String)" />
+    <x:Property Name="startDate" Type="OutArgument(s:DateTime)" />
+    <x:Property Name="endDate" Type="OutArgument(s:DateTime)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1043,720</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1043,825</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -72,16 +74,16 @@
       <AssemblyReference>System.Memory</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CustomerInput" sap:VirtualizedContainerService.HintSize="376,555" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CustomerInput" sap:VirtualizedContainerService.HintSize="242,703" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="mailEndDateStr">
+      <Variable x:TypeArguments="x:String" Name="startDateStr">
         <Variable.Default>
-          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">DateTime.Now.ToString("d")</mca:CSharpValue>
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">DateTime.Now.ToString("yyyy-MM-dd")</mca:CSharpValue>
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="x:String" Name="mailStartDateStr">
+      <Variable x:TypeArguments="x:String" Name="endDateStr">
         <Variable.Default>
-          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">DateTime.Now.ToString("d")</mca:CSharpValue>
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">DateTime.Now.AddDays(2).ToString("yyyy-MM-dd")</mca:CSharpValue>
         </Variable.Default>
       </Variable>
     </Sequence.Variables>
@@ -90,7 +92,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" DisplayName="DingDing账号" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="请输入DingDing账号" OptionsString="18310241180" Title="输入DingDing账号">
+    <ui:InputDialog Options="{x:Null}" DisplayName="DingDing账号" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="请输入DingDing账号" OptionsString="18310241180" Title="输入DingDing账号">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">
           <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">ddAccount</mca:CSharpReference>
@@ -103,7 +105,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="DingDing密码" sap:VirtualizedContainerService.HintSize="334,246" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="True" Label="请输入DingDing密码" Title="输入DingDing密码">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="DingDing密码" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="True" Label="请输入DingDing密码" Title="输入DingDing密码">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">
           <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">ddPassword</mca:CSharpReference>
@@ -111,24 +113,108 @@
       </ui:InputDialog.Result>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InputDialog>
-    <ui:SelectFolder DisplayName="选择合同存放的目录" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SelectFolder_1">
-      <ui:SelectFolder.SelectedFolder>
+    <ui:InputDialog Options="{x:Null}" DisplayName="审批完成时间筛选条件" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InputDialog_3" IsPassword="False" Label="请输入开始时间" Title="审批完成时间筛选条件">
+      <ui:InputDialog.OptionsString>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">startDateStr</mca:CSharpValue>
+        </InArgument>
+      </ui:InputDialog.OptionsString>
+      <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">
-          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">contractFilePath</mca:CSharpReference>
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">startDateStr</mca:CSharpReference>
         </OutArgument>
-      </ui:SelectFolder.SelectedFolder>
-    </ui:SelectFolder>
-    <ui:SelectFolder DisplayName="选择立项文件存放的目录" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="SelectFolder_2">
-      <ui:SelectFolder.SelectedFolder>
+      </ui:InputDialog.Result>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" DisplayName="审批完成时间筛选条件" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InputDialog_4" IsPassword="False" Label="请输入截止时间" Title="审批完成时间筛选条件">
+      <ui:InputDialog.OptionsString>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">endDateStr</mca:CSharpValue>
+        </InArgument>
+      </ui:InputDialog.OptionsString>
+      <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">
-          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">outProjectInfoFileFolder</mca:CSharpReference>
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">endDateStr</mca:CSharpReference>
         </OutArgument>
-      </ui:SelectFolder.SelectedFolder>
-    </ui:SelectFolder>
+      </ui:InputDialog.Result>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" DisplayName="合同存放的目录" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InputDialog_7" IsPassword="False" Label="请输入合同存放的目录" OptionsString="\\192.168.1.19\rpa测试数据\CreateOAProject" Title="输入合同存放的目录">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">attachmentFolder</mca:CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" DisplayName="立项文件存放的目录" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="InputDialog_9" IsPassword="False" Label="请输入立项文件存放的目录" OptionsString="\\192.168.1.19\rpa测试数据\CreateOAProject" Title="输入立项文件存放的目录">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">outProjectInfoFileFolder</mca:CSharpReference>
+        </OutArgument>
+      </ui:InputDialog.Result>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InputDialog>
+    <ui:MultipleAssign DisplayName="类型转换" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">startDate</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">Convert.ToDateTime(startDateStr)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpReference x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">endDate</mca:CSharpReference>
+              </OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="s:DateTime">
+                <mca:CSharpValue x:TypeArguments="s:DateTime" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">Convert.ToDateTime(endDateStr)</mca:CSharpValue>
+              </InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:MultipleAssign>
   </Sequence>
 </Activity>
