@@ -105,7 +105,7 @@
       </Variable>
       <Variable x:TypeArguments="s:String[]" Name="neeqStocksCodes">
         <Variable.Default>
-          <mca:CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">new String[]{"836756:中达金桥","871907:环球软件","835990:随锐科技","832317:观典防务","833994:翰博高新","833874:泰祥股份"};</mca:CSharpValue>
+          <mca:CSharpValue x:TypeArguments="s:String[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_135">new String[]{"836756:中达金桥","871907:环球软件","834218:和创科技"};</mca:CSharpValue>
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="s:String[]" Name="shmsStocksCodes">
@@ -257,7 +257,7 @@
               <av:PointCollection x:Key="ConnectorLocation">300,283.5 300,333.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="TryCatch-获取新三板数据" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+          <TryCatch DisplayName="TryCatch-获取新三板数据" sap:VirtualizedContainerService.HintSize="438,351" sap2010:WorkflowViewState.IdRef="TryCatch_2">
             <TryCatch.Try>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="获取新三板数据" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Monitored\\GetNeeqStocksData.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
@@ -1072,15 +1072,9 @@
                                               <InArgument x:TypeArguments="x:String" x:Key="body">
                                                 <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_123">emailContent</mca:CSharpValue>
                                               </InArgument>
-                                              <InArgument x:TypeArguments="x:String" x:Key="fromEmail">
-                                                <Literal x:TypeArguments="x:String">rpa@anruidigital.com</Literal>
-                                              </InArgument>
-                                              <InArgument x:TypeArguments="x:String" x:Key="sender">
-                                                <Literal x:TypeArguments="x:String">ARC RPA</Literal>
-                                              </InArgument>
-                                              <InArgument x:TypeArguments="x:String" x:Key="fromPwd">
-                                                <Literal x:TypeArguments="x:String">Yuk55268</Literal>
-                                              </InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="fromEmail">rpa@anruidigital.com</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="sender">ARC RPA</InArgument>
+                                              <InArgument x:TypeArguments="x:String" x:Key="fromPwd">Yuk55268</InArgument>
                                               <InArgument x:TypeArguments="scg:IEnumerable(x:String)" x:Key="files">
                                                 <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_134">new string[]{emailContentPath}</mca:CSharpValue>
                                               </InArgument>

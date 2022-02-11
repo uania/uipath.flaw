@@ -1,0 +1,1 @@
+UiRobot.exe -file C:/ProgramData/UiPath/Packages/ARC.RPA.B2C.MicrosoftDailyPaper.1.0.2.nupkg

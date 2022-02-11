@@ -1,1 +1,1 @@
-UiRobot.exe -file C:/ProgramData/UiPath/Packages/LingYin.Apply.1.0.8.nupkg 
+UiRobot.exe -file C:/ProgramData/UiPath/Packages/LingYin.Apply.1.0.10.nupkg 

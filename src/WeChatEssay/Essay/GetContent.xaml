@@ -7,7 +7,7 @@
     <x:Property Name="Name" Type="InArgument(x:String)" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>1179,701</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>624,661</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -94,6 +94,7 @@
       <AssemblyReference>UiPath.Database</AssemblyReference>
       <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart DisplayName="获取文章信息" sap:VirtualizedContainerService.HintSize="634,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -115,6 +116,7 @@
       <Variable x:TypeArguments="ui:GenericValue" Name="Topic" />
       <Variable x:TypeArguments="sd:DataTable" Name="Result" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="Urls" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="VisitList" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -135,7 +137,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,275 300,325</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="获取文章url" sap:VirtualizedContainerService.HintSize="754,3875" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="获取文章url" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Default="True" Name="IsContinue" />
           <Variable x:TypeArguments="scg:List(ui:UiElement)" Name="NotEnter" />
@@ -145,9 +147,9 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="712,4832" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+        <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="623,2873" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
           <ui:InterruptibleDoWhile.Body>
-            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="676,4663" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="587,2704" sap2010:WorkflowViewState.IdRef="Sequence_2">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="Selector" />
                 <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="Childrens" />
@@ -163,7 +165,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="634,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign sap:VirtualizedContainerService.HintSize="545,61" sap2010:WorkflowViewState.IdRef="Assign_1">
                 <Assign.To>
                   <OutArgument x:TypeArguments="scg:List(x:String)">
                     <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_44">Urls</mca:CSharpReference>
@@ -175,7 +177,7 @@
                   </InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="634,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign sap:VirtualizedContainerService.HintSize="545,61" sap2010:WorkflowViewState.IdRef="Assign_2">
                 <Assign.To>
                   <OutArgument x:TypeArguments="scg:List(ui:UiElement)">
                     <mca:CSharpReference x:TypeArguments="scg:List(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">NotEnter</mca:CSharpReference>
@@ -187,7 +189,7 @@
                   </InArgument>
                 </Assign.Value>
               </Assign>
-              <Assign sap:VirtualizedContainerService.HintSize="634,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign sap:VirtualizedContainerService.HintSize="545,61" sap2010:WorkflowViewState.IdRef="Assign_3">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:String">
                     <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">Selector</mca:CSharpReference>
@@ -199,7 +201,25 @@
                   </InArgument>
                 </Assign.Value>
               </Assign>
-              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="634,1242" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+              <Assign sap:VirtualizedContainerService.HintSize="545,61" sap2010:WorkflowViewState.IdRef="Assign_30">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="scg:List(x:String)">
+                    <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_73">VisitList</mca:CSharpReference>
+                  </OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="scg:List(x:String)">
+                    <mca:CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_122">new List&lt;string&gt;()</mca:CSharpValue>
+                  </InArgument>
+                </Assign.Value>
+              </Assign>
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="545,53" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
                 <TryCatch.Try>
                   <ui:FindChildren DisplayName="Find Children" Filter="&lt;ctrl name='*' role='pane' /&gt;" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="FindChildren_1" Scope="FIND_DESCENDANTS">
                     <ui:FindChildren.Children>
@@ -231,10 +251,10 @@
                   </ui:FindChildren>
                 </TryCatch.Try>
                 <TryCatch.Catches>
-                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="568,1072" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -242,7 +262,7 @@
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                       </ActivityAction.Argument>
-                      <Sequence sap:VirtualizedContainerService.HintSize="562,1001" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                      <Sequence sap:VirtualizedContainerService.HintSize="480,804" sap2010:WorkflowViewState.IdRef="Sequence_26">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -260,7 +280,7 @@
                             </InArgument>
                           </Assign.Value>
                         </Assign>
-                        <TryCatch DisplayName="针对最后一条" sap:VirtualizedContainerService.HintSize="520,808" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                        <TryCatch DisplayName="针对最后一条" sap:VirtualizedContainerService.HintSize="520,568" sap2010:WorkflowViewState.IdRef="TryCatch_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -361,10 +381,10 @@
                             </Sequence>
                           </TryCatch.Try>
                           <TryCatch.Catches>
-                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="486,638" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="486,23" sap2010:WorkflowViewState.IdRef="Catch`1_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -372,7 +392,7 @@
                                 <ActivityAction.Argument>
                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                 </ActivityAction.Argument>
-                                <Sequence sap:VirtualizedContainerService.HintSize="480,567" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                <Sequence sap:VirtualizedContainerService.HintSize="480,527" sap2010:WorkflowViewState.IdRef="Sequence_27">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -466,7 +486,7 @@
                   </Catch>
                 </TryCatch.Catches>
               </TryCatch>
-              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenUrl workflow" sap:VirtualizedContainerService.HintSize="634,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Essay\\OpenUrl.xaml">
+              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OpenUrl workflow" sap:VirtualizedContainerService.HintSize="545,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Essay\\OpenUrl.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
                   <InArgument x:TypeArguments="scg:IEnumerable(ui:UiElement)" x:Key="ListName">
                     <mca:CSharpValue x:TypeArguments="scg:IEnumerable(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">Childrens</mca:CSharpValue>
@@ -477,6 +497,9 @@
                   <InOutArgument x:TypeArguments="scg:List(ui:UiElement)" x:Key="NotEnter">
                     <mca:CSharpReference x:TypeArguments="scg:List(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">NotEnter</mca:CSharpReference>
                   </InOutArgument>
+                  <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="VistList">
+                    <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_74">VisitList</mca:CSharpReference>
+                  </InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -485,7 +508,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:InvokeWorkflowFile>
-              <If sap:VirtualizedContainerService.HintSize="634,524" sap2010:WorkflowViewState.IdRef="If_1">
+              <If sap:VirtualizedContainerService.HintSize="545,53" sap2010:WorkflowViewState.IdRef="If_1">
                 <If.Condition>
                   <InArgument x:TypeArguments="x:Boolean">
                     <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">NotEnter != null &amp;&amp; NotEnter.Count &gt; 0</mca:CSharpValue>
@@ -493,7 +516,7 @@
                 </If.Condition>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
@@ -532,38 +555,41 @@
                         <InOutArgument x:TypeArguments="scg:List(ui:UiElement)" x:Key="NotEnter">
                           <mca:CSharpReference x:TypeArguments="scg:List(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">NotEnter</mca:CSharpReference>
                         </InOutArgument>
+                        <InOutArgument x:TypeArguments="scg:List(x:String)" x:Key="VistList">
+                          <mca:CSharpReference x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_75">VisitList</mca:CSharpReference>
+                        </InOutArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </Sequence>
                 </If.Then>
               </If>
-              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="根据地址获取文章信息" sap:VirtualizedContainerService.HintSize="634,2167" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
+              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="根据地址获取文章信息" sap:VirtualizedContainerService.HintSize="545,1767" sap2010:WorkflowViewState.IdRef="ForEach`1_2">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:String">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:String" Name="url" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="598,2032" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="509,1632" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="556,1481" sap2010:WorkflowViewState.IdRef="OpenBrowser_1">
+                      <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="467,1081" sap2010:WorkflowViewState.IdRef="OpenBrowser_1">
                         <ui:OpenBrowser.Body>
                           <ActivityAction x:TypeArguments="x:Object">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                             </ActivityAction.Argument>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="522,1378" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="305,978" sap2010:WorkflowViewState.IdRef="Sequence_5">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="480,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-                              <Assign sap:VirtualizedContainerService.HintSize="480,61" sap2010:WorkflowViewState.IdRef="Assign_20">
+                              <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                              <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_20">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">
                                     <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_55">HtmlContent</mca:CSharpReference>
@@ -575,17 +601,23 @@
                                   </InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <Sequence DisplayName="获取界面信息" sap:VirtualizedContainerService.HintSize="480,1013" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <Sequence DisplayName="获取界面信息" sap:VirtualizedContainerService.HintSize="263,723" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,343" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                                <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="TryCatch_5">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
                                   <TryCatch.Try>
-                                    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'EM  publish_time'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                    <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'EM  publish_time'" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                                       <ui:Click.CursorPosition>
                                         <ui:CursorPosition Position="Center">
                                           <ui:CursorPosition.OffsetX>
@@ -605,7 +637,7 @@
                                       </ui:Click.Target>
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
@@ -657,7 +689,7 @@
                                     </Catch>
                                   </TryCatch.Catches>
                                 </TryCatch>
-                                <Sequence DisplayName="获取文章发布时间" sap:VirtualizedContainerService.HintSize="438,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <Sequence DisplayName="获取文章发布时间" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -700,7 +732,7 @@
                                     </ui:BrowserScope.Selector>
                                   </ui:BrowserScope>
                                 </Sequence>
-                                <If DisplayName="根据时间跳出循环" sap:VirtualizedContainerService.HintSize="438,53" sap2010:WorkflowViewState.IdRef="If_10">
+                                <If DisplayName="根据时间跳出循环" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="If_10">
                                   <If.Condition>
                                     <InArgument x:TypeArguments="x:Boolean">
                                       <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_73">Convert.ToDateTime(EmPublishTime.Replace("[","").Replace("]","").Trim()) &lt;= LastTime</mca:CSharpValue>
@@ -740,7 +772,7 @@
                                     </Sequence>
                                   </If.Then>
                                 </If>
-                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="title" DisplayName="获取文章标题" sap:VirtualizedContainerService.HintSize="438,53" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
+                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="title" DisplayName="获取文章标题" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
                                   <ui:GetAttribute.Result>
                                     <OutArgument x:TypeArguments="ui:GenericValue">
                                       <mca:CSharpReference x:TypeArguments="ui:GenericValue" sap2010:WorkflowViewState.IdRef="CSharpReference`1_58">TitleName</mca:CSharpReference>
@@ -780,7 +812,7 @@
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_18">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">
                                         <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_52">ContentMsg</mca:CSharpReference>
@@ -792,7 +824,7 @@
                                       </InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_19">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">
                                         <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_53">ImageUrls</mca:CSharpReference>
@@ -804,7 +836,7 @@
                                       </InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <ui:FindChildren DisplayName="获取文章内容" Filter="&lt;webctrl tag='SPAN' idx='*' /&gt;" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="FindChildren_2" Scope="FIND_DESCENDANTS">
+                                  <ui:FindChildren DisplayName="获取文章内容" Filter="&lt;webctrl tag='SPAN' idx='*' /&gt;" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="FindChildren_2" Scope="FIND_DESCENDANTS">
                                     <ui:FindChildren.Children>
                                       <OutArgument x:TypeArguments="scg:IEnumerable(ui:UiElement)">
                                         <mca:CSharpReference x:TypeArguments="scg:IEnumerable(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">ContentChildren</mca:CSharpReference>
@@ -825,8 +857,14 @@
                                         </ui:Target.WaitForReady>
                                       </ui:Target>
                                     </ui:FindChildren.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
                                   </ui:FindChildren>
-                                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+                                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
                                     <ui:ForEach.Body>
                                       <ActivityAction x:TypeArguments="ui:UiElement">
                                         <ActivityAction.Argument>
@@ -987,7 +1025,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </ui:ForEach>
-                                  <ui:FindChildren DisplayName="获取文章图片" Filter="&lt;webctrl parentid='*' tag='IMG'/&gt;" sap:VirtualizedContainerService.HintSize="334,68" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_DESCENDANTS">
+                                  <ui:FindChildren DisplayName="获取文章图片" Filter="&lt;webctrl parentid='*' tag='IMG'/&gt;" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_DESCENDANTS">
                                     <ui:FindChildren.Children>
                                       <OutArgument x:TypeArguments="scg:IEnumerable(ui:UiElement)">
                                         <mca:CSharpReference x:TypeArguments="scg:IEnumerable(ui:UiElement)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_38">ImageChildren</mca:CSharpReference>
@@ -1008,8 +1046,14 @@
                                         </ui:Target.WaitForReady>
                                       </ui:Target>
                                     </ui:FindChildren.Target>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
                                   </ui:FindChildren>
-                                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="ForEach`1_4">
+                                  <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="ForEach`1_4">
                                     <ui:ForEach.Body>
                                       <ActivityAction x:TypeArguments="ui:UiElement">
                                         <ActivityAction.Argument>
@@ -1108,16 +1152,16 @@
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="514,978" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,307" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                                     <TryCatch.Try>
-                                      <Sequence DisplayName="Screen Scraping" sap:VirtualizedContainerService.HintSize="476,741" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                      <Sequence DisplayName="Screen Scraping" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_17">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'MySQL     Page'" sap:VirtualizedContainerService.HintSize="434,344" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="eb20bcaa844433b0d8e77abc3c4909b3">
+                                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'MySQL     Page'" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="eb20bcaa844433b0d8e77abc3c4909b3">
                                           <ui:BrowserScope.Body>
                                             <ActivityAction x:TypeArguments="x:Object">
                                               <ActivityAction.Argument>
@@ -1153,12 +1197,12 @@
                                           </ui:BrowserScope.Selector>
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                             </scg:Dictionary>
                                           </sap:WorkflowViewStateService.ViewState>
                                         </ui:BrowserScope>
-                                        <Assign sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                        <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_28">
                                           <Assign.To>
                                             <OutArgument x:TypeArguments="x:String">
                                               <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_69">Topic</mca:CSharpReference>
@@ -1170,7 +1214,7 @@
                                             </InArgument>
                                           </Assign.Value>
                                         </Assign>
-                                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="var s = topic.Trim().Split('#').ToList();&#xA;topic = &quot;&quot;;&#xA;                foreach (string item in s)&#xA;                {&#xA;                    if (string.IsNullOrWhiteSpace(item))&#xA;                    {&#xA;                        continue;&#xA;                    }&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if(item.Contains(&quot;收录于话题&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;continue;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;                    var value = item.Split(' ').ToList();&#xA;                     foreach (string va in value)&#xA;                    {&#xA;                        if (string.IsNullOrWhiteSpace(va) || va.Contains(&quot;内容&quot;) || va.Contains(&quot;个&quot;))&#xA;                        {&#xA;                            continue;&#xA;                        }&#xA;                        bool isInt = System.Text.RegularExpressions.Regex.IsMatch(va.Trim(), @&quot;^[+-]?\d*$&quot;);&#xA;                        if (!isInt)&#xA;                        {&#xA;                            topic = topic + &quot;,&quot; + va.Trim();&#xA;                        }&#xA;                    }&#xA;                    topic += &quot;,&quot;;&#xA;                }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="InvokeCode_7" Language="CSharp">
+                                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="var s = topic.Trim().Split('#').ToList();&#xA;topic = &quot;&quot;;&#xA;                foreach (string item in s)&#xA;                {&#xA;                    if (string.IsNullOrWhiteSpace(item))&#xA;                    {&#xA;                        continue;&#xA;                    }&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if(item.Contains(&quot;收录于话题&quot;))&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;continue;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;}&#xA;                    var value = item.Split(' ').ToList();&#xA;                     foreach (string va in value)&#xA;                    {&#xA;                        if (string.IsNullOrWhiteSpace(va) || va.Contains(&quot;内容&quot;) || va.Contains(&quot;个&quot;))&#xA;                        {&#xA;                            continue;&#xA;                        }&#xA;                        bool isInt = System.Text.RegularExpressions.Regex.IsMatch(va.Trim(), @&quot;^[+-]?\d*$&quot;);&#xA;                        if (!isInt)&#xA;                        {&#xA;                            topic = topic + &quot;,&quot; + va.Trim();&#xA;                        }&#xA;                    }&#xA;                    topic += &quot;,&quot;;&#xA;                }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_7" Language="CSharp">
                                           <ui:InvokeCode.Arguments>
                                             <InOutArgument x:TypeArguments="x:String" x:Key="topic">
                                               <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_70">Topic</mca:CSharpReference>
@@ -1180,7 +1224,7 @@
                                       </Sequence>
                                     </TryCatch.Try>
                                     <TryCatch.Catches>
-                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="480,23" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,23" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1208,168 +1252,6 @@
                                     </TryCatch.Catches>
                                   </TryCatch>
                                 </Sequence>
-                              </Sequence>
-                              <Sequence DisplayName="处理html" sap:VirtualizedContainerService.HintSize="263,70" sap2010:WorkflowViewState.IdRef="Sequence_31">
-                                <Sequence.Variables>
-                                  <Variable x:TypeArguments="x:String" Name="TxtName">
-                                    <Variable.Default>
-                                      <Literal x:TypeArguments="x:String" Value="" />
-                                    </Variable.Default>
-                                  </Variable>
-                                  <Variable x:TypeArguments="x:String" Default="C:\UIPathData\微信公众号" Name="TxtPath" />
-                                  <Variable x:TypeArguments="x:Boolean" Default="False" Name="TxtExists" />
-                                </Sequence.Variables>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="System.Net.HttpWebRequest Webreq = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);&#xA;            Webreq.Method = &quot;Get&quot;;&#xA;            System.Net.HttpWebResponse Webresp = null;&#xA;            StreamReader strm = null;&#xA;            try&#xA;            {&#xA;                Webresp = (System.Net.HttpWebResponse)Webreq.GetResponse();&#xA;                string status = Webresp.StatusCode.ToString();&#xA;                var ss = Webresp.CharacterSet;&#xA;                strm = new StreamReader(Webresp.GetResponseStream(),System.Text.Encoding.GetEncoding(&quot;utf-8&quot;));&#xA;                content = strm.ReadToEnd();&#xA;            }&#xA;            catch (Exception ex)&#xA;            {&#xA;            }&#xA;            finally&#xA;            {&#xA;                if (Webresp != null) Webresp.Close();&#xA;                if (strm != null) strm.Close();&#xA;            }" DisplayName="获取界面html" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1" Language="CSharp">
-                                  <ui:InvokeCode.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="url">
-                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">url</mca:CSharpValue>
-                                    </InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="content">
-                                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">HtmlContent</mca:CSharpReference>
-                                    </OutArgument>
-                                  </ui:InvokeCode.Arguments>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:InvokeCode>
-                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="TxtName=Guid.NewGuid().ToString(&quot;N&quot;)+&quot;.txt&quot;;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_5" Language="CSharp">
-                                  <ui:InvokeCode.Arguments>
-                                    <InOutArgument x:TypeArguments="x:String" x:Key="TxtName">
-                                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_59">TxtName</mca:CSharpReference>
-                                    </InOutArgument>
-                                  </ui:InvokeCode.Arguments>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:InvokeCode>
-                                <Sequence DisplayName="创建导出路径" sap:VirtualizedContainerService.HintSize="334,339" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:PathExists DisplayName="Path Exists" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="PathExists_1" PathType="Folder">
-                                    <ui:PathExists.Exists>
-                                      <OutArgument x:TypeArguments="x:Boolean">
-                                        <mca:CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_60">TxtExists</mca:CSharpReference>
-                                      </OutArgument>
-                                    </ui:PathExists.Exists>
-                                    <ui:PathExists.Path>
-                                      <InArgument x:TypeArguments="x:String">
-                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91">TxtPath</mca:CSharpValue>
-                                      </InArgument>
-                                    </ui:PathExists.Path>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:PathExists>
-                                  <If sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="If_12">
-                                    <If.Condition>
-                                      <InArgument x:TypeArguments="x:Boolean">
-                                        <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">!TxtExists</mca:CSharpValue>
-                                      </InArgument>
-                                    </If.Condition>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <If.Then>
-                                      <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="CreateDirectory_1">
-                                        <ui:CreateDirectory.Path>
-                                          <InArgument x:TypeArguments="x:String">
-                                            <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_97">TxtPath</mca:CSharpValue>
-                                          </InArgument>
-                                        </ui:CreateDirectory.Path>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:CreateDirectory>
-                                    </If.Then>
-                                  </If>
-                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_21">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">
-                                        <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_61">TxtPath</mca:CSharpReference>
-                                      </OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">
-                                        <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_94">TxtPath+"/"+TxtName</mca:CSharpValue>
-                                      </InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </Sequence>
-                                <ui:WriteTextFile DisplayName="Write Text File" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="WriteTextFile_1">
-                                  <ui:WriteTextFile.FileName>
-                                    <InArgument x:TypeArguments="x:String">
-                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_95">TxtPath</mca:CSharpValue>
-                                    </InArgument>
-                                  </ui:WriteTextFile.FileName>
-                                  <ui:WriteTextFile.Text>
-                                    <InArgument x:TypeArguments="x:String">
-                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_96">HtmlContent</mca:CSharpValue>
-                                    </InArgument>
-                                  </ui:WriteTextFile.Text>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:WriteTextFile>
-                                <ui:InvokeCode ContinueOnError="{x:Null}" Code="System.IO.Stream stream = new System.IO.FileStream(filePath,System.IO.FileMode.Open,System.IO.FileAccess.Read);&#xA;System.IO.BinaryReader br = new System.IO.BinaryReader(stream);&#xA;byte[] txt = br.ReadBytes((int)stream.Length);&#xA;var container = new Azure.Storage.Blobs.BlobContainerClient(&quot;DefaultEndpointsProtocol=https;AccountName=mistorage;AccountKey=VhzwTz0GTBLFkT+9Og/amjbnHbMPGXbu0mpjBNuRRHBju6ll8GbhFXcemizUuByRcJNwHaulm+1xFArEQc4lWg==;EndpointSuffix=core.chinacloudapi.cn&quot;, &quot;wechatessay&quot;);&#xA;System.IO.Stream st=new System.IO.MemoryStream(txt);&#xA;container.UploadBlob(fileName,st);&#xA;url=container.Uri+&quot;/&quot;+fileName;&#xA;stream.Close();&#xA;&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_6" Language="CSharp">
-                                  <ui:InvokeCode.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="filePath">
-                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99">TxtPath</mca:CSharpValue>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="fileName">
-                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_98">TxtName</mca:CSharpValue>
-                                    </InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="url">
-                                      <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_62">HtmlContent</mca:CSharpReference>
-                                    </OutArgument>
-                                  </ui:InvokeCode.Arguments>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:InvokeCode>
-                                <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="Delete_1">
-                                  <ui:Delete.Path>
-                                    <InArgument x:TypeArguments="x:String">
-                                      <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_100">TxtPath</mca:CSharpValue>
-                                    </InArgument>
-                                  </ui:Delete.Path>
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:Delete>
                               </Sequence>
                             </Sequence>
                           </ActivityAction>
@@ -1417,7 +1299,7 @@
                             </InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xA;            {&#xA;                var data = result.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;MessageSourceId&quot;].ToString()==typeGuid.ToString() &amp;&amp; x[&quot;Title&quot;].ToString()==titleName);&#xA;                if (data.Any())&#xA;                {&#xA;                    isContinue = false;&#xA;                }&#xA;                else {&#xA;                    DataRow dr = result.NewRow();&#xA;                    dr[&quot;MessageId&quot;] = Guid.NewGuid();&#xA;                    dr[&quot;MessageSourceId&quot;] = typeGuid;&#xA;                    dr[&quot;Title&quot;] = titleName;&#xA;                    dr[&quot;ContentUrl&quot;] = htmlContent;&#xA;                    dr[&quot;Content&quot;] = contentMsg;&#xA;                    dr[&quot;ImgUrls&quot;] = imageUrls;&#xA;                    dr[&quot;Topic&quot;] = topic;&#xA;                    dr[&quot;PublishTime&quot;] = emPublishTime;&#xA;                    dr[&quot;Url&quot;] = url;&#xA;                    dr[&quot;CreateUser&quot;] = Guid.Empty;&#xA;                    dr[&quot;UpdateUser&quot;] = Guid.Empty;&#xA;                    dr[&quot;CreateTime&quot;] = emPublishTime;&#xA;                    dr[&quot;UpdateTime&quot;] = System.DateTime.Now;&#xA;                    result.Rows.Add(dr);&#xA;                }&#xA;            }&#xA;            catch (Exception ex)&#xA;            {&#xA;                msg = ex.Message;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_4" Language="CSharp">
+                        <ui:InvokeCode ContinueOnError="{x:Null}" Code="try&#xD;&#xA;            {&#xD;&#xA;                var data = result.Rows.Cast&lt;DataRow&gt;().Where(x =&gt; x[&quot;MessageSourceId&quot;].ToString()==typeGuid.ToString() &amp;&amp; x[&quot;Title&quot;].ToString()==titleName);&#xD;&#xA;                if (data.Any())&#xD;&#xA;                {&#xD;&#xA;                    isContinue = false;&#xD;&#xA;                }&#xD;&#xA;                else {&#xD;&#xA;                    DataRow dr = result.NewRow();&#xD;&#xA;                    dr[&quot;MessageId&quot;] = Guid.NewGuid();&#xD;&#xA;                    dr[&quot;MessageSourceId&quot;] = typeGuid;&#xD;&#xA;                    dr[&quot;Title&quot;] = titleName;&#xD;&#xA;                    dr[&quot;ContentUrl&quot;] = htmlContent;&#xD;&#xA;                    dr[&quot;Content&quot;] = contentMsg;&#xD;&#xA;                    dr[&quot;ImgUrls&quot;] = imageUrls;&#xD;&#xA;                    dr[&quot;Topic&quot;] = topic;&#xD;&#xA;                    dr[&quot;PublishTime&quot;] = emPublishTime;&#xD;&#xA;                    dr[&quot;Url&quot;] = url;&#xD;&#xA;                    dr[&quot;CreateUser&quot;] = Guid.Empty;&#xD;&#xA;                    dr[&quot;UpdateUser&quot;] = Guid.Empty;&#xD;&#xA;                    dr[&quot;CreateTime&quot;] = emPublishTime;&#xD;&#xA;                    dr[&quot;UpdateTime&quot;] = System.DateTime.Now;&#xD;&#xA;                   dr[&quot;Visit&quot;] = Convert.ToInt32(visit[urlList.IndexOf(url)]);&#xD;&#xA;                    result.Rows.Add(dr);&#xD;&#xA;                }&#xD;&#xA;            }&#xD;&#xA;            catch (Exception ex)&#xD;&#xA;            {&#xD;&#xA;                msg = ex.Message;&#xD;&#xA;            }" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_4" Language="CSharp">
                           <ui:InvokeCode.Arguments>
                             <InOutArgument x:TypeArguments="sd:DataTable" x:Key="result">
                               <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_48">Result</mca:CSharpReference>
@@ -1452,6 +1334,12 @@
                             <InArgument x:TypeArguments="x:String" x:Key="url">
                               <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">url</mca:CSharpValue>
                             </InArgument>
+                            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="urlList">
+                              <mca:CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_123">Urls</mca:CSharpValue>
+                            </InArgument>
+                            <InArgument x:TypeArguments="scg:List(x:String)" x:Key="visit">
+                              <mca:CSharpValue x:TypeArguments="scg:List(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_124">VisitList</mca:CSharpValue>
+                            </InArgument>
                           </ui:InvokeCode.Arguments>
                         </ui:InvokeCode>
                       </Sequence>
@@ -1470,7 +1358,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEach>
-              <Assign sap:VirtualizedContainerService.HintSize="520,61" sap2010:WorkflowViewState.IdRef="Assign_15">
+              <Assign sap:VirtualizedContainerService.HintSize="545,61" sap2010:WorkflowViewState.IdRef="Assign_15">
                 <Assign.To>
                   <OutArgument x:TypeArguments="x:Int32">
                     <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_45">Index</mca:CSharpReference>
@@ -1497,20 +1385,20 @@
               <av:Size x:Key="ShapeSize">200,70</av:Size>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence DisplayName="保存到数据库" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence DisplayName="保存到数据库" sap:VirtualizedContainerService.HintSize="604,1444" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If sap:VirtualizedContainerService.HintSize="484,1041" sap2010:WorkflowViewState.IdRef="If_11">
+            <If sap:VirtualizedContainerService.HintSize="562,1352" sap2010:WorkflowViewState.IdRef="If_11">
               <If.Condition>
                 <InArgument x:TypeArguments="x:Boolean">
                   <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_86">Result.Rows.Count &gt; 0</mca:CSharpValue>
                 </InArgument>
               </If.Condition>
               <If.Then>
-                <Sequence DisplayName="添加到数据库" sap:VirtualizedContainerService.HintSize="381,857" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                <Sequence DisplayName="添加到数据库" sap:VirtualizedContainerService.HintSize="526,1168" sap2010:WorkflowViewState.IdRef="Sequence_34">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="Sql">
                       <Variable.Default>
@@ -1524,7 +1412,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="339,61" sap2010:WorkflowViewState.IdRef="Assign_22">
+                  <Assign sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="Assign_22">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">
                         <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_63">Sql</mca:CSharpReference>
@@ -1536,7 +1424,7 @@
                       </InArgument>
                     </Assign.Value>
                   </Assign>
-                  <Assign sap:VirtualizedContainerService.HintSize="339,61" sap2010:WorkflowViewState.IdRef="Assign_23">
+                  <Assign sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="Assign_23">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">
                         <mca:CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_64">RowIndex</mca:CSharpReference>
@@ -1546,7 +1434,7 @@
                       <InArgument x:TypeArguments="x:Int32">0</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="339,470" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,470" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
@@ -1566,7 +1454,7 @@
                             </Assign.To>
                             <Assign.Value>
                               <InArgument x:TypeArguments="x:String">
-                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_121" xml:space="preserve">Sql+"insert into Message(MessageId,MessageSourceId,Title,ContentUrl,Content,ImgUrls,Topic,PublishTime,Url,CreateUser,UpdateUser,IsDelete,Status,CreateTime,UpdateTime) values  ('"+CurrentRow["MessageId"]+"','"+Guid+"',N'"+CurrentRow["Title"].ToString().Replace("{","").Replace("}","").Replace("'","")+"',N'"+CurrentRow["ContentUrl"]+"',N'"+CurrentRow["Content"].ToString().Replace("{","").Replace("}","").Replace("'","")+"',N'"+CurrentRow["ImgUrls"]+"',N'"+CurrentRow["Topic"].ToString().Replace("{","").Replace("}","").Replace("'","")+"','"+CurrentRow["PublishTime"]+"',N'"+CurrentRow["Url"]+"','"+CurrentRow["CreateUser"]+"','"+CurrentRow["UpdateUser"]+"',0,1,'"+DateTime.Now+"','"+DateTime.Now+"'); "</mca:CSharpValue>
+                                <mca:CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_125" xml:space="preserve">Sql+"insert into Message(MessageId,MessageSourceId,Title,ContentUrl,Content,ImgUrls,Topic,PublishTime,Url,CreateUser,UpdateUser,IsDelete,Status,CreateTime,UpdateTime,Abstract) values  ('"+CurrentRow["MessageId"]+"','"+Guid+"',N'"+CurrentRow["Title"].ToString().Replace("{","").Replace("}","").Replace("'","")+"',N'"+CurrentRow["ContentUrl"]+"',N'"+CurrentRow["Content"].ToString().Replace("{","").Replace("}","").Replace("'","")+"',N'"+CurrentRow["ImgUrls"]+"',N'"+CurrentRow["Topic"].ToString().Replace("{","").Replace("}","").Replace("'","")+"','"+CurrentRow["PublishTime"]+"',N'"+CurrentRow["Url"]+"','"+CurrentRow["CreateUser"]+"','"+CurrentRow["UpdateUser"]+"',0,1,'"+DateTime.Now+"','"+DateTime.Now+"',"+Convert.ToInt32(CurrentRow["Visit"])+"); "</mca:CSharpValue>
                               </InArgument>
                             </Assign.Value>
                           </Assign>
@@ -1657,7 +1545,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ForEachRow>
-                  <If sap:VirtualizedContainerService.HintSize="339,53" sap2010:WorkflowViewState.IdRef="If_14">
+                  <If sap:VirtualizedContainerService.HintSize="484,364" sap2010:WorkflowViewState.IdRef="If_14">
                     <If.Condition>
                       <InArgument x:TypeArguments="x:Boolean">
                         <mca:CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_111">Sql.Length &gt; 0</mca:CSharpValue>
@@ -1665,7 +1553,7 @@
                     </If.Condition>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -1709,7 +1597,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,170.5 300,205</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:BuildDataTable DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;MessageId&quot; msdata:DataType=&quot;System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; /&gt;&#xA;                &lt;xs:element name=&quot;MessageSourceId&quot; msdata:DataType=&quot;System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Title&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;ContentUrl&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Content&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;ImgUrls&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Topic&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;PublishTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;CreateUser&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;UpdateUser&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;IsDelete&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;CreateTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;UpdateTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
+      <ui:BuildDataTable DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;MessageId&quot; msdata:DataType=&quot;System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;MessageSourceId&quot; msdata:DataType=&quot;System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Title&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ContentUrl&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Content&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ImgUrls&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Topic&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;PublishTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Url&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CreateUser&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;500&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;UpdateUser&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;IsDelete&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CreateTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;UpdateTime&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Visit&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; default=&quot;0&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;">
         <ui:BuildDataTable.DataTable>
           <OutArgument x:TypeArguments="sd:DataTable">
             <mca:CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">Result</mca:CSharpReference>
